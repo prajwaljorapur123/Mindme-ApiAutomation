@@ -14,7 +14,7 @@ public class EmployeeEndPoints {
 	
 	public static Response addEmployee(Employee payload , String token)
 	{
-		// String token= (String) context.getAttribute("token");
+		
 	Response response = given()
 		.headers("Authorization","Bearer "+token)
 		.contentType(ContentType.JSON)
@@ -29,7 +29,7 @@ public class EmployeeEndPoints {
 	
 	public static Response EmployeeDetails(String token)
 	{
-		//String token= (String) context.getAttribute("token");
+		
 	Response response = given()
 		.headers("Authorization","Bearer "+token)
 		.contentType(ContentType.JSON)
@@ -42,7 +42,7 @@ public class EmployeeEndPoints {
 	
 	public static Response UpdateEmployee(String email , Employee payload,String token)
 	{
-		//String token= (String) context.getAttribute("token");
+	
 	Response response = given()
 		.headers("Authorization","Bearer "+token)
 		.multiPart("data",payload , "application/json")
@@ -54,12 +54,25 @@ public class EmployeeEndPoints {
 	
 	public static Response DeleteEmployee(int eid , String token)
 	{
-		//String token= (String) context.getAttribute("token");
+		
 	Response response = given()
 		.headers("Authorization","Bearer "+token)
 		.queryParam("id",eid )
 		.contentType(ContentType.JSON)
 		.when().get(Routes.delete_url);
+	    return response;
+		
+	}
+	
+	
+	public static Response SearchEmployee(String token,Employee payload)
+	{
+	
+	Response response = given()
+		.headers("Authorization","Bearer "+token)
+		.contentType(ContentType.JSON)
+		.body(payload)
+		.when().post(Routes.search_url);
 	    return response;
 		
 	}

@@ -11,6 +11,8 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
+import java.util.List;
+
 import org.testng.ITestContext;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
@@ -29,6 +31,8 @@ public class EmployeeTest {
 	Faker faker;
 	Employee employeePayload;
 	int empID;
+	public static List<Integer> employeeId;
+	
 @BeforeClass
 public void setupData()
 {
@@ -44,6 +48,9 @@ public void setupData()
 	employeePayload.setPermissionIds(new int[]{1});
 	employeePayload.setDesignation(faker.name().nameWithMiddle());
 	employeePayload.setImageId("0");
+	employeePayload.setTeamName("");
+	employeePayload.setPageNo(0);
+	employeePayload.setPageSize(8);
 }
 
 @Test(priority = 1)
@@ -96,6 +103,26 @@ public void TestDeleteEmployee()
  AssertJUnit.assertEquals(response.getStatusCode(), 200);
   AssertJUnit.assertEquals(response.jsonPath().getString("message"), "OK");
   Reporter.log("delete employee successfully" , true);
+}
+
+@Test(priority = 4)
+public void TestSearchEmployee()
+{
+	
+  Response response = EmployeeEndPoints.SearchEmployee(  LoginTest.LoginToken , employeePayload);
+  response.prettyPrint();
+ AssertJUnit.assertEquals(response.getStatusCode(), 200);
+  AssertJUnit.assertEquals(response.jsonPath().getString("message"), "OK");
+  
+   employeeId = response.jsonPath().getList("data.employeeDetails.id");
+ // employeeId = ids.stream().mapToInt(Integer::intValue).toArray();
+//     for (int i = 0; i < employeeId.length; i++) {
+//		int j = employeeId[i];
+//		
+//	}
+
+  
+  Reporter.log("search employee successfully" , true);
 }
 
 }

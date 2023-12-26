@@ -10,8 +10,29 @@ public class Employee {
 	 int[] permissionIds ;
 	 String designation;
 	 String imageId;
+	 String TeamName;
+	 int pageNo;
+	 int pageSize;
 	 
-	 public int geteid() {
+	 public String getTeamName() {
+		return TeamName;
+	}
+	public void setTeamName(String teamName) {
+		TeamName = teamName;
+	}
+	public int getPageNo() {
+		return pageNo;
+	}
+	public void setPageNo(int pageNo) {
+		this.pageNo = pageNo;
+	}
+	public int getPageSize() {
+		return pageSize;
+	}
+	public void setPageSize(int pageSize) {
+		this.pageSize = pageSize;
+	}
+	public int geteid() {
 			return eid;
 		} 
 	 public void seteid(int eid) {
