@@ -78,5 +78,19 @@ public void TestTeamUpdate()
   Reporter.log("team updated successfully" , true);
 }
 
+@Test(priority = 4)
+public void TestTeamDelete()
+{
+	
+	teampayload.setTeamId(teamId);
+	
+	
+  Response response =TeamEndPoints.TeamDelete(LoginTest.LoginToken , teamId);
+  response.prettyPrint();
+ AssertJUnit.assertEquals(response.getStatusCode(), 200);
+  AssertJUnit.assertEquals(response.jsonPath().getString("message"), "OK");
+  Reporter.log("team deleted successfully" , true);
+}
+
 
 }

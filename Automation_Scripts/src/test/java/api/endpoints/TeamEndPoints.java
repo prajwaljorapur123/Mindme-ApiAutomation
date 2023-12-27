@@ -49,6 +49,18 @@ public class TeamEndPoints {
 	    return response;
 		
 	}
+	public static Response TeamDelete(String token , int teamId)
+	{
+		
+	Response response = given()
+		.headers("Authorization","Bearer "+token)
+		.queryParam("id", teamId)
+	
+		.when().get(Routes.teams_delete_url);
+	
+	    return response;
+		
+	}
 	
 
 }

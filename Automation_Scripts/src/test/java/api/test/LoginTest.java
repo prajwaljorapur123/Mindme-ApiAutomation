@@ -5,6 +5,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
 import org.testng.ITestContext;
+import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -37,6 +38,7 @@ public class LoginTest {
 	 LoginToken =response.jsonPath().getString("data.accessToken");
 	context.setAttribute("token", LoginToken);
     response.prettyPrint();
+    Reporter.log("login successfull....", true);
 	}
 
 }
