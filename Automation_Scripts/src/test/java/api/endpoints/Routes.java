@@ -25,4 +25,13 @@ public class Routes {
 	public static String teams_delete_url=baseurl+"/v1/teams/delete/";
 	
 	
+	//Project
+	
+	public static String project_create_url = baseurl+"/v1/project/create";
+	public static String projects_url = baseurl+"/v1/project/";
+	public static String project_update_url=baseurl+"/v1/project/updateProjectTeam";
+	public static String project_delete_url=baseurl+"/v1/project/delete_project/";
+	
+	
+	
 }

@@ -1,5 +1,7 @@
 package api.test;
 
+import java.util.List;
+
 import org.testng.AssertJUnit;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
@@ -17,6 +19,7 @@ public class TeamTest {
 Faker faker;
 Team teampayload;
 public static int teamId;
+public static List<Integer> teamsId;
 
 
 @BeforeClass
@@ -59,6 +62,7 @@ public void TestTeamDetails()
 	
   Response response =TeamEndPoints.TeamDetails(LoginTest.LoginToken , this.teampayload.getPageNo(),this.teampayload.getPageSize());
   response.prettyPrint();
+  teamsId = response.jsonPath().getList("data.teamsEmpDetails.teams.id");
  AssertJUnit.assertEquals(response.getStatusCode(), 200);
   AssertJUnit.assertEquals(response.jsonPath().getString("message"), "OK");
   Reporter.log("team datails......." , true);
