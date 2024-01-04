@@ -53,6 +53,8 @@ public void setupData()
 	employeePayload.setPageSize(8);
 }
 
+//Adding employee 
+
 @Test(priority = 1)
 public void testAddEmployee()
 {
@@ -60,17 +62,28 @@ public void testAddEmployee()
  response.prettyPrint();
  
  empID=response.jsonPath().getInt("data.employeeDetails.id");
+ 
+ //validations
+ AssertJUnit.assertEquals(response.getStatusCode(), 200);
+ AssertJUnit.assertEquals(response.jsonPath().getString("message"), "OK");
+ 
  Reporter.log("Added employee successfully" , true);
 }
+
+//Getting employee details
 
 @Test(priority = 2)
 public void testEmployeeDetails()
 {
 	    Response response =    EmployeeEndPoints.EmployeeDetails(LoginTest.LoginToken);
 	    response.prettyPrint();
+	    
+	    //validations
 	    AssertJUnit.assertEquals(response.getStatusCode(), 200);
 	    Reporter.log("employee details...." , true);
 }
+
+//Update employee
 
 @Test(priority = 3)
 public void TestUpdateEmployee()
@@ -83,43 +96,47 @@ public void TestUpdateEmployee()
 	
   Response response = EmployeeEndPoints.UpdateEmployee(this.employeePayload.getEmail(),employeePayload ,LoginTest.LoginToken);
   response.prettyPrint();
+  
+  //validations
   AssertJUnit.assertEquals(response.getStatusCode(), 200);
   AssertJUnit.assertEquals(response.jsonPath().getString("message"), "OK");
+  
   Reporter.log("update employee successfully" , true);
 }
 
+//Delete Employee
 
 @Test(priority = 4)
 public void TestDeleteEmployee()
 {
-	//update data
-	
-	employeePayload.setFirstName(faker.name().firstName());
-    employeePayload.setLastName(faker.name().lastName());
-
 	
   Response response = EmployeeEndPoints.DeleteEmployee(empID , LoginTest.LoginToken);
   response.prettyPrint();
- AssertJUnit.assertEquals(response.getStatusCode(), 200);
+  
+  //validations
+  
+  AssertJUnit.assertEquals(response.getStatusCode(), 200);
   AssertJUnit.assertEquals(response.jsonPath().getString("message"), "OK");
+  
   Reporter.log("delete employee successfully" , true);
 }
 
-@Test(priority = 4)
+//Search Employee
+
+@Test(priority = 5)
 public void TestSearchEmployee()
 {
 	
   Response response = EmployeeEndPoints.SearchEmployee(  LoginTest.LoginToken , employeePayload);
   response.prettyPrint();
- AssertJUnit.assertEquals(response.getStatusCode(), 200);
+  
+  //validations
+  
+  AssertJUnit.assertEquals(response.getStatusCode(), 200);
   AssertJUnit.assertEquals(response.jsonPath().getString("message"), "OK");
   
    employeeId = response.jsonPath().getList("data.employeeDetails.id");
- // employeeId = ids.stream().mapToInt(Integer::intValue).toArray();
-//     for (int i = 0; i < employeeId.length; i++) {
-//		int j = employeeId[i];
-//		
-//	}
+
 
   
   Reporter.log("search employee successfully" , true);

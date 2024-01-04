@@ -6,6 +6,13 @@ public class Project {
 
 	String projectName;
 	List<Integer> teamId;
+	int projectId;
+	public int getprojectId() {
+		return projectId;
+	}
+	public void setprojectId(int projectId) {
+		this.projectId = projectId;
+	}
 	public String getProjectName() {
 		return projectName;
 	}
