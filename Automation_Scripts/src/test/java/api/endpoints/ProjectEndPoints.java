@@ -24,12 +24,14 @@ public class ProjectEndPoints {
 		
 	}
 	
-	public static Response ProjectDetails(String token)
+	public static Response ProjectDetails(String token ,String email ,  Project payload)
 	{
 		
 	Response response = given()
 		.headers("Authorization","Bearer "+token)
-		.when().get(Routes.projects_url);
+		.contentType(ContentType.JSON)
+		.body(payload)
+		.when().post(Routes.projects_url);
 	    return response;
 		
 	}
@@ -42,6 +44,18 @@ public class ProjectEndPoints {
 		.contentType(ContentType.JSON)
 		.body(payload)
 		.when().post(Routes.project_update_url);
+	
+	    return response;
+		
+	}
+	public static Response projectDelete(String token , int projectId)
+	{
+		
+	Response response = given()
+		.headers("Authorization","Bearer "+token)
+		.queryParam("projectId", projectId)
+	
+		.when().get(Routes.project_delete_url);
 	
 	    return response;
 		

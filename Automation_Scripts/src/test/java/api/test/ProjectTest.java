@@ -17,7 +17,7 @@ public class ProjectTest {
 	
 	Faker faker;
 	Project projectpayload;
-	public static int projectID;
+	public static int projectId;
 
 
 	@BeforeClass
@@ -25,9 +25,12 @@ public class ProjectTest {
 	{
 		faker = new Faker();
 		projectpayload = new Project();
-		projectpayload.setprojectId(projectID);
+		projectpayload.setprojectId(projectId);
 		projectpayload.setProjectName(faker.name().nameWithMiddle());
 		projectpayload.setteamId(TeamTest.teamsId);
+		projectpayload.setPageNo(0);
+		projectpayload.setPageSize(8);
+		
 		
 	}
 	
@@ -41,7 +44,7 @@ public class ProjectTest {
 	  Response response =ProjectEndPoints.CreateProject(LoginTest.LoginToken , projectpayload);
 	  response.prettyPrint();
 	  
-	 projectID =  response.jsonPath().getInt("data.projectDetails.id");
+	  projectId =  response.jsonPath().getInt("data.projectDetails.id");
 	  
 	   //validations
 	  
@@ -56,8 +59,9 @@ public class ProjectTest {
 	@Test(priority = 2)
 	public void TestProjectDetails()
 	{
+	
 		
-	  Response response =ProjectEndPoints.ProjectDetails(LoginTest.LoginToken);
+	  Response response =ProjectEndPoints.ProjectDetails(LoginTest.LoginToken ,this.projectpayload.getProjectName(), projectpayload);
 	  response.prettyPrint();
 	  
 	   //validations
@@ -73,11 +77,11 @@ public class ProjectTest {
 		@Test(priority = 3)
 		public void TestProjectUpdate()
 		{	
-			projectpayload.setprojectId(projectID);
+			projectpayload.setprojectId(projectId);
 			projectpayload.setProjectName(faker.name().nameWithMiddle());
 
 			
-		  Response response =ProjectEndPoints.ProjectUpdate(LoginTest.LoginToken ,projectID,TeamTest.teamsId, projectpayload );
+		  Response response =ProjectEndPoints.ProjectUpdate(LoginTest.LoginToken ,projectId,TeamTest.teamsId, projectpayload );
 		  response.prettyPrint();
 		  
 		   //validations
@@ -89,6 +93,29 @@ public class ProjectTest {
 		  
 		  Reporter.log("project updated successfully " , true);
 		}
+		
+		//Project Delete
+		
+			@Test(priority = 4)
+			public void TestProjectDelete()
+			{	
+				
+				projectpayload.setprojectId(projectId);
+				System.out.println(projectId);
+
+				
+			  Response response =ProjectEndPoints.projectDelete(LoginTest.LoginToken ,projectId);
+			  response.prettyPrint();
+			  
+			   //validations
+			  
+			   AssertJUnit.assertEquals(response.getStatusCode(), 200);
+			   AssertJUnit.assertEquals(response.jsonPath().getString("message"), "OK");
+			   
+			   
+			  
+			  Reporter.log("project deleted successfully " , true);
+			}
 	
 	
 	

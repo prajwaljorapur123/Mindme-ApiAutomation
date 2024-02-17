@@ -28,9 +28,14 @@ public class Routes {
 	//Project
 	
 	public static String project_create_url = baseurl+"/v1/project/create";
-	public static String projects_url = baseurl+"/v1/project/";
+	public static String projects_url = baseurl+"/v1/project/search";
 	public static String project_update_url=baseurl+"/v1/project/updateProjectTeam";
-	public static String project_delete_url=baseurl+"/v1/project/delete_project/";
+	public static String project_delete_url=baseurl+"/v1/project/delete_project?projectId=";
+	
+	
+	//uploadFile
+	
+	public static String upload_file = "http://3.16.42.14:8080/rest/internal/backgroundWorker/background-job-worker/upload";
 	
 	
 	

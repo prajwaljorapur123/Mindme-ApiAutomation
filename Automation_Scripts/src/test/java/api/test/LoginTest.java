@@ -25,7 +25,7 @@ public class LoginTest {
 	{
 		
 	 LoginPayload = new Login();
-		LoginPayload.setEmail("dagar@yopmail.com");
+		LoginPayload.setEmail("test@yopmail.com");
 		LoginPayload.setPassword("Prajwal@123");
 	
 	}
