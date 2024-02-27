@@ -14,7 +14,7 @@ public class Routes {
 	public static String post_url = baseurl+"/v1/employee/add";
 	public static String get_url = baseurl+"/v1/employee/Details";
 	public static String update_url=baseurl+"/v1/employee/updateEmployee";
-	public static String delete_url=baseurl+"/v1/employee/deleteEmployee/";
+	public static String delete_url=baseurl+"/v1/employee/deleteEmployee?id=";
 	public static String search_url=baseurl+"/v1/employee/search";
 	
 	//teams 
@@ -22,7 +22,7 @@ public class Routes {
 	public static String teams_post_url = baseurl+"/v1/teams/create";
 	public static String teams_get_url = baseurl+"/v1/teams";
 	public static String teams_update_url=baseurl+"/v1/teams/update_teams";
-	public static String teams_delete_url=baseurl+"/v1/teams/delete/";
+	public static String teams_delete_url=baseurl+"/v1/teams/delete?id=";
 	
 	
 	//Project
@@ -35,7 +35,7 @@ public class Routes {
 	
 	//uploadFile
 	
-	public static String upload_file = "http://3.16.42.14:8080/rest/internal/backgroundWorker/background-job-worker/upload";
+	public static String upload_file = "http://3.144.20.164:8090/rest/internal/backgroundWorker/background-job-worker/upload";
 	
 	
 	

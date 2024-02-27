@@ -97,7 +97,7 @@ public void TestTeamUpdate()
 @Test(priority = 4)
 public void TestTeamDelete()
 {
-	
+	System.out.println(teamId);
 	teampayload.setTeamId(teamId);
 	
 	

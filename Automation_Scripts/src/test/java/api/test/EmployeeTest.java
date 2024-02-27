@@ -109,7 +109,7 @@ public void TestUpdateEmployee()
 @Test(priority = 4)
 public void TestDeleteEmployee()
 {
-	
+	System.out.println(empID);
   Response response = EmployeeEndPoints.DeleteEmployee(empID , LoginTest.LoginToken);
   response.prettyPrint();
   

@@ -93,7 +93,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">14 methods,   14 passed</span>
+                    <span class="method-stats">15 methods,   15 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -169,7 +169,12 @@
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite" title="api.test.LoginTest" class="method navigator-link" hash-for-method="testLogin(org.testng.TestRunner@7c83dc97)">testLogin(org.testng.TestRunner@7c83dc97)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Suite" title="api.test.LoginTest" class="method navigator-link" hash-for-method="testLogin(org.testng.TestRunner@37f1104d)">testLogin(org.testng.TestRunner@37f1104d)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Suite" title="api.test.UploadFileTest" class="method navigator-link" hash-for-method="testUploadfile">testUploadfile</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Suite -->
@@ -223,15 +228,30 @@
           <div class="suite-Suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
+              <span class="class-name">api.test.UploadFileTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="testUploadfile">
+                  </a> <!-- testUploadfile -->
+                  <span class="method-name">testUploadfile</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Suite-class-passed -->
+          <div class="suite-Suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
               <span class="class-name">api.test.LoginTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="testLogin(org.testng.TestRunner@7c83dc97)">
-                  </a> <!-- testLogin(org.testng.TestRunner@7c83dc97) -->
+                  <a name="testLogin(org.testng.TestRunner@37f1104d)">
+                  </a> <!-- testLogin(org.testng.TestRunner@37f1104d) -->
                   <span class="method-name">testLogin</span>
-                  <span class="parameters">(org.testng.TestRunner@7c83dc97)</span>
+                  <span class="parameters">(org.testng.TestRunner@37f1104d)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -331,6 +351,7 @@
       &lt;class name=&quot;api.test.EmployeeTest&quot;/&gt;
       &lt;class name=&quot;api.test.TeamTest&quot;/&gt;
       &lt;class name=&quot;api.test.ProjectTest&quot;/&gt;
+      &lt;class name=&quot;api.test.UploadFileTest&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Test --&gt;
 &lt;/suite&gt; &lt;!-- Suite --&gt;
@@ -344,7 +365,7 @@
           <div class="main-panel-content rounded-window-bottom">
             <ul>
               <li>
-                <span class="test-name">Test (4 classes)</span>
+                <span class="test-name">Test (5 classes)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -370,68 +391,72 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(14);
+data.addRows(15);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'testLogin')
 data.setCell(0, 2, 'api.test.LoginTest')
-data.setCell(0, 3, 5934);
+data.setCell(0, 3, 2849);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'testAddEmployee')
 data.setCell(1, 2, 'api.test.EmployeeTest')
-data.setCell(1, 3, 2120);
+data.setCell(1, 3, 1852);
 data.setCell(2, 0, 2)
 data.setCell(2, 1, 'TestTeamDetails')
 data.setCell(2, 2, 'api.test.TeamTest')
-data.setCell(2, 3, 1062);
+data.setCell(2, 3, 854);
 data.setCell(3, 0, 3)
 data.setCell(3, 1, 'TestUpdateEmployee')
 data.setCell(3, 2, 'api.test.EmployeeTest')
-data.setCell(3, 3, 705);
+data.setCell(3, 3, 639);
 data.setCell(4, 0, 4)
-data.setCell(4, 1, 'TestCreateTeam')
-data.setCell(4, 2, 'api.test.TeamTest')
-data.setCell(4, 3, 703);
+data.setCell(4, 1, 'testUploadfile')
+data.setCell(4, 2, 'api.test.UploadFileTest')
+data.setCell(4, 3, 596);
 data.setCell(5, 0, 5)
-data.setCell(5, 1, 'TestSearchEmployee')
-data.setCell(5, 2, 'api.test.EmployeeTest')
-data.setCell(5, 3, 701);
+data.setCell(5, 1, 'TestTeamDelete')
+data.setCell(5, 2, 'api.test.TeamTest')
+data.setCell(5, 3, 594);
 data.setCell(6, 0, 6)
-data.setCell(6, 1, 'TestTeamUpdate')
+data.setCell(6, 1, 'TestCreateTeam')
 data.setCell(6, 2, 'api.test.TeamTest')
-data.setCell(6, 3, 640);
+data.setCell(6, 3, 591);
 data.setCell(7, 0, 7)
-data.setCell(7, 1, 'TestDeleteEmployee')
+data.setCell(7, 1, 'TestSearchEmployee')
 data.setCell(7, 2, 'api.test.EmployeeTest')
-data.setCell(7, 3, 633);
+data.setCell(7, 3, 587);
 data.setCell(8, 0, 8)
-data.setCell(8, 1, 'TestProjectUpdate')
-data.setCell(8, 2, 'api.test.ProjectTest')
-data.setCell(8, 3, 614);
+data.setCell(8, 1, 'TestTeamUpdate')
+data.setCell(8, 2, 'api.test.TeamTest')
+data.setCell(8, 3, 586);
 data.setCell(9, 0, 9)
-data.setCell(9, 1, 'TestProjectDelete')
+data.setCell(9, 1, 'TestCreateProject')
 data.setCell(9, 2, 'api.test.ProjectTest')
-data.setCell(9, 3, 610);
+data.setCell(9, 3, 582);
 data.setCell(10, 0, 10)
-data.setCell(10, 1, 'TestCreateProject')
+data.setCell(10, 1, 'TestProjectUpdate')
 data.setCell(10, 2, 'api.test.ProjectTest')
-data.setCell(10, 3, 606);
+data.setCell(10, 3, 573);
 data.setCell(11, 0, 11)
-data.setCell(11, 1, 'TestTeamDelete')
-data.setCell(11, 2, 'api.test.TeamTest')
-data.setCell(11, 3, 603);
+data.setCell(11, 1, 'TestDeleteEmployee')
+data.setCell(11, 2, 'api.test.EmployeeTest')
+data.setCell(11, 3, 564);
 data.setCell(12, 0, 12)
-data.setCell(12, 1, 'TestProjectDetails')
+data.setCell(12, 1, 'TestProjectDelete')
 data.setCell(12, 2, 'api.test.ProjectTest')
-data.setCell(12, 3, 599);
+data.setCell(12, 3, 562);
 data.setCell(13, 0, 13)
-data.setCell(13, 1, 'testEmployeeDetails')
-data.setCell(13, 2, 'api.test.EmployeeTest')
-data.setCell(13, 3, 551);
+data.setCell(13, 1, 'TestProjectDetails')
+data.setCell(13, 2, 'api.test.ProjectTest')
+data.setCell(13, 3, 504);
+data.setCell(14, 0, 14)
+data.setCell(14, 1, 'testEmployeeDetails')
+data.setCell(14, 2, 'api.test.EmployeeTest')
+data.setCell(14, 3, 493);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 16 seconds</span>
+              <span class="suite-total-time">Total running time: 12 seconds</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -443,39 +468,9 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="reporter-method-div">
-              <span class="reporter-method-name">TestTeamDelete</span>
+              <span class="reporter-method-name">TestTeamDetails</span>
               <div class="reporter-method-output-div">
-                <span class="reporter-method-output">team deleted successfully</span>
-              </div> <!-- reporter-method-output-div -->
-            </div> <!-- reporter-method-div -->
-            <div class="reporter-method-div">
-              <span class="reporter-method-name">TestCreateTeam</span>
-              <div class="reporter-method-output-div">
-                <span class="reporter-method-output">team created successfully</span>
-              </div> <!-- reporter-method-output-div -->
-            </div> <!-- reporter-method-div -->
-            <div class="reporter-method-div">
-              <span class="reporter-method-name">testLogin(org.testng.TestRunner@7c83dc97)</span>
-              <div class="reporter-method-output-div">
-                <span class="reporter-method-output">login successfull....</span>
-              </div> <!-- reporter-method-output-div -->
-            </div> <!-- reporter-method-div -->
-            <div class="reporter-method-div">
-              <span class="reporter-method-name">TestProjectDetails</span>
-              <div class="reporter-method-output-div">
-                <span class="reporter-method-output">project details successfully executed</span>
-              </div> <!-- reporter-method-output-div -->
-            </div> <!-- reporter-method-div -->
-            <div class="reporter-method-div">
-              <span class="reporter-method-name">TestProjectDelete</span>
-              <div class="reporter-method-output-div">
-                <span class="reporter-method-output">project deleted successfully </span>
-              </div> <!-- reporter-method-output-div -->
-            </div> <!-- reporter-method-div -->
-            <div class="reporter-method-div">
-              <span class="reporter-method-name">TestUpdateEmployee</span>
-              <div class="reporter-method-output-div">
-                <span class="reporter-method-output">update employee successfully</span>
+                <span class="reporter-method-output">team datails.......</span>
               </div> <!-- reporter-method-output-div -->
             </div> <!-- reporter-method-div -->
             <div class="reporter-method-div">
@@ -485,33 +480,33 @@ return data;
               </div> <!-- reporter-method-output-div -->
             </div> <!-- reporter-method-div -->
             <div class="reporter-method-div">
-              <span class="reporter-method-name">TestTeamDetails</span>
-              <div class="reporter-method-output-div">
-                <span class="reporter-method-output">team datails.......</span>
-              </div> <!-- reporter-method-output-div -->
-            </div> <!-- reporter-method-div -->
-            <div class="reporter-method-div">
               <span class="reporter-method-name">TestCreateProject</span>
               <div class="reporter-method-output-div">
                 <span class="reporter-method-output">project created successfully</span>
               </div> <!-- reporter-method-output-div -->
             </div> <!-- reporter-method-div -->
             <div class="reporter-method-div">
-              <span class="reporter-method-name">TestProjectUpdate</span>
+              <span class="reporter-method-name">TestProjectDelete</span>
               <div class="reporter-method-output-div">
-                <span class="reporter-method-output">project updated successfully </span>
+                <span class="reporter-method-output">project deleted successfully </span>
               </div> <!-- reporter-method-output-div -->
             </div> <!-- reporter-method-div -->
             <div class="reporter-method-div">
-              <span class="reporter-method-name">testEmployeeDetails</span>
+              <span class="reporter-method-name">TestProjectDetails</span>
               <div class="reporter-method-output-div">
-                <span class="reporter-method-output">employee details....</span>
+                <span class="reporter-method-output">project details successfully executed</span>
               </div> <!-- reporter-method-output-div -->
             </div> <!-- reporter-method-div -->
             <div class="reporter-method-div">
-              <span class="reporter-method-name">TestDeleteEmployee</span>
+              <span class="reporter-method-name">TestSearchEmployee</span>
               <div class="reporter-method-output-div">
-                <span class="reporter-method-output">delete employee successfully</span>
+                <span class="reporter-method-output">search employee successfully</span>
+              </div> <!-- reporter-method-output-div -->
+            </div> <!-- reporter-method-div -->
+            <div class="reporter-method-div">
+              <span class="reporter-method-name">testUploadfile</span>
+              <div class="reporter-method-output-div">
+                <span class="reporter-method-output">File Uploaded successfully.</span>
               </div> <!-- reporter-method-output-div -->
             </div> <!-- reporter-method-div -->
             <div class="reporter-method-div">
@@ -521,9 +516,45 @@ return data;
               </div> <!-- reporter-method-output-div -->
             </div> <!-- reporter-method-div -->
             <div class="reporter-method-div">
-              <span class="reporter-method-name">TestSearchEmployee</span>
+              <span class="reporter-method-name">TestCreateTeam</span>
               <div class="reporter-method-output-div">
-                <span class="reporter-method-output">search employee successfully</span>
+                <span class="reporter-method-output">team created successfully</span>
+              </div> <!-- reporter-method-output-div -->
+            </div> <!-- reporter-method-div -->
+            <div class="reporter-method-div">
+              <span class="reporter-method-name">TestUpdateEmployee</span>
+              <div class="reporter-method-output-div">
+                <span class="reporter-method-output">update employee successfully</span>
+              </div> <!-- reporter-method-output-div -->
+            </div> <!-- reporter-method-div -->
+            <div class="reporter-method-div">
+              <span class="reporter-method-name">testLogin(org.testng.TestRunner@37f1104d)</span>
+              <div class="reporter-method-output-div">
+                <span class="reporter-method-output">login successfull....</span>
+              </div> <!-- reporter-method-output-div -->
+            </div> <!-- reporter-method-div -->
+            <div class="reporter-method-div">
+              <span class="reporter-method-name">testEmployeeDetails</span>
+              <div class="reporter-method-output-div">
+                <span class="reporter-method-output">employee details....</span>
+              </div> <!-- reporter-method-output-div -->
+            </div> <!-- reporter-method-div -->
+            <div class="reporter-method-div">
+              <span class="reporter-method-name">TestTeamDelete</span>
+              <div class="reporter-method-output-div">
+                <span class="reporter-method-output">team deleted successfully</span>
+              </div> <!-- reporter-method-output-div -->
+            </div> <!-- reporter-method-div -->
+            <div class="reporter-method-div">
+              <span class="reporter-method-name">TestProjectUpdate</span>
+              <div class="reporter-method-output-div">
+                <span class="reporter-method-output">project updated successfully </span>
+              </div> <!-- reporter-method-output-div -->
+            </div> <!-- reporter-method-div -->
+            <div class="reporter-method-div">
+              <span class="reporter-method-name">TestDeleteEmployee</span>
+              <div class="reporter-method-output-div">
+                <span class="reporter-method-output">delete employee successfully</span>
               </div> <!-- reporter-method-output-div -->
             </div> <!-- reporter-method-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -547,81 +578,92 @@ return data;
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
-                <span class="method-name">testLogin(org.testng.TestRunner@7c83dc97)</span>
-                <span class="method-start">55 ms</span>
+                <span class="method-name">testLogin(org.testng.TestRunner@37f1104d)</span>
+                <span class="method-start">18 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">api.test.EmployeeTest</div> <!-- chronological-class-name -->
               <div class="configuration-class before">
                 <span class="method-name">setupData</span>
-                <span class="method-start">6000 ms</span>
+                <span class="method-start">2873 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
                 <span class="method-name">testAddEmployee</span>
-                <span class="method-start">6381 ms</span>
+                <span class="method-start">3076 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">testEmployeeDetails</span>
-                <span class="method-start">8505 ms</span>
+                <span class="method-start">4930 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">TestUpdateEmployee</span>
-                <span class="method-start">9058 ms</span>
+                <span class="method-start">5425 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">TestDeleteEmployee</span>
-                <span class="method-start">9765 ms</span>
+                <span class="method-start">6066 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">TestSearchEmployee</span>
-                <span class="method-start">10400 ms</span>
+                <span class="method-start">6631 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">api.test.TeamTest</div> <!-- chronological-class-name -->
               <div class="configuration-class before">
                 <span class="method-name">setupData</span>
-                <span class="method-start">11104 ms</span>
+                <span class="method-start">7220 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
                 <span class="method-name">TestCreateTeam</span>
-                <span class="method-start">11168 ms</span>
+                <span class="method-start">7255 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">TestTeamDetails</span>
-                <span class="method-start">11874 ms</span>
+                <span class="method-start">7847 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">TestTeamUpdate</span>
-                <span class="method-start">12939 ms</span>
+                <span class="method-start">8702 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">TestTeamDelete</span>
-                <span class="method-start">13581 ms</span>
+                <span class="method-start">9289 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">api.test.ProjectTest</div> <!-- chronological-class-name -->
               <div class="configuration-class before">
                 <span class="method-name">setupData</span>
-                <span class="method-start">14185 ms</span>
+                <span class="method-start">9884 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
                 <span class="method-name">TestCreateProject</span>
-                <span class="method-start">14207 ms</span>
+                <span class="method-start">9899 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">TestProjectDetails</span>
-                <span class="method-start">14814 ms</span>
+                <span class="method-start">10482 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">TestProjectUpdate</span>
-                <span class="method-start">15415 ms</span>
+                <span class="method-start">10987 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">TestProjectDelete</span>
-                <span class="method-start">16031 ms</span>
+                <span class="method-start">11561 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">api.test.UploadFileTest</div> <!-- chronological-class-name -->
+              <div class="configuration-class before">
+                <span class="method-name">setupData</span>
+                <span class="method-start">12124 ms</span>
+              </div> <!-- configuration-class before -->
+              <div class="test-method">
+                <span class="method-name">testUploadfile</span>
+                <span class="method-start">12127 ms</span>
               </div> <!-- test-method -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
