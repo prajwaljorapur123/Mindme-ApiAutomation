@@ -4,30 +4,33 @@ import java.util.List;
 
 public class ProjectDetails {
 	
-	     String projectId;
-		 String companyId;
-	     String createdByID;
+	int ProjectId;
+		 int companyId;
+	     int createdByID;
 	     String fileUniqueName;
 	     String error;
 	     String fileName;
 	     List<Sheet> sheets;
 	     
-     public String getProjectId() {
-		return projectId;
-	}
-	public void setProjectId(String projectId) {
-		this.projectId = projectId;
-	}
-	public String getCompanyId() {
+
+	 	public int getProjectId() {
+	 		return ProjectId;
+	 	}
+	 	public void setProjectId(int projectId) {
+	 		ProjectId = projectId;
+	 	}
+	     
+    
+	public int getCompanyId() {
 		return companyId;
 	}
-	public void setCompanyId(String companyId) {
+	public void setCompanyId(int companyId) {
 		this.companyId = companyId;
 	}
-	public String getCreatedByID() {
+	public int getCreatedByID() {
 		return createdByID;
 	}
-	public void setCreatedByID(String createdByID) {
+	public void setCreatedByID(int createdByID) {
 		this.createdByID = createdByID;
 	}
 	public String getFileUniqueName() {

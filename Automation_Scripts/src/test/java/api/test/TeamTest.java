@@ -37,12 +37,13 @@ public void setupData()
 
 //Create Team
 
-@Test(priority = 1)
+@Test(priority = 1,invocationCount = 2)
 public void TestCreateTeam()
 {
-	
+	teampayload.setTeamName(faker.name().bloodGroup());
   Response response =TeamEndPoints.CreateTeam(LoginTest.LoginToken , teampayload);
   response.prettyPrint();
+  
   
   //validations
   AssertJUnit.assertEquals(response.getStatusCode(), 200);
@@ -50,9 +51,11 @@ public void TestCreateTeam()
   
   
    teamId =  response.jsonPath().getInt("data.teams.id");
+	
 
   Reporter.log("team created successfully" , true);
 }
+
 
 //Team details
 

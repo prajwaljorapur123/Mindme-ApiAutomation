@@ -32,6 +32,8 @@ public class EmployeeTest {
 	Employee employeePayload;
 	int empID;
 	public static List<Integer> employeeId;
+	public static int CreatedBy;
+//	public static int SecondEmpId;
 	
 @BeforeClass
 public void setupData()
@@ -55,20 +57,33 @@ public void setupData()
 
 //Adding employee 
 
-@Test(priority = 1)
+@Test(priority = 1 , invocationCount = 2)
 public void testAddEmployee()
 {
+
+	employeePayload.setEmail(faker.internet().emailAddress());
  Response response =EmployeeEndPoints.addEmployee(employeePayload , LoginTest.LoginToken);
+	
  response.prettyPrint();
  
  empID=response.jsonPath().getInt("data.employeeDetails.id");
+	
  
  //validations
  AssertJUnit.assertEquals(response.getStatusCode(), 200);
  AssertJUnit.assertEquals(response.jsonPath().getString("message"), "OK");
+	
  
  Reporter.log("Added employee successfully" , true);
 }
+
+//@Test(priority = 2)
+//public void testAddEmployeeMultipleTimes() {
+//    int numberOfIterations = 1; // Change this value to the desired number of iterations
+//    for (int i = 0; i < numberOfIterations; i++) {
+//        testAddEmployee();
+//    }
+//}
 
 //Getting employee details
 
@@ -77,6 +92,8 @@ public void testEmployeeDetails()
 {
 	    Response response =    EmployeeEndPoints.EmployeeDetails(LoginTest.LoginToken);
 	    response.prettyPrint();
+	    
+	   CreatedBy = response.jsonPath().getInt("data.id");
 	    
 	    //validations
 	    AssertJUnit.assertEquals(response.getStatusCode(), 200);
@@ -136,6 +153,7 @@ public void TestSearchEmployee()
   AssertJUnit.assertEquals(response.jsonPath().getString("message"), "OK");
   
    employeeId = response.jsonPath().getList("data.employeeDetails.id");
+ // SecondEmpId = response.jsonPath().getInt("data[1].employeeDetails.id");
 
 
   

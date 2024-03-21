@@ -50,9 +50,9 @@ public class UploadFileTest {
         sheet1.setHeaders(Arrays.asList(header1, header2, header3));
         
         projectDetails = new ProjectDetails();
-        projectDetails.setProjectId("112");
-        projectDetails.setCompanyId("7");
-        projectDetails.setCreatedByID("43");
+        projectDetails.setProjectId(ProjectTest.proID);
+        projectDetails.setCompanyId(LoginTest.CompanyId);
+        projectDetails.setCreatedByID(EmployeeTest.CreatedBy);
         projectDetails.setFileUniqueName(null);
         projectDetails.setError(null);
         projectDetails.setFileName("sample.xlsx");

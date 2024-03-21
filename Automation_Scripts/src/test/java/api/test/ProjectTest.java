@@ -1,5 +1,7 @@
 package api.test;
 
+import java.util.List;
+
 import org.testng.AssertJUnit;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
@@ -18,6 +20,7 @@ public class ProjectTest {
 	Faker faker;
 	Project projectpayload;
 	public static int projectId;
+	public static int proID;
 
 
 	@BeforeClass
@@ -37,9 +40,10 @@ public class ProjectTest {
 	
 	//Create Project
 	
-	@Test(priority = 1)
+	@Test(priority = 1 ,invocationCount = 2)
 	public void TestCreateProject()
 	{
+		
 		
 	  Response response =ProjectEndPoints.CreateProject(LoginTest.LoginToken , projectpayload);
 	  response.prettyPrint();
@@ -50,6 +54,7 @@ public class ProjectTest {
 	  
 	   AssertJUnit.assertEquals(response.getStatusCode(), 200);
 	   AssertJUnit.assertEquals(response.jsonPath().getString("message"), "OK");
+		
 	  
 	  Reporter.log("project created successfully" , true);
 	}
@@ -68,6 +73,7 @@ public class ProjectTest {
 	  
 	   AssertJUnit.assertEquals(response.getStatusCode(), 200);
 	   AssertJUnit.assertEquals(response.jsonPath().getString("message"), "OK");
+	 proID = response.jsonPath().getInt("data[1].projectDetails.id");
 	  
 	  Reporter.log("project details successfully executed" , true);
 	}
@@ -95,7 +101,7 @@ public class ProjectTest {
 		}
 		
 		//Project Delete
-		
+	
 			@Test(priority = 4)
 			public void TestProjectDelete()
 			{	
@@ -104,19 +110,19 @@ public class ProjectTest {
 				System.out.println(projectId);
 
 				
-			  Response response =ProjectEndPoints.projectDelete(LoginTest.LoginToken ,projectId);
+		  Response response =ProjectEndPoints.projectDelete(LoginTest.LoginToken ,projectId);
 			  response.prettyPrint();
 			  
 			   //validations
-			  
+		  
 			   AssertJUnit.assertEquals(response.getStatusCode(), 200);
 			   AssertJUnit.assertEquals(response.jsonPath().getString("message"), "OK");
 			   
 			   
 			  
 			  Reporter.log("project deleted successfully " , true);
-			}
-	
+		}
+
 	
 	
 

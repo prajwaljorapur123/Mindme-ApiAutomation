@@ -21,5 +21,17 @@ public class LoginEndPoints {
 		return response;
 			
 		}
+		
+		public static Response GetComapany(String token)
+		{
+		Response response = given()
+				.headers("Authorization","Bearer "+token)
+		    	.when().get(Routes.Get_company_url);
+		
+	         	return response;
+			
+		}
 
 }
+
+
