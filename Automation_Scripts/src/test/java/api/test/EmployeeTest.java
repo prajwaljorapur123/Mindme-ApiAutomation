@@ -33,7 +33,7 @@ public class EmployeeTest {
 	int empID;
 	public static List<Integer> employeeId;
 	public static int CreatedBy;
-//	public static int SecondEmpId;
+
 	
 @BeforeClass
 public void setupData()
@@ -64,7 +64,7 @@ public void testAddEmployee()
 	employeePayload.setEmail(faker.internet().emailAddress());
  Response response =EmployeeEndPoints.addEmployee(employeePayload , LoginTest.LoginToken);
 	
- response.prettyPrint();
+ 
  
  empID=response.jsonPath().getInt("data.employeeDetails.id");
 	
@@ -74,16 +74,10 @@ public void testAddEmployee()
  AssertJUnit.assertEquals(response.jsonPath().getString("message"), "OK");
 	
  
- Reporter.log("Added employee successfully" , true);
+ Reporter.log("Added Employee...." , true);
 }
 
-//@Test(priority = 2)
-//public void testAddEmployeeMultipleTimes() {
-//    int numberOfIterations = 1; // Change this value to the desired number of iterations
-//    for (int i = 0; i < numberOfIterations; i++) {
-//        testAddEmployee();
-//    }
-//}
+
 
 //Getting employee details
 
@@ -91,13 +85,13 @@ public void testAddEmployee()
 public void testEmployeeDetails()
 {
 	    Response response =    EmployeeEndPoints.EmployeeDetails(LoginTest.LoginToken);
-	    response.prettyPrint();
+	  
 	    
 	   CreatedBy = response.jsonPath().getInt("data.id");
 	    
 	    //validations
 	    AssertJUnit.assertEquals(response.getStatusCode(), 200);
-	    Reporter.log("employee details...." , true);
+	    Reporter.log("Employee Details...." , true);
 }
 
 //Update employee
@@ -111,14 +105,14 @@ public void TestUpdateEmployee()
     employeePayload.setLastName(faker.name().lastName());
 
 	
-  Response response = EmployeeEndPoints.UpdateEmployee(this.employeePayload.getEmail(),employeePayload ,LoginTest.LoginToken);
-  response.prettyPrint();
+    Response response = EmployeeEndPoints.UpdateEmployee(this.employeePayload.getEmail(),employeePayload ,LoginTest.LoginToken);
+  
   
   //validations
   AssertJUnit.assertEquals(response.getStatusCode(), 200);
   AssertJUnit.assertEquals(response.jsonPath().getString("message"), "OK");
   
-  Reporter.log("update employee successfully" , true);
+  Reporter.log("Update Employee...." , true);
 }
 
 //Delete Employee
@@ -126,16 +120,16 @@ public void TestUpdateEmployee()
 @Test(priority = 4)
 public void TestDeleteEmployee()
 {
-	System.out.println(empID);
+	
   Response response = EmployeeEndPoints.DeleteEmployee(empID , LoginTest.LoginToken);
-  response.prettyPrint();
+ 
   
   //validations
   
   AssertJUnit.assertEquals(response.getStatusCode(), 200);
   AssertJUnit.assertEquals(response.jsonPath().getString("message"), "OK");
   
-  Reporter.log("delete employee successfully" , true);
+  Reporter.log("Delete Employee...." , true);
 }
 
 //Search Employee
@@ -145,7 +139,7 @@ public void TestSearchEmployee()
 {
 	
   Response response = EmployeeEndPoints.SearchEmployee(  LoginTest.LoginToken , employeePayload);
-  response.prettyPrint();
+  
   
   //validations
   
@@ -153,11 +147,9 @@ public void TestSearchEmployee()
   AssertJUnit.assertEquals(response.jsonPath().getString("message"), "OK");
   
    employeeId = response.jsonPath().getList("data.employeeDetails.id");
- // SecondEmpId = response.jsonPath().getInt("data[1].employeeDetails.id");
-
-
+ 
   
-  Reporter.log("search employee successfully" , true);
+  Reporter.log("Search Employee...." , true);
 }
 
 }

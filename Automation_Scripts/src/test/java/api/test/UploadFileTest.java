@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 
 import api.endpoints.EmployeeEndPoints;
 import api.endpoints.UploadFileEndpoins;
+import api.payload.Files;
 import api.payload.UploadFile.Header;
 import api.payload.UploadFile.ProjectDetails;
 import api.payload.UploadFile.Sheet;
@@ -21,12 +22,21 @@ public class UploadFileTest {
 	Header header3;
 	Sheet sheet1;
 	ProjectDetails projectDetails;
-	
+	Files FilePayload;
+	public static int FileId;
 	
 	
 	@BeforeClass
 	public void setupData()
 	{
+		FilePayload = new Files();
+		FilePayload.setName("");
+		FilePayload.setProjectId(ProjectTest.proID);
+		FilePayload.setCompanyId(LoginTest.CompanyId);
+		FilePayload.setPageNo(0);
+		FilePayload.setPageSize(2);
+		
+		
 		
 		 header1 = new Header();
         header1.setPosition("A1");
@@ -60,11 +70,13 @@ public class UploadFileTest {
 			
 	}
 	
+	//upload file
+	
 	@Test(priority = 1)
 	public void testUploadfile()
 	{
 	 Response response =UploadFileEndpoins.UploadFile( LoginTest.LoginToken , projectDetails);
-	 response.prettyPrint();
+	
 	 
 	
 	 
@@ -72,7 +84,24 @@ public class UploadFileTest {
 	 AssertJUnit.assertEquals(response.getStatusCode(), 201);
 	 AssertJUnit.assertEquals(response.jsonPath().getString("message"), "File Uploaded successfully.");
 	 
-	 Reporter.log("File Uploaded successfully." , true);
+	 Reporter.log("Upload File...." , true);
+	}
+	
+	//Get files
+	
+	@Test(priority = 2)
+	public void Getfiles()
+	{
+	 Response response =UploadFileEndpoins.GetFiles( LoginTest.LoginToken , FilePayload);
+	 
+	 
+	FileId=response.jsonPath().getInt("data[0].fileId");
+	 
+	 //validations
+	 AssertJUnit.assertEquals(response.getStatusCode(), 200);
+	
+	 
+	 Reporter.log("Get Files...." , true);
 	}
 
 }

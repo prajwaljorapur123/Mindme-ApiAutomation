@@ -38,7 +38,7 @@ public class LoginTest {
 	
 	 LoginToken =response.jsonPath().getString("data.accessToken");
 	context.setAttribute("token", LoginToken);
-    response.prettyPrint();
+    
     
     //validations
     
@@ -55,7 +55,7 @@ public class LoginTest {
 	
 	
 	CompanyId = response.jsonPath().get("data.id");
-    response.prettyPrint();
+    
     
   //validations
     AssertJUnit.assertEquals(response.getStatusCode(), 200);

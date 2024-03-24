@@ -46,7 +46,7 @@ public class ProjectTest {
 		
 		
 	  Response response =ProjectEndPoints.CreateProject(LoginTest.LoginToken , projectpayload);
-	  response.prettyPrint();
+	 
 	  
 	  projectId =  response.jsonPath().getInt("data.projectDetails.id");
 	  
@@ -56,7 +56,7 @@ public class ProjectTest {
 	   AssertJUnit.assertEquals(response.jsonPath().getString("message"), "OK");
 		
 	  
-	  Reporter.log("project created successfully" , true);
+	  Reporter.log("Project Created...." , true);
 	}
 	
    //Project Details
@@ -67,7 +67,7 @@ public class ProjectTest {
 	
 		
 	  Response response =ProjectEndPoints.ProjectDetails(LoginTest.LoginToken ,this.projectpayload.getProjectName(), projectpayload);
-	  response.prettyPrint();
+	 
 	  
 	   //validations
 	  
@@ -75,7 +75,7 @@ public class ProjectTest {
 	   AssertJUnit.assertEquals(response.jsonPath().getString("message"), "OK");
 	 proID = response.jsonPath().getInt("data[1].projectDetails.id");
 	  
-	  Reporter.log("project details successfully executed" , true);
+	  Reporter.log("Project Details...." , true);
 	}
 	
 	//Project Update
@@ -88,7 +88,7 @@ public class ProjectTest {
 
 			
 		  Response response =ProjectEndPoints.ProjectUpdate(LoginTest.LoginToken ,projectId,TeamTest.teamsId, projectpayload );
-		  response.prettyPrint();
+		  
 		  
 		   //validations
 		  
@@ -97,7 +97,7 @@ public class ProjectTest {
 		   
 		   
 		  
-		  Reporter.log("project updated successfully " , true);
+		  Reporter.log("Project Updated...." , true);
 		}
 		
 		//Project Delete
@@ -107,11 +107,11 @@ public class ProjectTest {
 			{	
 				
 				projectpayload.setprojectId(projectId);
-				System.out.println(projectId);
+				
 
 				
 		  Response response =ProjectEndPoints.projectDelete(LoginTest.LoginToken ,projectId);
-			  response.prettyPrint();
+			
 			  
 			   //validations
 		  
@@ -120,7 +120,7 @@ public class ProjectTest {
 			   
 			   
 			  
-			  Reporter.log("project deleted successfully " , true);
+			  Reporter.log("Project Deleted...." , true);
 		}
 
 	
