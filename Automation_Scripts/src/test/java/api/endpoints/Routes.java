@@ -37,16 +37,16 @@ public class Routes {
 	
 	//uploadFile
 	
-	public static String upload_file = "http://3.138.188.215:8090/rest/internal/backgroundWorker/background-job-worker/upload";
-	public static String Get_file = "http://3.138.188.215:8090/rest/internal/backgroundWorker/background-job-worker/files";
+	public static String upload_file = "http://18.220.92.110:8090/rest/internal/backgroundWorker/background-job-worker/upload";
+	public static String Get_file = "http://18.220.92.110:8090/rest/internal/backgroundWorker/background-job-worker/files";
 	
 	
 	//Phrase
 	
 	public static String Add_phrase =baseurl+"/v1/abbreviation/add";
-	public static String Get_phrase =baseurl+"/v1/abbreviation/add";
-	public static String Update_phrase =baseurl+"/v1/abbreviation/add";
-	public static String Delete_phrase =baseurl+"/v1/abbreviation/add";
+	public static String Get_phrase =baseurl+"/v1/abbreviation/searchByProject?/";
+	public static String Update_phrase =baseurl+"/v1/abbreviation/update";
+	public static String Delete_phrase =baseurl+"/v1/abbreviation/delete";
 	
 	
 	
