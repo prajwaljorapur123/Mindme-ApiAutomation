@@ -35,7 +35,6 @@ public class LoginTest {
 	public void testLogin(ITestContext context)
 	{
 	Response response = LoginEndPoints.Loginpage(LoginPayload);
-	response.prettyPrint();
 	
 	 LoginToken =response.jsonPath().getString("data.accessToken");
 	context.setAttribute("token", LoginToken);

@@ -24,6 +24,7 @@ public class UploadFileTest {
 	ProjectDetails projectDetails;
 	Files FilePayload;
 	public static int FileId;
+	public static int ErrorFileId;
 	
 	
 	@BeforeClass
@@ -40,7 +41,7 @@ public class UploadFileTest {
 		
 		 header1 = new Header();
         header1.setPosition("A1");
-        header1.setDataType("Number");
+        header1.setDataType("Text");
         header1.setHeaderName("sno");
 
          header2 = new Header();
@@ -70,16 +71,13 @@ public class UploadFileTest {
 			
 	}
 	
-	//upload file
+	//upload valid file
 	
 	@Test(priority = 1)
 	public void testUploadfile()
 	{
 	 Response response =UploadFileEndpoins.UploadFile( LoginTest.LoginToken , projectDetails);
 	
-	 
-	
-	 
 	 //validations
 	 AssertJUnit.assertEquals(response.getStatusCode(), 201);
 	 AssertJUnit.assertEquals(response.jsonPath().getString("message"), "File Uploaded successfully.");
@@ -89,13 +87,14 @@ public class UploadFileTest {
 	
 	//Get files
 	
-	@Test(priority = 2)
+	@Test(priority = 3)
 	public void Getfiles()
 	{
 	 Response response =UploadFileEndpoins.GetFiles( LoginTest.LoginToken , FilePayload);
 	 
 	 
-	FileId=response.jsonPath().getInt("data[0].fileId");
+	FileId=response.jsonPath().getInt("data[1].fileId");
+	ErrorFileId=response.jsonPath().getInt("data[0].fileId");
 	 
 	 //validations
 	 AssertJUnit.assertEquals(response.getStatusCode(), 200);
@@ -103,5 +102,63 @@ public class UploadFileTest {
 	 
 	 Reporter.log("Get Files...." , true);
 	}
+	
+	//Update files
+	
+		@Test(priority = 4)
+		public void Updatefile()
+		{
+		 Response response =UploadFileEndpoins.UpdateFile( LoginTest.LoginToken , FileId);
+		 
+		 //validations
+		 AssertJUnit.assertEquals(response.getStatusCode(), 200);
+		 AssertJUnit.assertEquals(response.jsonPath().getString("message"), " Update File Uploaded successfully.");
+		
+		 
+		 Reporter.log("Update File...." , true);
+		}
+		
+		//upload Error file
+		
+		@Test(priority = 2)
+		public void testUploadErrorfile()
+		{
+		 Response response =UploadFileEndpoins.UploadErrorFile( LoginTest.LoginToken , projectDetails);
+		
+		 //validations
+		 AssertJUnit.assertEquals(response.getStatusCode(), 201);
+		 AssertJUnit.assertEquals(response.jsonPath().getString("message"), "File Uploaded successfully.");
+		 
+		 Reporter.log("Upload Error File...." , true);
+		}
+		
+		@Test(priority = 5)
+		public void testErrorfilefix()
+		{
+		 Response response =UploadFileEndpoins.UploadErrorFix( LoginTest.LoginToken , projectDetails , ErrorFileId);
+	
+		
+		 //validations
+		 AssertJUnit.assertEquals(response.getStatusCode(), 200);
+		 AssertJUnit.assertEquals(response.jsonPath().getString("message"), " Error File Uploaded successfully.");
+		 
+		 Reporter.log("Error File Fix...." , true);
+		}
+		
+		//delete files
+		
+			@Test(priority = 6)
+			public void Deletefile()
+			{
+			 Response response =UploadFileEndpoins.DeleteFile( LoginTest.LoginToken , ErrorFileId);
+			
+			  
+			 //validations
+			 AssertJUnit.assertEquals(response.getStatusCode(), 200);
+		//	 AssertJUnit.assertEquals(response.jsonPath().getString("message"), " Update File Uploaded successfully.");
+			
+			 
+			 Reporter.log("Delete File...." , true);
+			}
 
 }

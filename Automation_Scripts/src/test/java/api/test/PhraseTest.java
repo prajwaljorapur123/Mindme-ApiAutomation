@@ -35,7 +35,7 @@ public class PhraseTest {
 	public void testAddPhrase()
 	{
 	 Response response =PhraseEndPoints.AddPhrase( LoginTest.LoginToken , PhrasePayload);
-	 response.prettyPrint();
+	 
 	 abbreviationId= response.jsonPath().getString("data._id");
 	 
 	
@@ -54,7 +54,7 @@ public class PhraseTest {
 	{
 		
 	 Response response =PhraseEndPoints.GetPhrase( LoginTest.LoginToken,this.PhrasePayload.getSearchWord() ,ProjectTest.proID,UploadFileTest.FileId,this.PhrasePayload.getPageNo(),this.PhrasePayload.getPageSize());
-	 response.prettyPrint();
+	
 	 
 	 
 	 //validations
@@ -74,7 +74,7 @@ public class PhraseTest {
 		PhrasePayload.setPhrase("show details of vivek");
 	
 	 Response response =PhraseEndPoints.UpdatePhrase( LoginTest.LoginToken ,this.PhrasePayload.getabbreviationId(), PhrasePayload);
-	 response.prettyPrint();
+	 
 	
 	 
 	 //validations
@@ -94,7 +94,7 @@ public class PhraseTest {
 		PhrasePayload.setabbreviationId(abbreviationId);
 		
 	 Response response =PhraseEndPoints.DeletePhrase(LoginTest.LoginToken,abbreviationId);
-	 response.prettyPrint();
+	
 	 
 	 
 	 //validations

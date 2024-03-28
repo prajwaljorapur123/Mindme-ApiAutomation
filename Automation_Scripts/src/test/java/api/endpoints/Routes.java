@@ -38,7 +38,11 @@ public class Routes {
 	//uploadFile
 	
 	public static String upload_file = "http://18.220.92.110:8090/rest/internal/backgroundWorker/background-job-worker/upload";
+	public static String uploadError_file = "http://18.220.92.110:8090/rest/internal/backgroundWorker/background-job-worker/upload";
+	public static String upload_Error_fix="http://18.220.92.110:8090/rest/internal/backgroundWorker/background-job-worker/uploadError/";
 	public static String Get_file = "http://18.220.92.110:8090/rest/internal/backgroundWorker/background-job-worker/files";
+	public static String Update_file ="http://18.220.92.110:8090/rest/internal/backgroundWorker/background-job-worker/updateFile/";
+	public static String Delete_file="http://18.220.92.110:8090/rest/internal/backgroundWorker/background-job-worker/";
 	
 	
 	//Phrase
