@@ -37,12 +37,13 @@ public class Routes {
 	
 	//uploadFile
 	
-	public static String upload_file = "http://18.220.92.110:8090/rest/internal/backgroundWorker/background-job-worker/upload";
-	public static String uploadError_file = "http://18.220.92.110:8090/rest/internal/backgroundWorker/background-job-worker/upload";
-	public static String upload_Error_fix="http://18.220.92.110:8090/rest/internal/backgroundWorker/background-job-worker/uploadError/";
-	public static String Get_file = "http://18.220.92.110:8090/rest/internal/backgroundWorker/background-job-worker/files";
-	public static String Update_file ="http://18.220.92.110:8090/rest/internal/backgroundWorker/background-job-worker/updateFile/";
-	public static String Delete_file="http://18.220.92.110:8090/rest/internal/backgroundWorker/background-job-worker/";
+	public static String upload_file = "http://52.15.45.29:8090/rest/internal/backgroundWorker/background-job-worker/upload";
+	public static String uploadError_file = "http://52.15.45.29:8090/rest/internal/backgroundWorker/background-job-worker/upload";
+	public static String upload_Error_fix="http://52.15.45.29:8090/rest/internal/backgroundWorker/background-job-worker/uploadError/";
+	public static String Get_file = "http://52.15.45.29:8090/rest/internal/backgroundWorker/background-job-worker/files";
+	public static String Update_file ="http://52.15.45.29:8090/rest/internal/backgroundWorker/background-job-worker/updateFile/";
+	public static String Delete_file="http://52.15.45.29:8090/rest/internal/backgroundWorker/background-job-worker/";
+	public static String GetFileByFleId ="http://52.15.45.29:8090/rest/internal/backgroundWorker/background-job-worker/fileInfo/"; 
 	
 	
 	//Phrase
@@ -51,6 +52,10 @@ public class Routes {
 	public static String Get_phrase =baseurl+"/v1/abbreviation/searchByProject?/";
 	public static String Update_phrase =baseurl+"/v1/abbreviation/update";
 	public static String Delete_phrase =baseurl+"/v1/abbreviation/delete";
+	
+	//search
+	public static String excel_data =baseurl+"/v1/search/data";
+	
 	
 	
 	

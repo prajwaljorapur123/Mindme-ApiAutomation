@@ -101,6 +101,17 @@ public class UploadFileEndpoins {
 	     return response;
 		
 	}
+	
+	public static Response GetFileByFileId(String token ,int FileId )
+	{	
+		
+	     Response response = given()	
+			
+		.when().get(Routes.GetFileByFleId + FileId);
+	
+	     return response;
+		
+	}
 
 
 }

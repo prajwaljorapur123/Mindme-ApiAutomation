@@ -25,8 +25,8 @@ public class LoginTest {
 	public void setupData()
 	{
 		
-	 LoginPayload = new Login();
-		LoginPayload.setEmail("rator@yopmail.com");
+	    LoginPayload = new Login();
+		LoginPayload.setEmail("bigboss@yopmail.com");
 		LoginPayload.setPassword("Prajwal@123");
 	
 	}
@@ -52,6 +52,7 @@ public class LoginTest {
 	public void companyDetails()
 	{
 	Response response = LoginEndPoints.GetComapany(LoginTest.LoginToken);
+	
 	
 	
 	CompanyId = response.jsonPath().get("data.id");

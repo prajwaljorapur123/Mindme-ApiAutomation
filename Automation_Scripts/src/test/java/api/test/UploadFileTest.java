@@ -2,6 +2,7 @@ package api.test;
 
 import java.util.Arrays;
 
+
 import org.testng.AssertJUnit;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
@@ -10,10 +11,12 @@ import org.testng.annotations.Test;
 import api.endpoints.EmployeeEndPoints;
 import api.endpoints.UploadFileEndpoins;
 import api.payload.Files;
+
 import api.payload.UploadFile.Header;
 import api.payload.UploadFile.ProjectDetails;
 import api.payload.UploadFile.Sheet;
 import io.restassured.response.Response;
+import io.restassured.response.ResponseBody;
 
 public class UploadFileTest {
 	
@@ -25,6 +28,8 @@ public class UploadFileTest {
 	Files FilePayload;
 	public static int FileId;
 	public static int ErrorFileId;
+	
+public static api.payload.FileDetailsByid.FileDetails filedetails;
 	
 	
 	@BeforeClass
@@ -77,6 +82,7 @@ public class UploadFileTest {
 	public void testUploadfile()
 	{
 	 Response response =UploadFileEndpoins.UploadFile( LoginTest.LoginToken , projectDetails);
+	 response.prettyPrint();
 	
 	 //validations
 	 AssertJUnit.assertEquals(response.getStatusCode(), 201);
@@ -159,6 +165,25 @@ public class UploadFileTest {
 			
 			 
 			 Reporter.log("Delete File...." , true);
+			}
+			
+			//Get file By fileId
+			
+			@Test(priority = 7)
+			public void GetFileByFileId()
+			{
+			 Response response =UploadFileEndpoins.GetFileByFileId( LoginTest.LoginToken , FileId);
+			 filedetails  = response.as(api.payload.FileDetailsByid.FileDetails.class);
+			
+			
+			
+			  
+			 //validations
+			 AssertJUnit.assertEquals(response.getStatusCode(), 200);
+		
+			
+			 
+			 Reporter.log("GetFileByFileId...." , true);
 			}
 
 }
