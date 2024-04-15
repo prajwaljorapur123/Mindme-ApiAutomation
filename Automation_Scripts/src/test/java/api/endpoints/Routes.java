@@ -46,6 +46,12 @@ public class Routes {
 	public static String GetFileByFleId ="http://52.15.45.29:8090/rest/internal/backgroundWorker/background-job-worker/fileInfo/"; 
 	
 	
+	//uploadpdf
+	
+	public static String upload_pdf="http://52.15.45.29:8090/rest/internal/backgroundWorker/background-job-worker/uploadPDF";
+	public static String pdf_delete ="http://52.15.45.29:8090/rest/internal/backgroundWorker/background-job-worker/pdf/";
+	
+	
 	//Phrase
 	
 	public static String Add_phrase =baseurl+"/v1/abbreviation/add";
@@ -55,7 +61,12 @@ public class Routes {
 	
 	//search
 	public static String excel_data =baseurl+"/v1/search/data";
+	public static String pdf_data =baseurl+"/v1/search/data/pdf";
 	
+	
+	//Dashboards
+	
+	public static String DashboardCount =baseurl+"/v1/dashboard/getAllCounts";
 	
 	
 	

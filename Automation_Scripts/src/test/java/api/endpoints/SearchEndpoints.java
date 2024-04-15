@@ -25,4 +25,33 @@ public class SearchEndpoints {
 		
 	}
 	
+	
+	public static Response Searchpdfdata( String token , FileSearch payload)
+	{
+		
+	Response response = given()
+		.headers("Authorization","Bearer "+token)
+		.contentType(ContentType.JSON)
+		.body(payload)
+		.when().post(Routes.pdf_data);
+	
+	return response;
+		
+	}
+	
+	
+	
+	
+	public static Response DashboardCount(String token)
+	{
+		
+	Response response = given()
+		.headers("Authorization","Bearer "+token)
+		
+		.when().get(Routes.DashboardCount);
+	
+	return response;
+		
+	}
+	
 }

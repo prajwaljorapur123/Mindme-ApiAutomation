@@ -10,6 +10,10 @@ public class FileSearch {
 	     String searchText;
 	     FileDetails fileDetailsModel;
 	     
+	     
+	     
+	     
+	     
 	     public int getProjectId() {
 			return projectId;
 		}

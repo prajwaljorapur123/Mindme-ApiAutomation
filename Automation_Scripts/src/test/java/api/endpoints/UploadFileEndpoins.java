@@ -72,20 +72,18 @@ public class UploadFileEndpoins {
 		
 	}
 	
+	
+	
 	public static Response GetFiles(String token , Files payload)
 	{
-		
-		
-	Response response = given()
-			
-			
+	Response response = given()	
 			.contentType("application/json")
 			.headers("Authorization","Bearer "+token)
 			.body(payload)
 			
 			.when().post(Routes.Get_file);
 	
-	    return response;
+	        return response;
 		
 	}
 	

@@ -82,7 +82,7 @@ public static api.payload.FileDetailsByid.FileDetails filedetails;
 	public void testUploadfile()
 	{
 	 Response response =UploadFileEndpoins.UploadFile( LoginTest.LoginToken , projectDetails);
-	 response.prettyPrint();
+	
 	
 	 //validations
 	 AssertJUnit.assertEquals(response.getStatusCode(), 201);
