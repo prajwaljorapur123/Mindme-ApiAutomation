@@ -6,6 +6,7 @@ import java.util.List;
 
 import api.payload.Project;
 import api.payload.Team;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
@@ -15,6 +16,7 @@ public class ProjectEndPoints {
 	{
 		
 	Response response = given()
+			.filter(new AllureRestAssured())
 		.headers("Authorization","Bearer "+token)
 		.contentType(ContentType.JSON)
 		.body(payload)
@@ -28,6 +30,7 @@ public class ProjectEndPoints {
 	{
 		
 	Response response = given()
+			.filter(new AllureRestAssured())
 		.headers("Authorization","Bearer "+token)
 		.contentType(ContentType.JSON)
 		.body(payload)
@@ -40,6 +43,7 @@ public class ProjectEndPoints {
 	{
 		
 	Response response = given()
+			.filter(new AllureRestAssured())
 		.headers("Authorization","Bearer "+token)
 		.contentType(ContentType.JSON)
 		.body(payload)
@@ -52,6 +56,7 @@ public class ProjectEndPoints {
 	{
 		
 	Response response = given()
+			.filter(new AllureRestAssured())
 		.headers("Authorization","Bearer "+token)
 		.queryParam("projectId", projectId)
 	

@@ -7,6 +7,7 @@ import java.io.File;
 import api.payload.Files;
 import api.payload.Pdf;
 import api.payload.UploadFile.ProjectDetails;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 
 public class PdfEndpoints {
@@ -16,6 +17,7 @@ public class PdfEndpoints {
 		File fileToUpload = new File("src/test/resources/Revised RV Lot Rules and Regulations.doc.pdf");
 		
 	Response response = given()
+			.filter(new AllureRestAssured())
 			.multiPart("data" , PdfDetails ,"application/json")
 			.multiPart("file", fileToUpload ,"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
 			.contentType("multipart/json")
@@ -33,7 +35,7 @@ public class PdfEndpoints {
 		
 	Response response = given()
 			
-			
+			.filter(new AllureRestAssured())
 			.contentType("application/json")
 			.headers("Authorization","Bearer "+token)
 			.body(payload)
@@ -49,11 +51,22 @@ public class PdfEndpoints {
 	{	
 		
 	     Response response = given()	
-			
+	    		 .filter(new AllureRestAssured())	
 		.when().delete(Routes.pdf_delete + FileId);
 	
 	     return response;
 		
 	}
 
+	public static Response DownloadPdfFile(int FileId)
+	{	
+		
+	     Response response = given()	
+	    		 .filter(new AllureRestAssured())
+		.when().get(Routes.FileDownload+ FileId);
+	
+	     return response;
+		
+	}
+	
 }

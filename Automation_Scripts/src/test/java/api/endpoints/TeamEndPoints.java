@@ -5,6 +5,7 @@ import static io.restassured.RestAssured.given;
 import java.util.List;
 
 import api.payload.Team;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
@@ -14,6 +15,7 @@ public class TeamEndPoints {
 	{
 		
 	Response response = given()
+			.filter(new AllureRestAssured())
 		.headers("Authorization","Bearer "+token)
 		.contentType(ContentType.JSON)
 		.body(payload)
@@ -27,6 +29,7 @@ public class TeamEndPoints {
 	{
 		
 	Response response = given()
+			.filter(new AllureRestAssured())
 		.headers("Authorization","Bearer "+token)
 		.queryParam("pageNo", No)
 		.queryParam("pageSize", size)
@@ -40,6 +43,7 @@ public class TeamEndPoints {
 	{
 		
 	Response response = given()
+			.filter(new AllureRestAssured())
 		.headers("Authorization","Bearer "+token)
 		.contentType(ContentType.JSON)
 		
@@ -53,6 +57,7 @@ public class TeamEndPoints {
 	{
 		
 	Response response = given()
+			.filter(new AllureRestAssured())
 		.headers("Authorization","Bearer "+token)
 		.queryParam("id", teamId)
 	

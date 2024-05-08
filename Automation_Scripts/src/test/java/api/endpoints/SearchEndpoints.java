@@ -4,7 +4,7 @@ import static io.restassured.RestAssured.given;
 
 import api.payload.Employee;
 import api.payload.FileSearch;
-
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
@@ -14,6 +14,7 @@ public class SearchEndpoints {
 	{
 		
 	Response response = given()
+			.filter(new AllureRestAssured())
 		.headers("Authorization","Bearer "+token)
 		.contentType(ContentType.JSON)
 		
@@ -30,6 +31,7 @@ public class SearchEndpoints {
 	{
 		
 	Response response = given()
+			.filter(new AllureRestAssured())
 		.headers("Authorization","Bearer "+token)
 		.contentType(ContentType.JSON)
 		.body(payload)
@@ -46,6 +48,7 @@ public class SearchEndpoints {
 	{
 		
 	Response response = given()
+			.filter(new AllureRestAssured())
 		.headers("Authorization","Bearer "+token)
 		
 		.when().get(Routes.DashboardCount);

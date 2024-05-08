@@ -4,6 +4,7 @@ import static io.restassured.RestAssured.given;
 
 import api.payload.Phrase;
 import api.payload.Project;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
@@ -12,6 +13,7 @@ public class PhraseEndPoints {
 	public static Response AddPhrase(String token , Phrase payload)
 	{
 		Response response = given()
+				.filter(new AllureRestAssured())
 				.headers("Authorization","Bearer "+token)
 				.contentType(ContentType.JSON)
 				.body(payload)
@@ -23,6 +25,7 @@ public class PhraseEndPoints {
 	public static Response GetPhrase(String token ,String searchWord,int projectId, int fileId , int pageNo ,int  pageSize)
 	{
 		Response response = given()
+				.filter(new AllureRestAssured())
 				.headers("Authorization","Bearer "+token)
 				
 				.queryParam("searchWord", searchWord)
@@ -38,6 +41,7 @@ public class PhraseEndPoints {
 	public static Response UpdatePhrase(String token ,String id, Phrase payload)
 	{
 		Response response = given()
+				.filter(new AllureRestAssured())
 				.headers("Authorization","Bearer "+token)
 				.contentType(ContentType.JSON)
 				.body(payload)
@@ -49,6 +53,7 @@ public class PhraseEndPoints {
 	public static Response DeletePhrase(String token ,String abbreviationId)
 	{
 		Response response = given()
+				.filter(new AllureRestAssured())
 				.headers("Authorization","Bearer "+token)
 				
 				.queryParam("abbreviationId", abbreviationId)
