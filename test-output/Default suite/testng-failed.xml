@@ -3,16 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="api.test.EmployeeTest">
+      <class name="api.test.UploadFileTest">
         <methods>
-          <include name="TestDeleteEmployee"/>
-          <include name="testEmployeeDetails"/>
+          <include name="testUploadfile"/>
           <include name="setupData"/>
-          <include name="testAddEmployee"/>
-          <include name="TestSearchEmployee"/>
-          <include name="TestUpdateEmployee"/>
         </methods>
-      </class> <!-- api.test.EmployeeTest -->
+      </class> <!-- api.test.UploadFileTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

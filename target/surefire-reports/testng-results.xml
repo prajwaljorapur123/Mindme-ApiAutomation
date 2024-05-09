@@ -1,74 +1,344 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="5" passed="5" failed="0" skipped="0">
+<testng-results ignored="0" total="29" passed="29" failed="0" skipped="0">
   <reporter-output>
     <line>
-      <![CDATA[Added employee successfully]]>
+      <![CDATA[login successfull....]]>
     </line>
     <line>
-      <![CDATA[employee details....]]>
+      <![CDATA[Get Company Details....]]>
     </line>
     <line>
-      <![CDATA[update employee successfully]]>
+      <![CDATA[Added Employee....]]>
     </line>
     <line>
-      <![CDATA[delete employee successfully]]>
+      <![CDATA[Added Employee....]]>
+    </line>
+    <line>
+      <![CDATA[Employee Details....]]>
+    </line>
+    <line>
+      <![CDATA[Update Employee....]]>
+    </line>
+    <line>
+      <![CDATA[Delete Employee....]]>
+    </line>
+    <line>
+      <![CDATA[Search Employee....]]>
+    </line>
+    <line>
+      <![CDATA[Team Created....]]>
+    </line>
+    <line>
+      <![CDATA[Team Created....]]>
+    </line>
+    <line>
+      <![CDATA[Team Details....]]>
+    </line>
+    <line>
+      <![CDATA[Team Updated....]]>
+    </line>
+    <line>
+      <![CDATA[Team Deleted....]]>
+    </line>
+    <line>
+      <![CDATA[Project Created....]]>
+    </line>
+    <line>
+      <![CDATA[Project Created....]]>
+    </line>
+    <line>
+      <![CDATA[Project Details....]]>
+    </line>
+    <line>
+      <![CDATA[Project Updated....]]>
+    </line>
+    <line>
+      <![CDATA[Project Deleted....]]>
+    </line>
+    <line>
+      <![CDATA[Upload File....]]>
+    </line>
+    <line>
+      <![CDATA[Upload Error File....]]>
+    </line>
+    <line>
+      <![CDATA[Get Files....]]>
+    </line>
+    <line>
+      <![CDATA[Update File....]]>
+    </line>
+    <line>
+      <![CDATA[Error File Fix....]]>
+    </line>
+    <line>
+      <![CDATA[Delete File....]]>
+    </line>
+    <line>
+      <![CDATA[GetFileByFileId....]]>
+    </line>
+    <line>
+      <![CDATA[phrase Added successfully.]]>
+    </line>
+    <line>
+      <![CDATA[phrase updated]]>
+    </line>
+    <line>
+      <![CDATA[Delete Phrase....]]>
+    </line>
+    <line>
+      <![CDATA[Get Phrase....]]>
     </line>
   </reporter-output>
-  <suite started-at="2023-12-26T10:49:21 IST" name="Suite" finished-at="2023-12-26T10:49:27 IST" duration-ms="6561">
+  <suite started-at="2024-04-11T06:32:47 IST" name="Suite" finished-at="2024-04-11T06:33:18 IST" duration-ms="30666">
     <groups>
     </groups>
-    <test started-at="2023-12-26T10:49:21 IST" name="Test" finished-at="2023-12-26T10:49:27 IST" duration-ms="6561">
-      <class name="api.test.LoginTest">
-        <test-method is-config="true" signature="setupData()[pri:0, instance:api.test.LoginTest@6e171cd7]" started-at="2023-12-26T10:49:21 IST" name="setupData" finished-at="2023-12-26T10:49:21 IST" duration-ms="12" status="PASS">
+    <test started-at="2024-04-11T06:32:47 IST" name="Test" finished-at="2024-04-11T06:33:18 IST" duration-ms="30666">
+      <class name="api.test.ProjectTest">
+        <test-method is-config="true" signature="setupData()[pri:0, instance:api.test.ProjectTest@1349883]" started-at="2024-04-11T06:33:06 IST" name="setupData" finished-at="2024-04-11T06:33:06 IST" duration-ms="59" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupData -->
-        <test-method signature="testLogin(org.testng.ITestContext)[pri:0, instance:api.test.LoginTest@6e171cd7]" started-at="2023-12-26T10:49:21 IST" name="testLogin" finished-at="2023-12-26T10:49:23 IST" duration-ms="2813" status="PASS">
+        <test-method signature="TestCreateProject()[pri:1, instance:api.test.ProjectTest@1349883]" started-at="2024-04-11T06:33:06 IST" name="TestCreateProject" finished-at="2024-04-11T06:33:06 IST" duration-ms="758" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Project Created....]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TestCreateProject -->
+        <test-method signature="TestCreateProject()[pri:1, instance:api.test.ProjectTest@1349883]" started-at="2024-04-11T06:33:06 IST" name="TestCreateProject" finished-at="2024-04-11T06:33:07 IST" duration-ms="824" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Project Created....]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TestCreateProject -->
+        <test-method signature="TestProjectDetails()[pri:2, instance:api.test.ProjectTest@1349883]" started-at="2024-04-11T06:33:07 IST" name="TestProjectDetails" finished-at="2024-04-11T06:33:08 IST" duration-ms="841" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Project Details....]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TestProjectDetails -->
+        <test-method signature="TestProjectUpdate()[pri:3, instance:api.test.ProjectTest@1349883]" started-at="2024-04-11T06:33:08 IST" name="TestProjectUpdate" finished-at="2024-04-11T06:33:09 IST" duration-ms="866" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Project Updated....]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TestProjectUpdate -->
+        <test-method signature="TestProjectDelete()[pri:4, instance:api.test.ProjectTest@1349883]" started-at="2024-04-11T06:33:09 IST" name="TestProjectDelete" finished-at="2024-04-11T06:33:10 IST" duration-ms="769" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Project Deleted....]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TestProjectDelete -->
+      </class> <!-- api.test.ProjectTest -->
+      <class name="api.test.LoginTest">
+        <test-method is-config="true" signature="setupData()[pri:0, instance:api.test.LoginTest@7bba5817]" started-at="2024-04-11T06:32:47 IST" name="setupData" finished-at="2024-04-11T06:32:47 IST" duration-ms="55" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupData -->
+        <test-method signature="testLogin(org.testng.ITestContext)[pri:1, instance:api.test.LoginTest@7bba5817]" started-at="2024-04-11T06:32:47 IST" name="testLogin" finished-at="2024-04-11T06:32:53 IST" duration-ms="5581" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@1c1bbc4e]]>
+                <![CDATA[org.testng.TestRunner@376a0d86]]>
               </value>
             </param>
           </params>
           <reporter-output>
+            <line>
+              <![CDATA[login successfull....]]>
+            </line>
           </reporter-output>
         </test-method> <!-- testLogin -->
+        <test-method signature="companyDetails()[pri:2, instance:api.test.LoginTest@7bba5817]" started-at="2024-04-11T06:32:53 IST" name="companyDetails" finished-at="2024-04-11T06:32:54 IST" duration-ms="918" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Get Company Details....]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- companyDetails -->
       </class> <!-- api.test.LoginTest -->
-      <class name="api.test.EmployeeTest">
-        <test-method is-config="true" signature="setupData()[pri:0, instance:api.test.EmployeeTest@441772e]" started-at="2023-12-26T10:49:23 IST" name="setupData" finished-at="2023-12-26T10:49:24 IST" duration-ms="179" status="PASS">
+      <class name="api.test.TeamTest">
+        <test-method is-config="true" signature="setupData()[pri:0, instance:api.test.TeamTest@4a83a74a]" started-at="2024-04-11T06:33:02 IST" name="setupData" finished-at="2024-04-11T06:33:02 IST" duration-ms="130" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupData -->
-        <test-method signature="testAddEmployee()[pri:1, instance:api.test.EmployeeTest@441772e]" started-at="2023-12-26T10:49:24 IST" name="testAddEmployee" finished-at="2023-12-26T10:49:25 IST" duration-ms="1824" status="PASS">
+        <test-method signature="TestCreateTeam()[pri:1, instance:api.test.TeamTest@4a83a74a]" started-at="2024-04-11T06:33:02 IST" name="TestCreateTeam" finished-at="2024-04-11T06:33:03 IST" duration-ms="727" status="PASS">
           <reporter-output>
             <line>
-              <![CDATA[Added employee successfully]]>
+              <![CDATA[Team Created....]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TestCreateTeam -->
+        <test-method signature="TestCreateTeam()[pri:1, instance:api.test.TeamTest@4a83a74a]" started-at="2024-04-11T06:33:03 IST" name="TestCreateTeam" finished-at="2024-04-11T06:33:03 IST" duration-ms="836" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Team Created....]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TestCreateTeam -->
+        <test-method signature="TestTeamDetails()[pri:2, instance:api.test.TeamTest@4a83a74a]" started-at="2024-04-11T06:33:03 IST" name="TestTeamDetails" finished-at="2024-04-11T06:33:04 IST" duration-ms="784" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Team Details....]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TestTeamDetails -->
+        <test-method signature="TestTeamUpdate()[pri:3, instance:api.test.TeamTest@4a83a74a]" started-at="2024-04-11T06:33:04 IST" name="TestTeamUpdate" finished-at="2024-04-11T06:33:05 IST" duration-ms="709" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Team Updated....]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TestTeamUpdate -->
+        <test-method signature="TestTeamDelete()[pri:4, instance:api.test.TeamTest@4a83a74a]" started-at="2024-04-11T06:33:05 IST" name="TestTeamDelete" finished-at="2024-04-11T06:33:06 IST" duration-ms="629" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Team Deleted....]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TestTeamDelete -->
+      </class> <!-- api.test.TeamTest -->
+      <class name="api.test.PhraseTest">
+        <test-method is-config="true" signature="setupData()[pri:0, instance:api.test.PhraseTest@7f485fda]" started-at="2024-04-11T06:33:15 IST" name="setupData" finished-at="2024-04-11T06:33:15 IST" duration-ms="5" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupData -->
+        <test-method signature="testAddPhrase()[pri:1, instance:api.test.PhraseTest@7f485fda]" started-at="2024-04-11T06:33:15 IST" name="testAddPhrase" finished-at="2024-04-11T06:33:16 IST" duration-ms="654" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[phrase Added successfully.]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- testAddPhrase -->
+        <test-method signature="testUpdatePhrase()[pri:2, instance:api.test.PhraseTest@7f485fda]" started-at="2024-04-11T06:33:16 IST" name="testUpdatePhrase" finished-at="2024-04-11T06:33:16 IST" duration-ms="686" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[phrase updated]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- testUpdatePhrase -->
+        <test-method signature="testDeletePhrase()[pri:3, instance:api.test.PhraseTest@7f485fda]" started-at="2024-04-11T06:33:16 IST" name="testDeletePhrase" finished-at="2024-04-11T06:33:17 IST" duration-ms="601" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Delete Phrase....]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- testDeletePhrase -->
+        <test-method signature="testGetPhrase()[pri:4, instance:api.test.PhraseTest@7f485fda]" started-at="2024-04-11T06:33:17 IST" name="testGetPhrase" finished-at="2024-04-11T06:33:18 IST" duration-ms="790" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Get Phrase....]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- testGetPhrase -->
+      </class> <!-- api.test.PhraseTest -->
+      <class name="api.test.EmployeeTest">
+        <test-method is-config="true" signature="setupData()[pri:0, instance:api.test.EmployeeTest@15043a2f]" started-at="2024-04-11T06:32:54 IST" name="setupData" finished-at="2024-04-11T06:32:54 IST" duration-ms="544" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupData -->
+        <test-method signature="testAddEmployee()[pri:1, instance:api.test.EmployeeTest@15043a2f]" started-at="2024-04-11T06:32:54 IST" name="testAddEmployee" finished-at="2024-04-11T06:32:56 IST" duration-ms="2150" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Added Employee....]]>
             </line>
           </reporter-output>
         </test-method> <!-- testAddEmployee -->
-        <test-method signature="testEmployeeDetails()[pri:2, instance:api.test.EmployeeTest@441772e]" started-at="2023-12-26T10:49:25 IST" name="testEmployeeDetails" finished-at="2023-12-26T10:49:26 IST" duration-ms="517" status="PASS">
+        <test-method signature="testAddEmployee()[pri:1, instance:api.test.EmployeeTest@15043a2f]" started-at="2024-04-11T06:32:56 IST" name="testAddEmployee" finished-at="2024-04-11T06:32:59 IST" duration-ms="2199" status="PASS">
           <reporter-output>
             <line>
-              <![CDATA[employee details....]]>
+              <![CDATA[Added Employee....]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- testAddEmployee -->
+        <test-method signature="testEmployeeDetails()[pri:2, instance:api.test.EmployeeTest@15043a2f]" started-at="2024-04-11T06:32:59 IST" name="testEmployeeDetails" finished-at="2024-04-11T06:32:59 IST" duration-ms="676" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Employee Details....]]>
             </line>
           </reporter-output>
         </test-method> <!-- testEmployeeDetails -->
-        <test-method signature="TestUpdateEmployee()[pri:3, instance:api.test.EmployeeTest@441772e]" started-at="2023-12-26T10:49:26 IST" name="TestUpdateEmployee" finished-at="2023-12-26T10:49:27 IST" duration-ms="646" status="PASS">
+        <test-method signature="TestUpdateEmployee()[pri:3, instance:api.test.EmployeeTest@15043a2f]" started-at="2024-04-11T06:32:59 IST" name="TestUpdateEmployee" finished-at="2024-04-11T06:33:00 IST" duration-ms="932" status="PASS">
           <reporter-output>
             <line>
-              <![CDATA[update employee successfully]]>
+              <![CDATA[Update Employee....]]>
             </line>
           </reporter-output>
         </test-method> <!-- TestUpdateEmployee -->
-        <test-method signature="TestDeleteEmployee()[pri:4, instance:api.test.EmployeeTest@441772e]" started-at="2023-12-26T10:49:27 IST" name="TestDeleteEmployee" finished-at="2023-12-26T10:49:27 IST" duration-ms="534" status="PASS">
+        <test-method signature="TestDeleteEmployee()[pri:4, instance:api.test.EmployeeTest@15043a2f]" started-at="2024-04-11T06:33:00 IST" name="TestDeleteEmployee" finished-at="2024-04-11T06:33:01 IST" duration-ms="681" status="PASS">
           <reporter-output>
             <line>
-              <![CDATA[delete employee successfully]]>
+              <![CDATA[Delete Employee....]]>
             </line>
           </reporter-output>
         </test-method> <!-- TestDeleteEmployee -->
+        <test-method signature="TestSearchEmployee()[pri:5, instance:api.test.EmployeeTest@15043a2f]" started-at="2024-04-11T06:33:01 IST" name="TestSearchEmployee" finished-at="2024-04-11T06:33:02 IST" duration-ms="766" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Search Employee....]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TestSearchEmployee -->
       </class> <!-- api.test.EmployeeTest -->
+      <class name="api.test.UploadFileTest">
+        <test-method is-config="true" signature="setupData()[pri:0, instance:api.test.UploadFileTest@4b29d1d2]" started-at="2024-04-11T06:33:10 IST" name="setupData" finished-at="2024-04-11T06:33:10 IST" duration-ms="15" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupData -->
+        <test-method signature="testUploadfile()[pri:1, instance:api.test.UploadFileTest@4b29d1d2]" started-at="2024-04-11T06:33:10 IST" name="testUploadfile" finished-at="2024-04-11T06:33:11 IST" duration-ms="858" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Upload File....]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- testUploadfile -->
+        <test-method signature="testUploadErrorfile()[pri:2, instance:api.test.UploadFileTest@4b29d1d2]" started-at="2024-04-11T06:33:11 IST" name="testUploadErrorfile" finished-at="2024-04-11T06:33:11 IST" duration-ms="717" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Upload Error File....]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- testUploadErrorfile -->
+        <test-method signature="Getfiles()[pri:3, instance:api.test.UploadFileTest@4b29d1d2]" started-at="2024-04-11T06:33:11 IST" name="Getfiles" finished-at="2024-04-11T06:33:12 IST" duration-ms="751" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Get Files....]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- Getfiles -->
+        <test-method signature="Updatefile()[pri:4, instance:api.test.UploadFileTest@4b29d1d2]" started-at="2024-04-11T06:33:12 IST" name="Updatefile" finished-at="2024-04-11T06:33:13 IST" duration-ms="741" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Update File....]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- Updatefile -->
+        <test-method signature="testErrorfilefix()[pri:5, instance:api.test.UploadFileTest@4b29d1d2]" started-at="2024-04-11T06:33:13 IST" name="testErrorfilefix" finished-at="2024-04-11T06:33:14 IST" duration-ms="723" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Error File Fix....]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- testErrorfilefix -->
+        <test-method signature="Deletefile()[pri:6, instance:api.test.UploadFileTest@4b29d1d2]" started-at="2024-04-11T06:33:14 IST" name="Deletefile" finished-at="2024-04-11T06:33:14 IST" duration-ms="668" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Delete File....]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- Deletefile -->
+        <test-method signature="GetFileByFileId()[pri:7, instance:api.test.UploadFileTest@4b29d1d2]" started-at="2024-04-11T06:33:14 IST" name="GetFileByFileId" finished-at="2024-04-11T06:33:15 IST" duration-ms="614" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[GetFileByFileId....]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- GetFileByFileId -->
+      </class> <!-- api.test.UploadFileTest -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>

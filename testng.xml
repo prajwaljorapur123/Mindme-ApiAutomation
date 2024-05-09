@@ -4,10 +4,15 @@
   <test thread-count="5" name="Test">
     <classes>
      
-      <class name="api.test.LoginTest"/>
-
-      <class name="api.test.EmployeeTest"/>
-          <class name="api.test.TeamTest"/>
+            <class name="api.test.LoginTest"/>
+            <class name="api.test.EmployeeTest"/>
+            <class name="api.test.TeamTest"/>
+            <class name="api.test.ProjectTest"/>
+            <class name="api.test.UploadFileTest"/>
+            <class name="api.test.PhraseTest"/>
+            <class name="api.test.PdfTest"/>
+            <class name="api.test.SearchTest"/>
+             
     
     </classes>
   </test> <!-- Test -->

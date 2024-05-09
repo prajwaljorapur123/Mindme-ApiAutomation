@@ -1,0 +1,40 @@
+<div>POST to http://18.220.125.215:8090/rest/internal/backgroundWorker/background-job-worker/files</div>
+
+    <h4>Body</h4>
+    <div>
+    <pre class="preformated-text">
+{
+    &quot;projectId&quot;: 2681,
+    &quot;companyId&quot;: 1180,
+    &quot;createdByID&quot;: 3060,
+    &quot;fileUniqueName&quot;: &quot;&quot;,
+    &quot;error&quot;: &quot;&quot;,
+    &quot;fileName&quot;: &quot;Revised RV Lot Rules and Regulations.doc.pdf&quot;,
+    &quot;pageNo&quot;: 0,
+    &quot;pageSize&quot;: 8
+}    </pre>
+    </div>
+
+    <h4>Headers</h4>
+    <div>
+            <div>Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJwZXJtaXNzaW9uIjpbMl0sInN1YiI6ImJpZ2Jvc3NAeW9wbWFpbC5jb20iLCJpc3MiOiJNaW5kTWUiLCJpYXQiOjE3MTUxNDMyMzgsImV4cCI6MTcxNTIyOTYzOH0.n3dUXZHAKxMc8NOu_JKO521OwR1KpD8wxu1nUATHZdHVF5uPycAI9YjtxHZLwEvQU20_2Z_9CyLexJYBYTYLfg</div>
+            <div>Accept: */*</div>
+            <div>Content-Type: application/json</div>
+    </div>
+
+
+
+    <h4>Curl</h4>
+    <div>
+        curl -v -X POST &#39;http://18.220.125.215:8090/rest/internal/backgroundWorker/background-job-worker/files&#39; -H &#39;Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJwZXJtaXNzaW9uIjpbMl0sInN1YiI6ImJpZ2Jvc3NAeW9wbWFpbC5jb20iLCJpc3MiOiJNaW5kTWUiLCJpYXQiOjE3MTUxNDMyMzgsImV4cCI6MTcxNTIyOTYzOH0.n3dUXZHAKxMc8NOu_JKO521OwR1KpD8wxu1nUATHZdHVF5uPycAI9YjtxHZLwEvQU20_2Z_9CyLexJYBYTYLfg&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: application/json&#39; -d &#39;{
+    &quot;projectId&quot;: 2681,
+    &quot;companyId&quot;: 1180,
+    &quot;createdByID&quot;: 3060,
+    &quot;fileUniqueName&quot;: &quot;&quot;,
+    &quot;error&quot;: &quot;&quot;,
+    &quot;fileName&quot;: &quot;Revised RV Lot Rules and Regulations.doc.pdf&quot;,
+    &quot;pageNo&quot;: 0,
+    &quot;pageSize&quot;: 8
+}&#39;
+    </div>
+
