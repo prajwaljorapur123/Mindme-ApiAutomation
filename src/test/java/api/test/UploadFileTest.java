@@ -169,9 +169,9 @@ public class UploadFileTest {
 			// Close streams
 			outputStream.close();
 			inputStream.close();
-			System.out.println("excel File downloaded...." + response.getStatusCode());
+			Reporter.log("excel File downloaded...." + response.getStatusCode(),true);
 		} else {
-			System.out.println("Failed to download error excel file. Status code: " + response.getStatusCode());
+			Reporter.log("Failed to download error excel file. Status code: " + response.getStatusCode(),false);
 		}
 		throw new SkipException("Skip excel Download");
 
