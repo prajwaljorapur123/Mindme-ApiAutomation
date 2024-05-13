@@ -47,7 +47,7 @@ public class LoginTest {
     
 	 if (response.getStatusCode()==200 )
      {
-		 Reporter.log("Login successfull...." + response.getStatusCode(),true);
+		 Reporter.log("Login...." + response.getStatusCode(),true);
 	   
       }
      else
