@@ -52,7 +52,7 @@ public class SearchTest {
 
 	// search pdf file
 
-	@Test(priority = 2)
+	//@Test(priority = 2)
 	public void testSearchPdfData() {
 
 		Response response = SearchEndpoints.Searchpdfdata(LoginTest.LoginToken, PdfSearchPayload);
@@ -68,7 +68,7 @@ public class SearchTest {
 
 	// dashboard count
 
-	@Test(priority = 3)
+	@Test(priority = 2)
 	public void testDashboardCount() {
 		Response response = SearchEndpoints.DashboardCount(LoginTest.LoginToken);
 

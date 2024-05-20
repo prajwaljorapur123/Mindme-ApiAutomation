@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>2/0/1</td>
 </tr><tr>
-<td>Started on:</td><td>Tue Feb 27 14:07:23 IST 2024</td>
+<td>Started on:</td><td>Tue May 14 15:36:44 IST 2024</td>
 </tr>
-<tr><td>Total time:</td><td>3 seconds (3145 ms)</td>
+<tr><td>Total time:</td><td>3 seconds (3938 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,19 +67,56 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
-<table width='100%' border='1' class='invocation-failed'>
-<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
 <td width="30%"><b>Exception</b></td>
 <td width="10%"><b>Time (seconds)</b></td>
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='api.test.UploadFileTest.testUploadfile()'><b>testUploadfile</b><br>Test class: api.test.UploadFileTest</td>
-<td><div><pre>java.lang.AssertionError: expected:&lt;File Uploaded successfully.&gt; but was:&lt;File Uploaded successfully&gt;
-	at org.testng.AssertJUnit.assertEquals(AssertJUnit.java:115)
-	at org.testng.AssertJUnit.assertEquals(AssertJUnit.java:125)
-	at api.test.UploadFileTest.testUploadfile(UploadFileTest.java:73)
+<td title='api.test.SearchTest.testSearchExcelData()'><b>testSearchExcelData</b><br>Test class: api.test.SearchTest<br/>
+<a href="#Output-2127407451" onClick='toggleBox("Output-2127407451", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2127407451" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2127407451">
+Search excel data Fail....<br/>
+</div>
+</td>
+<td></td>
+<td>2</td>
+<td>api.test.SearchTest@480d3575</td></tr>
+<tr>
+<td title='api.test.SearchTest.testSearchPdfData()'><b>testSearchPdfData</b><br>Test class: api.test.SearchTest<br/>
+<a href="#Output-425033914" onClick='toggleBox("Output-425033914", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-425033914" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-425033914">
+Search pdf data Fail....<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>api.test.SearchTest@480d3575</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-skipped'>
+<tr><td colspan='4' align='center'><b>SKIPPED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='api.test.SearchTest.testDashboardCount()'><b>testDashboardCount</b><br>Test class: api.test.SearchTest<br/>
+<a href="#Output-423539130" onClick='toggleBox("Output-423539130", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-423539130" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-423539130">
+Dashboard count Fail....<br/>
+</div>
+</td>
+<td><div><pre>org.testng.SkipException: Skip dashboard
+	at api.test.SearchTest.testDashboardCount(SearchTest.java:82)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
@@ -106,11 +143,9 @@ function toggleAllBoxes() {
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-</pre></div><a href='#' onClick='toggleBox("stack-trace423344137", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace423344137'><pre>java.lang.AssertionError: expected:&lt;File Uploaded successfully.&gt; but was:&lt;File Uploaded successfully&gt;
-	at org.testng.AssertJUnit.assertEquals(AssertJUnit.java:115)
-	at org.testng.AssertJUnit.assertEquals(AssertJUnit.java:125)
-	at api.test.UploadFileTest.testUploadfile(UploadFileTest.java:73)
+</pre></div><a href='#' onClick='toggleBox("stack-trace423539130", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace423539130'><pre>org.testng.SkipException: Skip dashboard
+	at api.test.SearchTest.testDashboardCount(SearchTest.java:82)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
@@ -138,8 +173,8 @@ function toggleAllBoxes() {
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 </pre></div></td>
-<td>3</td>
-<td>api.test.UploadFileTest@1a482e36</td></tr>
+<td>0</td>
+<td>api.test.SearchTest@480d3575</td></tr>
 </table><p>
 </body>
 </html>
