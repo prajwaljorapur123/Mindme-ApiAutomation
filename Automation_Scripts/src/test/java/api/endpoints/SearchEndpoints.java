@@ -57,4 +57,21 @@ public class SearchEndpoints {
 		
 	}
 	
+	public static Response ExcelSearchHistory(String token ,String fileType, int pageNo,int pageSize)
+	{
+		
+	Response response = given()
+			.filter(new AllureRestAssured())
+		.headers("Authorization","Bearer "+token)
+		.queryParam("fileType", fileType)
+		.queryParam("pageNo", pageNo)
+		.queryParam("pageSize", pageSize)
+		.when().get(Routes.ExcelSearchHistory);
+	
+	    return response;
+		
+	}
+	
+	
+	
 }

@@ -3,7 +3,7 @@ package api.endpoints;
 public class Routes {
 	
 	public static String baseurl="http://mindmedev-env.eba-p3axgdvz.us-east-2.elasticbeanstalk.com";
-	
+	public static String ip = "3.143.252.82:8090";
 	
 	//Login
 	public static String login_post_url = baseurl+"/v1/auth/login";
@@ -37,19 +37,19 @@ public class Routes {
 	
 	//uploadFile
 	
-	public static String upload_file = "http://18.220.125.215:8090/rest/internal/backgroundWorker/background-job-worker/upload";
-	public static String uploadError_file = "http://18.220.125.215:8090/rest/internal/backgroundWorker/background-job-worker/upload";
-	public static String upload_Error_fix="http://18.220.125.215:8090/rest/internal/backgroundWorker/background-job-worker/uploadError/";
-	public static String Get_file = "http://18.220.125.215:8090/rest/internal/backgroundWorker/background-job-worker/files";
-	public static String Update_file ="http://18.220.125.215:8090/rest/internal/backgroundWorker/background-job-worker/updateFile/";
-	public static String Delete_file="http://18.220.125.215:8090/rest/internal/backgroundWorker/background-job-worker/";
-	public static String GetFileByFleId ="http://18.220.125.215:8090/rest/internal/backgroundWorker/background-job-worker/fileInfo/"; 
+	public static String upload_file = "http://"+ip+"/rest/internal/backgroundWorker/background-job-worker/upload";
+	public static String uploadError_file = "http://"+ip+"/rest/internal/backgroundWorker/background-job-worker/upload";
+	public static String upload_Error_fix="http://"+ip+"/rest/internal/backgroundWorker/background-job-worker/uploadError/";
+	public static String Get_file = "http://"+ip+"/rest/internal/backgroundWorker/background-job-worker/files";
+	public static String Update_file ="http://"+ip+"/rest/internal/backgroundWorker/background-job-worker/updateFile/";
+	public static String Delete_file="http://"+ip+"/rest/internal/backgroundWorker/background-job-worker/";
+	public static String GetFileByFleId ="http://"+ip+"/rest/internal/backgroundWorker/background-job-worker/fileInfo/"; 
 	
 	
 	//uploadpdf
 	
-	public static String upload_pdf="http://18.220.125.215:8090/rest/internal/backgroundWorker/background-job-worker/uploadPDF";
-	public static String pdf_delete ="http://18.220.125.215:8090/rest/internal/backgroundWorker/background-job-worker/pdf/";
+	public static String upload_pdf="http://"+ip+"/rest/internal/backgroundWorker/background-job-worker/uploadPDF";
+	public static String pdf_delete ="http://"+ip+"/rest/internal/backgroundWorker/background-job-worker/pdf/";
 	
 	
 	//Phrase
@@ -70,8 +70,12 @@ public class Routes {
 	
 	//Downloads
 	
-	public static String FileDownload ="http://18.220.125.215:8090/rest/internal/backgroundWorker/background-job-worker/download/";
+	public static String FileDownload ="http://"+ip+"/rest/internal/backgroundWorker/background-job-worker/download/";
 	
+	//Search History
+	
+	public static String ExcelSearchHistory =baseurl+"/v1/search/getHistory?/";
+	public static String PdfSearchHistory =baseurl+"/v1/search/getHistory?/";
 	
 	
 }

@@ -38,10 +38,12 @@ public class ProjectTest {
 
 	@Test(priority = 1, invocationCount = 2)
 	public void TestCreateProject() {
+		projectpayload.setProjectName(faker.name().nameWithMiddle());
 
 		Response response = ProjectEndPoints.CreateProject(LoginTest.LoginToken, projectpayload);
-
-		projectId = response.jsonPath().getInt("data.projectDetails.id");
+		
+	    projectId = response.jsonPath().getInt("data.projectDetails.id");
+	   
 
 		// validations
 
@@ -57,9 +59,9 @@ public class ProjectTest {
 
 	@Test(priority = 2)
 	public void TestProjectDetails() {
+		projectpayload.setProjectName("");
 
-		Response response = ProjectEndPoints.ProjectDetails(LoginTest.LoginToken, this.projectpayload.getProjectName(),
-				projectpayload);
+		Response response = ProjectEndPoints.ProjectDetails(LoginTest.LoginToken,projectpayload);
 		proID = response.jsonPath().getInt("data[1].projectDetails.id");
 
 		// validations
@@ -98,6 +100,7 @@ public class ProjectTest {
 	public void TestProjectDelete() {
 
 		projectpayload.setprojectId(projectId);
+		
 		Response response = ProjectEndPoints.projectDelete(LoginTest.LoginToken, projectId);
 		// validations
 

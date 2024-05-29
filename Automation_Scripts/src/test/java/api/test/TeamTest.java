@@ -39,6 +39,7 @@ public class TeamTest {
 	public void TestCreateTeam() {
 		teampayload.setTeamName(faker.name().bloodGroup());
 		Response response = TeamEndPoints.CreateTeam(LoginTest.LoginToken, teampayload);
+		
 		teamId = response.jsonPath().getInt("data.teams.id");
 
 		// validations

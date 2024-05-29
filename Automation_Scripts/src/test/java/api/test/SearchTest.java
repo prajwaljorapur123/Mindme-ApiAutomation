@@ -18,6 +18,7 @@ public class SearchTest {
 
 	FileSearch SearchPayload;
 	FileSearch PdfSearchPayload;
+	FileSearch SearchHistoryPayload;
 
 	@BeforeClass
 	public void setupData() {
@@ -31,7 +32,17 @@ public class SearchTest {
 		PdfSearchPayload = new FileSearch();
 
 		PdfSearchPayload.setProjectId(ProjectTest.proID);
+		PdfSearchPayload.setIsAbbreviation("");
+		PdfSearchPayload.setFileType("pdf");
 		PdfSearchPayload.setSearchText("park");
+		
+		SearchHistoryPayload = new FileSearch();
+		SearchHistoryPayload.setFileType("excel");
+		SearchHistoryPayload.setPageNo(0);
+		SearchHistoryPayload.setPageSize(8);
+		
+		
+		
 
 	}
 
@@ -82,5 +93,42 @@ public class SearchTest {
 		throw new SkipException("Skip dashboard");
 
 	}
+	
+	// Excel search history 
+
+		@Test(priority = 4)
+		public void testExcelHistory() {
+			System.out.println(this.SearchHistoryPayload.getFileType());
+			Response response = SearchEndpoints.ExcelSearchHistory(LoginTest.LoginToken , this.SearchHistoryPayload.getFileType(),this.SearchHistoryPayload.getPageNo(),this.SearchHistoryPayload.getPageSize());
+             
+			// validations
+			if (response.getStatusCode() == 200 && response.jsonPath().getString("message").equals("OK")) {
+				Reporter.log("Excel search history...." + response.getStatusCode(), true);
+			} else {
+				Reporter.log("Excel search history fail...." + response.prettyPrint(), false);
+			}
+
+			
+
+		}
+		
+		@Test(priority = 5)
+		public void testpdfHistory() {
+			SearchHistoryPayload.setFileType("pdf");
+			System.out.println(this.SearchHistoryPayload.getFileType());
+			Response response = SearchEndpoints.ExcelSearchHistory(LoginTest.LoginToken , this.SearchHistoryPayload.getFileType(),this.SearchHistoryPayload.getPageNo(),this.SearchHistoryPayload.getPageSize());
+  
+			// validations
+			if (response.getStatusCode() == 200 && response.jsonPath().getString("message").equals("OK")) {
+				Reporter.log("pdf search history...." + response.getStatusCode(), true);
+			} else {
+				Reporter.log("pdf search history fail...." + response.prettyPrint(), false);
+			}
+
+			
+
+		}
+	
+	
 
 }

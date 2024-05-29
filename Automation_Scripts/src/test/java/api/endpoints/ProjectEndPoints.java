@@ -26,7 +26,7 @@ public class ProjectEndPoints {
 		
 	}
 	
-	public static Response ProjectDetails(String token ,String email ,  Project payload)
+	public static Response ProjectDetails(String token ,  Project payload)
 	{
 		
 	Response response = given()
