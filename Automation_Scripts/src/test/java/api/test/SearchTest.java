@@ -98,7 +98,7 @@ public class SearchTest {
 
 		@Test(priority = 4)
 		public void testExcelHistory() {
-			System.out.println(this.SearchHistoryPayload.getFileType());
+			
 			Response response = SearchEndpoints.ExcelSearchHistory(LoginTest.LoginToken , this.SearchHistoryPayload.getFileType(),this.SearchHistoryPayload.getPageNo(),this.SearchHistoryPayload.getPageSize());
              
 			// validations
@@ -115,7 +115,7 @@ public class SearchTest {
 		@Test(priority = 5)
 		public void testpdfHistory() {
 			SearchHistoryPayload.setFileType("pdf");
-			System.out.println(this.SearchHistoryPayload.getFileType());
+			
 			Response response = SearchEndpoints.ExcelSearchHistory(LoginTest.LoginToken , this.SearchHistoryPayload.getFileType(),this.SearchHistoryPayload.getPageNo(),this.SearchHistoryPayload.getPageSize());
   
 			// validations
