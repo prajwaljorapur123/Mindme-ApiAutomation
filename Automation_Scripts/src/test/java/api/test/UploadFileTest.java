@@ -157,7 +157,7 @@ public class UploadFileTest {
 
 			// Create output stream to write file
 			OutputStream outputStream = new FileOutputStream(
-					"C:/Users/www.abcom.in/Documents/mindme_java_test_automation/Automation_Scripts/Downloads/sample_file.xlsx");
+					"C:\\Users\\Prajwal\\Documents\\mindme_java_test_automation\\Automation_Scripts\\Downloads\\sample_file.xlsx");
 
 			// Write data from input stream to output stream
 			byte[] buffer = new byte[1024];

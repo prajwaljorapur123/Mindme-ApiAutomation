@@ -60,16 +60,16 @@ public static Response AdminUpdateCompany(String token , int id , AdminCompany p
 }
 
 
-public static Response AdminDiCompany(String token , int id , AdminCompany payload) {
+public static Response AdminDisableCompany(String token , int id , boolean enable) {
 	
 
 	Response response = given()
 			.filter(new AllureRestAssured())
 			.headers("Authorization", "Bearer " + token)
-			.contentType(ContentType.JSON)
-			.body(payload)
+			.queryParam("id", id)
+			.queryParam("enable", enable)
 	        
-			.when().post(Routes.AdminUpdateCompany);
+			.when().get(Routes.AdminDisableCompany);
 
 	return response;
 

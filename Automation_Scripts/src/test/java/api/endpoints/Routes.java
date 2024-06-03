@@ -77,15 +77,25 @@ public class Routes {
 	public static String ExcelSearchHistory =baseurl+"/v1/search/getHistory?/";
 	public static String PdfSearchHistory =baseurl+"/v1/search/getHistory?/";
 	
-	//Admin
+	//Admin portal
 	
+	//create
 	public static String AdminCreateCompany =baseurl+"/v1/company/adminCreateCompany";
 	
+	//search
 	public static String AdminCompanySearch =baseurl+"/v1/company/adminSearchCompany?/";
 	
+	//update
 	public static String AdminUpdateCompany =baseurl+"/v1/company/adminUpdateCompany";
 	
+	//disable
 	public static String AdminDisableCompany =baseurl+"/v1/company/adminDisableCompany?/";
+	
+	//dashboard count
+	
+	public static String AdmindashboardCount =baseurl+"/v1/dashboard/getAllAdminCounts";
+	
+	
 	
 	
 	

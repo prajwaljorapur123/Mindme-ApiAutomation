@@ -96,7 +96,7 @@ import io.restassured.response.Response;
 		//download error file
 		
 				@Test(priority = 4)
-				public void TestDownloadExcelfile() throws IOException
+				public void TestDownloadPdffile() throws IOException
 				{
 				 Response response =UploadFileEndpoins.DownloadExcelFile(PdfId);
 				 
@@ -108,7 +108,7 @@ import io.restassured.response.Response;
 			            InputStream inputStream = response.getBody().asInputStream();
 			           
 			            // Create output stream to write file
-			            OutputStream outputStream = new FileOutputStream("C:/Users/www.abcom.in/Documents/mindme_java_test_automation/Automation_Scripts/Downloads/sample_file.pdf");
+			            OutputStream outputStream = new FileOutputStream("C:\\Users\\Prajwal\\Documents\\mindme_java_test_automation\\Automation_Scripts\\Downloads\\sample_file.pdf");
 			          
 			            // Write data from input stream to output stream
 			            byte[] buffer = new byte[1024];
