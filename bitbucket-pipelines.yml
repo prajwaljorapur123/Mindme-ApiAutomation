@@ -15,6 +15,7 @@ pipelines:
           caches:
             - maven
           script:
+            - cd mindme_java_test_automation/Automation_Scripts
             - mvn -B clean install
           after-script:
               # Collect checkstyle results, if any, and convert to Bitbucket Code Insights.
