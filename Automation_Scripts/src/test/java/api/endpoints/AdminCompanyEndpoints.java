@@ -11,67 +11,47 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
 public class AdminCompanyEndpoints {
-	
-	public static Response AdminCreateCompany(String token, AdminCompany company) {
-		
 
-		Response response = given()
-				.filter(new AllureRestAssured())
-				.headers("Authorization", "Bearer " + token)
-				.contentType("application/json")
-				.body(company)
-				.when().post(Routes.AdminCreateCompany);
+	public static Response AdminCreateCompany(String token, AdminCompany company) {
+
+		Response response = given().filter(new AllureRestAssured()).headers("Authorization", "Bearer " + token)
+				.contentType("application/json").body(company).when().post(Routes.AdminCreateCompany);
 
 		return response;
 
 	}
-	
-public static Response AdminCompanySearch(String token , String name , int pageNo , int pageSize , int searchType ) {
-		
 
-		Response response = given()
-				.filter(new AllureRestAssured())
-				.headers("Authorization", "Bearer " + token)
-				.queryParam("name", name)
-		        .queryParam("pageNo", pageNo)
-		        .queryParam("pageSize", pageSize)
-		        .queryParam("searchType", searchType)
-		        
+	public static Response AdminCompanySearch(String token, String name, int pageNo, int pageSize, int searchType) {
+
+		Response response = given().filter(new AllureRestAssured()).headers("Authorization", "Bearer " + token)
+				.queryParam("name", name).queryParam("pageNo", pageNo).queryParam("pageSize", pageSize)
+				.queryParam("searchType", searchType)
+
 				.when().get(Routes.AdminCompanySearch);
 
 		return response;
 
 	}
 
+	public static Response AdminUpdateCompany(String token, int id, AdminCompany payload) {
 
-public static Response AdminUpdateCompany(String token , int id , AdminCompany payload) {
-	
+		Response response = given().filter(new AllureRestAssured()).headers("Authorization", "Bearer " + token)
+				.contentType(ContentType.JSON).body(payload)
 
-	Response response = given()
-			.filter(new AllureRestAssured())
-			.headers("Authorization", "Bearer " + token)
-			.contentType(ContentType.JSON)
-			.body(payload)
-	        
-			.when().post(Routes.AdminUpdateCompany);
+				.when().post(Routes.AdminUpdateCompany);
 
-	return response;
+		return response;
 
-}
+	}
 
+	public static Response AdminDisableCompany(String token, int id, boolean enable) {
 
-public static Response AdminDisableCompany(String token , int id , boolean enable) {
-	
+		Response response = given().filter(new AllureRestAssured()).headers("Authorization", "Bearer " + token)
+				.queryParam("id", id).queryParam("enable", enable)
 
-	Response response = given()
-			.filter(new AllureRestAssured())
-			.headers("Authorization", "Bearer " + token)
-			.queryParam("id", id)
-			.queryParam("enable", enable)
-	        
-			.when().get(Routes.AdminDisableCompany);
+				.when().get(Routes.AdminDisableCompany);
 
-	return response;
+		return response;
 
-}
+	}
 }

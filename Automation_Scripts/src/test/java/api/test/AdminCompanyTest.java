@@ -108,7 +108,7 @@ public class AdminCompanyTest {
 
 		Response response = AdminCompanyEndpoints.AdminUpdateCompany(AdminTest.AdminLoginToken, CompanyId,
 				UpdateCompany);
-		response.prettyPrint();
+		
 
 		// validations
 
@@ -135,7 +135,9 @@ public class AdminCompanyTest {
 			} else {
 				Reporter.log("Admin disable Company failed" + response.prettyPrint(), true);
 			}
-
+			
+			
+			
 		}
 
 }
