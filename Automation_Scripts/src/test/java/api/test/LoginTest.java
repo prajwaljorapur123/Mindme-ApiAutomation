@@ -27,7 +27,7 @@ public class LoginTest {
 	public void setupData() {
 
 		LoginPayload = new Login();
-		LoginPayload.setEmail("ipl@yopmail.com");
+		LoginPayload.setEmail("bigboss@yopmail.com");
 		LoginPayload.setPassword("Prajwal@123");
 
 	}
@@ -60,9 +60,9 @@ public class LoginTest {
 		// validations
 
 		if (response.getStatusCode() == 200 && response.jsonPath().getString("message").equals("200 OK")) {
-			Reporter.log("get company details...." + response.getStatusCode(), true);
+			Reporter.log("company details...." + response.getStatusCode(), true);
 		} else {
-			Reporter.log("get company details failed" + response.prettyPrint(), false);
+			Reporter.log("Company details failed" + response.prettyPrint(), false);
 		}
 
 	}

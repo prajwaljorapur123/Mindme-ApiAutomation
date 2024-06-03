@@ -1,0 +1,76 @@
+<div>POST to http://mindmedev-env.eba-p3axgdvz.us-east-2.elasticbeanstalk.com/v1/company/adminCreateCompany</div>
+
+    <h4>Body</h4>
+    <div>
+    <pre class="preformated-text">
+{
+    &quot;companyName&quot;: &quot;Forward Security Producer&quot;,
+    &quot;password&quot;: &quot;Prajwal@123&quot;,
+    &quot;deviceId&quot;: null,
+    &quot;deviceType&quot;: null,
+    &quot;imageId&quot;: &quot;0&quot;,
+    &quot;empLimit&quot;: 20,
+    &quot;expireDate&quot;: &quot;2025-06-30 00:00:00.000&quot;,
+    &quot;addEmployee&quot;: {
+        &quot;empType&quot;: &quot;1&quot;,
+        &quot;firstName&quot;: &quot;Brant&quot;,
+        &quot;lastName&quot;: &quot;Torphy&quot;,
+        &quot;designation&quot;: &quot;Liberians&quot;,
+        &quot;countryCode&quot;: &quot;+91&quot;,
+        &quot;email&quot;: &quot;quincy.leannon@gmail.com&quot;,
+        &quot;phone&quot;: &quot;6360504064&quot;,
+        &quot;permissionIds&quot;: [
+            2
+        ],
+        &quot;imageId&quot;: &quot;0&quot;
+    },
+    &quot;id&quot;: 0,
+    &quot;phone&quot;: null,
+    &quot;name&quot;: null,
+    &quot;pageNo&quot;: 0,
+    &quot;pageSize&quot;: 0,
+    &quot;searchType&quot;: 0
+}    </pre>
+    </div>
+
+    <h4>Headers</h4>
+    <div>
+            <div>Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJwZXJtaXNzaW9uIjpbM10sInN1YiI6Iml0YWNoaUB5b3BtYWlsLmNvbSIsImlzcyI6Ik1pbmRNZSIsImlhdCI6MTcxNzQwNTAzMiwiZXhwIjoxNzE3NDkxNDMyfQ.YGVLtnci9CEztV0SR8AAYLQ_oQSDLfOIWB6D9PiVtr3teJHUwmugzWkWYl094k9xHzMHKj1uczy1bNyJLS3-UQ</div>
+            <div>Accept: */*</div>
+            <div>Content-Type: application/json</div>
+    </div>
+
+
+
+    <h4>Curl</h4>
+    <div>
+        curl -v -X POST &#39;http://mindmedev-env.eba-p3axgdvz.us-east-2.elasticbeanstalk.com/v1/company/adminCreateCompany&#39; -H &#39;Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJwZXJtaXNzaW9uIjpbM10sInN1YiI6Iml0YWNoaUB5b3BtYWlsLmNvbSIsImlzcyI6Ik1pbmRNZSIsImlhdCI6MTcxNzQwNTAzMiwiZXhwIjoxNzE3NDkxNDMyfQ.YGVLtnci9CEztV0SR8AAYLQ_oQSDLfOIWB6D9PiVtr3teJHUwmugzWkWYl094k9xHzMHKj1uczy1bNyJLS3-UQ&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: application/json&#39; -d &#39;{
+    &quot;companyName&quot;: &quot;Forward Security Producer&quot;,
+    &quot;password&quot;: &quot;Prajwal@123&quot;,
+    &quot;deviceId&quot;: null,
+    &quot;deviceType&quot;: null,
+    &quot;imageId&quot;: &quot;0&quot;,
+    &quot;empLimit&quot;: 20,
+    &quot;expireDate&quot;: &quot;2025-06-30 00:00:00.000&quot;,
+    &quot;addEmployee&quot;: {
+        &quot;empType&quot;: &quot;1&quot;,
+        &quot;firstName&quot;: &quot;Brant&quot;,
+        &quot;lastName&quot;: &quot;Torphy&quot;,
+        &quot;designation&quot;: &quot;Liberians&quot;,
+        &quot;countryCode&quot;: &quot;+91&quot;,
+        &quot;email&quot;: &quot;quincy.leannon@gmail.com&quot;,
+        &quot;phone&quot;: &quot;6360504064&quot;,
+        &quot;permissionIds&quot;: [
+            2
+        ],
+        &quot;imageId&quot;: &quot;0&quot;
+    },
+    &quot;id&quot;: 0,
+    &quot;phone&quot;: null,
+    &quot;name&quot;: null,
+    &quot;pageNo&quot;: 0,
+    &quot;pageSize&quot;: 0,
+    &quot;searchType&quot;: 0
+}&#39;
+    </div>
+
