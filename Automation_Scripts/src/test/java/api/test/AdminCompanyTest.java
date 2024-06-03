@@ -9,13 +9,13 @@ import org.testng.annotations.Test;
 import com.github.javafaker.Faker;
 
 import api.endpoints.AdminCompanyEndpoints;
-import api.endpoints.UploadFileEndpoins;
 import api.payload.AdminCompany;
 import api.payload.CompanyEmp;
 import io.restassured.response.Response;
 
 public class AdminCompanyTest {
 
+	
 	AdminCompany companypayload;
 	CompanyEmp empdetails;
 	Faker faker;
