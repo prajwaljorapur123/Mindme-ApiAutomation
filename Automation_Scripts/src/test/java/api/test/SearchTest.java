@@ -35,14 +35,11 @@ public class SearchTest {
 		PdfSearchPayload.setIsAbbreviation("");
 		PdfSearchPayload.setFileType("pdf");
 		PdfSearchPayload.setSearchText("park");
-		
+
 		SearchHistoryPayload = new FileSearch();
 		SearchHistoryPayload.setFileType("excel");
 		SearchHistoryPayload.setPageNo(0);
 		SearchHistoryPayload.setPageSize(8);
-		
-		
-		
 
 	}
 
@@ -58,6 +55,8 @@ public class SearchTest {
 		} else {
 			Reporter.log("Search excel data Fail...." + response.prettyPrint(), false);
 		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), "OK", "Correct message returned");
 
 	}
 
@@ -74,7 +73,8 @@ public class SearchTest {
 		} else {
 			Reporter.log("Search pdf data Fail...." + response.prettyPrint(), false);
 		}
-
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), "OK", "Correct message returned");
 	}
 
 	// dashboard count
@@ -89,46 +89,51 @@ public class SearchTest {
 		} else {
 			Reporter.log("Dashboard count Fail...." + response.prettyPrint(), false);
 		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), "200 OK", "Correct message returned");
 
 		throw new SkipException("Skip dashboard");
 
 	}
-	
-	// Excel search history 
 
-		@Test(priority = 4)
-		public void testExcelHistory() {
-			
-			Response response = SearchEndpoints.ExcelSearchHistory(LoginTest.LoginToken , this.SearchHistoryPayload.getFileType(),this.SearchHistoryPayload.getPageNo(),this.SearchHistoryPayload.getPageSize());
-             
-			// validations
-			if (response.getStatusCode() == 200 && response.jsonPath().getString("message").equals("OK")) {
-				Reporter.log("Excel search history...." + response.getStatusCode(), true);
-			} else {
-				Reporter.log("Excel search history fail...." + response.prettyPrint(), false);
-			}
+	// Excel search history
 
-			
+	@Test(priority = 4)
+	public void testExcelHistory() {
 
+		Response response = SearchEndpoints.ExcelSearchHistory(LoginTest.LoginToken,
+				this.SearchHistoryPayload.getFileType(), this.SearchHistoryPayload.getPageNo(),
+				this.SearchHistoryPayload.getPageSize());
+
+		// validations
+		if (response.getStatusCode() == 200 && response.jsonPath().getString("message").equals("OK")) {
+			Reporter.log("Excel search history...." + response.getStatusCode(), true);
+		} else {
+			Reporter.log("Excel search history fail...." + response.prettyPrint(), false);
 		}
-		
-		@Test(priority = 5)
-		public void testpdfHistory() {
-			SearchHistoryPayload.setFileType("pdf");
-			
-			Response response = SearchEndpoints.ExcelSearchHistory(LoginTest.LoginToken , this.SearchHistoryPayload.getFileType(),this.SearchHistoryPayload.getPageNo(),this.SearchHistoryPayload.getPageSize());
-  
-			// validations
-			if (response.getStatusCode() == 200 && response.jsonPath().getString("message").equals("OK")) {
-				Reporter.log("pdf search history...." + response.getStatusCode(), true);
-			} else {
-				Reporter.log("pdf search history fail...." + response.prettyPrint(), false);
-			}
 
-			
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), "OK", "Correct message returned");
 
+	}
+
+	@Test(priority = 5)
+	public void testpdfHistory() {
+		SearchHistoryPayload.setFileType("pdf");
+
+		Response response = SearchEndpoints.ExcelSearchHistory(LoginTest.LoginToken,
+				this.SearchHistoryPayload.getFileType(), this.SearchHistoryPayload.getPageNo(),
+				this.SearchHistoryPayload.getPageSize());
+
+		// validations
+		if (response.getStatusCode() == 200 && response.jsonPath().getString("message").equals("OK")) {
+			Reporter.log("pdf search history...." + response.getStatusCode(), true);
+		} else {
+			Reporter.log("pdf search history fail...." + response.prettyPrint(), false);
 		}
-	
-	
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), "OK", "Correct message returned");
+
+	}
 
 }

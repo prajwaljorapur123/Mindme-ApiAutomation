@@ -1,5 +1,6 @@
 package api.test;
 
+import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -12,7 +13,7 @@ import io.restassured.response.Response;
 public class AdminTest {
 
 	Admin AdminLoginPayload;
-	
+
 	public static String AdminLoginToken;
 	AdminCompany searchpayload;
 
@@ -45,6 +46,7 @@ public class AdminTest {
 		} else {
 			Reporter.log("AdminLogin failed" + response.prettyPrint(), false);
 		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
 
 	}
 
@@ -60,6 +62,8 @@ public class AdminTest {
 		} else {
 			Reporter.log("Admin dashboard count fail" + response.prettyPrint(), false);
 		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), "200 OK", "Correct message returned");
 
 	}
 
@@ -69,7 +73,6 @@ public class AdminTest {
 	public void TestAboutToExpirecompanies() {
 		Response response = AdminEndpoints.AboutToexpireCompanies(AdminLoginToken, this.searchpayload.getName(),
 				this.searchpayload.getPageNo(), this.searchpayload.getPageSize(), this.searchpayload.getSearchType());
-		response.prettyPrint();
 
 		if (response.getStatusCode() == 200 && response.jsonPath().getString("message").equals("200 OK")) {
 			Reporter.log("list of About to expire companies...." + response.getStatusCode(), true);
@@ -77,6 +80,8 @@ public class AdminTest {
 		} else {
 			Reporter.log("list of About to expire companies fail" + response.prettyPrint(), false);
 		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), "200 OK", "Correct message returned");
 
 	}
 
@@ -85,7 +90,6 @@ public class AdminTest {
 		searchpayload.setSearchType(1);
 		Response response = AdminEndpoints.AboutToexpireCompanies(AdminLoginToken, this.searchpayload.getName(),
 				this.searchpayload.getPageNo(), this.searchpayload.getPageSize(), this.searchpayload.getSearchType());
-		response.prettyPrint();
 
 		if (response.getStatusCode() == 200 && response.jsonPath().getString("message").equals("200 OK")) {
 			Reporter.log("list of expired companies...." + response.getStatusCode(), true);
@@ -93,6 +97,8 @@ public class AdminTest {
 		} else {
 			Reporter.log("list of expired companies fail" + response.prettyPrint(), false);
 		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), "200 OK", "Correct message returned");
 
 	}
 }

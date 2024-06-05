@@ -9,6 +9,8 @@ public class Project {
 	int projectId;
 	 int pageNo;
 	    int pageSize;
+	    
+	   
 	public int getPageNo() {
 			return pageNo;
 		}

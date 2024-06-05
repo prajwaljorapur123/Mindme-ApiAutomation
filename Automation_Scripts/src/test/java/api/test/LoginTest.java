@@ -46,6 +46,8 @@ public class LoginTest {
 		} else {
 			Reporter.log("Login failed" + response.prettyPrint(), false);
 		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+	
 
 	}
 
@@ -64,6 +66,8 @@ public class LoginTest {
 		} else {
 			Reporter.log("Company details failed" + response.prettyPrint(), false);
 		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), "200 OK", "Correct message returned");
 
 	}
 

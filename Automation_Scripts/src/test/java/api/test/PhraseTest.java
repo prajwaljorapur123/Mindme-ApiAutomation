@@ -1,5 +1,6 @@
 package api.test;
 
+import org.testng.Assert;
 import org.testng.AssertJUnit;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
@@ -43,6 +44,9 @@ public class PhraseTest {
 		} else {
 			Reporter.log("Add Phrase Fail...." + response.prettyPrint(), false);
 		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), "200 OK", "Correct message returned");
+
 	}
 
 	// Get phrase
@@ -60,6 +64,9 @@ public class PhraseTest {
 		} else {
 			Reporter.log("Get Phrase Fail...." + response.prettyPrint(), false);
 		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), "200 OK", "Correct message returned");
+
 
 	}
 
@@ -81,6 +88,9 @@ public class PhraseTest {
 		} else {
 			Reporter.log("Update Phrase Fail...." + response.prettyPrint(), false);
 		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), "200 OK", "Correct message returned");
+
 
 	}
 
@@ -99,6 +109,9 @@ public class PhraseTest {
 		} else {
 			Reporter.log("Delete Phrase Fail...." + response.prettyPrint(), false);
 		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), "200 OK", "Correct message returned");
+
 
 	}
 

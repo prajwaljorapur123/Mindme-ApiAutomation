@@ -1,0 +1,52 @@
+<div>POST to http://mindmedev-env.eba-p3axgdvz.us-east-2.elasticbeanstalk.com/v1/employee/add</div>
+
+    <h4>Body</h4>
+    <div>
+    <pre class="preformated-text">
+{
+    &quot;eid&quot;: 0,
+    &quot;firstName&quot;: &quot;Yoshie&quot;,
+    &quot;lastName&quot;: &quot;Waelchi&quot;,
+    &quot;email&quot;: &quot;miguel.bergnaum@gmail.com&quot;,
+    &quot;countryCode&quot;: &quot;+91&quot;,
+    &quot;phone&quot;: &quot;2378237823&quot;,
+    &quot;permissionIds&quot;: [
+        1
+    ],
+    &quot;designation&quot;: &quot;Julio Emmerich Cruickshank&quot;,
+    &quot;imageId&quot;: &quot;0&quot;,
+    &quot;pageNo&quot;: 0,
+    &quot;pageSize&quot;: 8,
+    &quot;teamName&quot;: &quot;&quot;
+}    </pre>
+    </div>
+
+    <h4>Headers</h4>
+    <div>
+            <div>Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJwZXJtaXNzaW9uIjpbMl0sInN1YiI6ImJpZ2Jvc3NAeW9wbWFpbC5jb20iLCJpc3MiOiJNaW5kTWUiLCJpYXQiOjE3MTc1Njk1OTksImV4cCI6MTcxNzY1NTk5OX0.Z_na-HAYhUIX3rHiAhLVa0pMfKzQajbbiYTcR1H7XijrEfB8s6hUvqC8GCB9ghIw8FxN9YPeBP7-WhDtb02lwA</div>
+            <div>Accept: application/json, application/javascript, text/javascript, text/json</div>
+            <div>Content-Type: application/json</div>
+    </div>
+
+
+
+    <h4>Curl</h4>
+    <div>
+        curl -v -X POST &#39;http://mindmedev-env.eba-p3axgdvz.us-east-2.elasticbeanstalk.com/v1/employee/add&#39; -H &#39;Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJwZXJtaXNzaW9uIjpbMl0sInN1YiI6ImJpZ2Jvc3NAeW9wbWFpbC5jb20iLCJpc3MiOiJNaW5kTWUiLCJpYXQiOjE3MTc1Njk1OTksImV4cCI6MTcxNzY1NTk5OX0.Z_na-HAYhUIX3rHiAhLVa0pMfKzQajbbiYTcR1H7XijrEfB8s6hUvqC8GCB9ghIw8FxN9YPeBP7-WhDtb02lwA&#39; -H &#39;Accept: application/json, application/javascript, text/javascript, text/json&#39; -H &#39;Content-Type: application/json&#39; -d &#39;{
+    &quot;eid&quot;: 0,
+    &quot;firstName&quot;: &quot;Yoshie&quot;,
+    &quot;lastName&quot;: &quot;Waelchi&quot;,
+    &quot;email&quot;: &quot;miguel.bergnaum@gmail.com&quot;,
+    &quot;countryCode&quot;: &quot;+91&quot;,
+    &quot;phone&quot;: &quot;2378237823&quot;,
+    &quot;permissionIds&quot;: [
+        1
+    ],
+    &quot;designation&quot;: &quot;Julio Emmerich Cruickshank&quot;,
+    &quot;imageId&quot;: &quot;0&quot;,
+    &quot;pageNo&quot;: 0,
+    &quot;pageSize&quot;: 8,
+    &quot;teamName&quot;: &quot;&quot;
+}&#39;
+    </div>
+

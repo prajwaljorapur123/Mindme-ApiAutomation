@@ -2,6 +2,7 @@ package api.test;
 
 import java.util.Arrays;
 
+import org.testng.Assert;
 import org.testng.AssertJUnit;
 import org.testng.Reporter;
 import org.testng.SkipException;
@@ -91,6 +92,9 @@ public class UploadFileTest {
 		} else {
 			Reporter.log("upload file failed" + response.prettyPrint(), false);
 		}
+		Assert.assertEquals(response.getStatusCode(), 201, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), "File Uploaded successfully.", "Correct message returned");
+
 
 	}
 
@@ -107,6 +111,9 @@ public class UploadFileTest {
 		} else {
 			Reporter.log("upload error file failed" + response.prettyPrint(), false);
 		}
+		Assert.assertEquals(response.getStatusCode(), 201, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), "File Uploaded successfully.", "Correct message returned");
+		
 
 	}
 
@@ -125,6 +132,8 @@ public class UploadFileTest {
 		} else {
 			Reporter.log("Get files failed" + response.prettyPrint(), false);
 		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		
 
 	}
 
@@ -141,6 +150,8 @@ public class UploadFileTest {
 		} else {
 			Reporter.log("update file failed" + response.prettyPrint(), false);
 		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), " Update File Uploaded successfully.", "Correct message returned");
 
 	}
 
@@ -173,6 +184,9 @@ public class UploadFileTest {
 		} else {
 			Reporter.log("Failed to download error excel file. Status code: " + response.getStatusCode(),false);
 		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		
+		
 		throw new SkipException("Skip excel Download");
 
 	}
@@ -190,6 +204,8 @@ public class UploadFileTest {
 		} else {
 			Reporter.log("error file  fix failed" + response.prettyPrint(), false);
 		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), " Error File Uploaded successfully.", "Correct message returned");
 
 	}
 
@@ -205,6 +221,7 @@ public class UploadFileTest {
 		} else {
 			Reporter.log("Delete excel file failed" + response.prettyPrint(), false);
 		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
 
 	}
 
@@ -221,6 +238,7 @@ public class UploadFileTest {
 		} else {
 			Reporter.log("GetFileByFileId failed...." + response.prettyPrint(), false);
 		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
 
 	}
 

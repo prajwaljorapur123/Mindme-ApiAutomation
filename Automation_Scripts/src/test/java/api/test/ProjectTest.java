@@ -2,6 +2,7 @@ package api.test;
 
 import java.util.List;
 
+import org.testng.Assert;
 import org.testng.AssertJUnit;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
@@ -52,6 +53,9 @@ public class ProjectTest {
 		} else {
 			Reporter.log("Project Created Fail...." + response.prettyPrint(),false);
 		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), "OK", "Correct message returned");
+
 
 	}
 
@@ -71,6 +75,9 @@ public class ProjectTest {
 		} else {
 			Reporter.log("Project Details Fail...." + response.prettyPrint(),false);
 		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), "OK", "Correct message returned");
+
 
 	}
 
@@ -91,6 +98,9 @@ public class ProjectTest {
 		} else {
 			Reporter.log("Project Update Fail...." + response.prettyPrint(),false);
 		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), "OK", "Correct message returned");
+
 
 	}
 
@@ -109,6 +119,9 @@ public class ProjectTest {
 		} else {
 			Reporter.log("Project Deleted Fail...." + response.prettyPrint(),false);
 		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), "OK", "Correct message returned");
+
 
 	}
 

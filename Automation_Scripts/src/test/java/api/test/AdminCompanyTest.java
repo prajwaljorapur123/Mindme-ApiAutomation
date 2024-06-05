@@ -2,6 +2,7 @@ package api.test;
 
 import java.util.Arrays;
 
+import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -15,7 +16,6 @@ import io.restassured.response.Response;
 
 public class AdminCompanyTest {
 
-	
 	AdminCompany companypayload;
 	CompanyEmp empdetails;
 	Faker faker;
@@ -61,7 +61,7 @@ public class AdminCompanyTest {
 
 	// Admin Create Company
 
-	 @Test(priority = 1)
+	@Test(priority = 1)
 	public void AdminCreateCompany() {
 
 		Response response = AdminCompanyEndpoints.AdminCreateCompany(AdminTest.AdminLoginToken, companypayload);
@@ -73,6 +73,8 @@ public class AdminCompanyTest {
 		} else {
 			Reporter.log("Admin Create Company failed" + response.prettyPrint(), true);
 		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), "200 OK", "Correct message returned");
 
 	}
 
@@ -94,6 +96,8 @@ public class AdminCompanyTest {
 		} else {
 			Reporter.log("Admin Search Company failed" + response.prettyPrint(), true);
 		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), "200 OK", "Correct message returned");
 
 	}
 
@@ -108,7 +112,6 @@ public class AdminCompanyTest {
 
 		Response response = AdminCompanyEndpoints.AdminUpdateCompany(AdminTest.AdminLoginToken, CompanyId,
 				UpdateCompany);
-		
 
 		// validations
 
@@ -117,27 +120,28 @@ public class AdminCompanyTest {
 		} else {
 			Reporter.log("Admin Update Company failed" + response.prettyPrint(), true);
 		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), "200 OK", "Correct message returned");
 
 	}
-	
-	
+
 	// Admin Disable Company
 
-		@Test(priority = 4)
-		public void AdminDisableCompany() {
+	@Test(priority = 4)
+	public void AdminDisableCompany() {
 
-			Response response = AdminCompanyEndpoints.AdminDisableCompany(AdminTest.AdminLoginToken, CompanyId , false);
+		Response response = AdminCompanyEndpoints.AdminDisableCompany(AdminTest.AdminLoginToken, CompanyId, false);
 
-			// validations
+		// validations
 
-			if (response.getStatusCode() == 200 && response.jsonPath().getString("message").equals("200 OK")) {
-				Reporter.log("Admin Disable Company...." + response.getStatusCode(), true);
-			} else {
-				Reporter.log("Admin disable Company failed" + response.prettyPrint(), true);
-			}
-			
-			
-			
+		if (response.getStatusCode() == 200 && response.jsonPath().getString("message").equals("200 OK")) {
+			Reporter.log("Admin Disable Company...." + response.getStatusCode(), true);
+		} else {
+			Reporter.log("Admin disable Company failed" + response.prettyPrint(), true);
 		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), "200 OK", "Correct message returned");
+
+	}
 
 }

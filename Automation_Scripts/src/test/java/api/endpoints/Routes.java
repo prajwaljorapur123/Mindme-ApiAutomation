@@ -25,6 +25,8 @@ public class Routes {
 	public static String teams_get_url = baseurl+"/v1/teams";
 	public static String teams_update_url=baseurl+"/v1/teams/update_teams";
 	public static String teams_delete_url=baseurl+"/v1/teams/delete?id=";
+	public static String teams_employees=baseurl+"/v1/teams/teamEmployee?teamId=";
+	public static String delete_team_member=baseurl+"/v1/teams/delete_member?/";
 	
 	
 	//Project
@@ -76,6 +78,12 @@ public class Routes {
 	
 	public static String ExcelSearchHistory =baseurl+"/v1/search/getHistory?/";
 	public static String PdfSearchHistory =baseurl+"/v1/search/getHistory?/";
+	
+	
+	//community
+	
+	public static String Createrequest =baseurl+"/v1/request/createRequest";
+	
 	
 	//Admin portal
 	

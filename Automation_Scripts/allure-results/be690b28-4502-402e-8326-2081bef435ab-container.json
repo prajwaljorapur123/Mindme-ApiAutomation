@@ -1,1 +1,0 @@
-{"uuid":"be690b28-4502-402e-8326-2081bef435ab","name":"api.test.AdminTest","children":["b69aa7f6-07ba-41ba-ab75-1b8077baecab"],"befores":[{"name":"setupData","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1717145841854,"stop":1717145841868}],"afters":[],"start":1717145841758,"stop":1717145851626}

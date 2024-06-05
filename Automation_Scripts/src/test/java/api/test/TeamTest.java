@@ -2,6 +2,7 @@ package api.test;
 
 import java.util.List;
 
+import org.testng.Assert;
 import org.testng.AssertJUnit;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
@@ -19,6 +20,7 @@ public class TeamTest {
 	Faker faker;
 	Team teampayload;
 	public static int teamId;
+	public static int team_memberid;
 	public static List<Integer> teamsId;
 
 	@BeforeClass
@@ -39,16 +41,18 @@ public class TeamTest {
 	public void TestCreateTeam() {
 		teampayload.setTeamName(faker.name().bloodGroup());
 		Response response = TeamEndPoints.CreateTeam(LoginTest.LoginToken, teampayload);
-		
+
 		teamId = response.jsonPath().getInt("data.teams.id");
 
 		// validations
 
 		if (response.getStatusCode() == 200 && response.jsonPath().getString("message").equals("OK")) {
-			Reporter.log("Team Created...." + response.getStatusCode(),true);
+			Reporter.log("Team Created...." + response.getStatusCode(), true);
 		} else {
-			Reporter.log("Team Created Fail...." + response.prettyPrint(),false);
+			Reporter.log("Team Created Fail...." + response.prettyPrint(), false);
 		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), "OK", "Correct message returned");
 
 	}
 
@@ -64,10 +68,12 @@ public class TeamTest {
 
 		// validations
 		if (response.getStatusCode() == 200 && response.jsonPath().getString("message").equals("OK")) {
-			Reporter.log("Team Details...." + response.getStatusCode(),true);
+			Reporter.log("Team Details...." + response.getStatusCode(), true);
 		} else {
-			Reporter.log("Team Details Fail...." + response.prettyPrint(),false);
+			Reporter.log("Team Details Fail...." + response.prettyPrint(), false);
 		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), "OK", "Correct message returned");
 
 	}
 
@@ -84,16 +90,61 @@ public class TeamTest {
 		// validations
 
 		if (response.getStatusCode() == 200 && response.jsonPath().getString("message").equals("OK")) {
-			Reporter.log("Team Update...." + response.getStatusCode(),true);
+			Reporter.log("Team Update...." + response.getStatusCode(), true);
 		} else {
-			Reporter.log("Team Updated Fail...." + response.prettyPrint(),false);
+			Reporter.log("Team Updated Fail...." + response.prettyPrint(), false);
 		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), "OK", "Correct message returned");
+
+	}
+
+	// Team Employees
+
+	@Test(priority = 4)
+	public void TestTeamEmployees() {
+
+		teampayload.setTeamId(teamId);
+
+		Response response = TeamEndPoints.TeamEmployees(LoginTest.LoginToken, teamId);
+		team_memberid = response.jsonPath().getInt("data[0].id");
+
+		// validations
+
+		if (response.getStatusCode() == 200 && response.jsonPath().getString("message").equals("OK")) {
+			Reporter.log("Team Employees...." + response.getStatusCode(), true);
+		} else {
+			Reporter.log("Team Employees Fail...." + response.prettyPrint(), false);
+		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), "OK", "Correct message returned");
+
+	}
+
+	// Delete team Member
+
+	@Test(priority = 5)
+	public void TestDeleteTeamMember() {
+		teampayload.setMemberId(team_memberid);
+
+		Response response = TeamEndPoints.DeleteTeamMember(LoginTest.LoginToken, this.teampayload.getMemberId(),
+				this.teampayload.getTeamId());
+
+		// validations
+
+		if (response.getStatusCode() == 200 && response.jsonPath().getString("message").equals("OK")) {
+			Reporter.log("Delete Team Member...." + response.getStatusCode(), true);
+		} else {
+			Reporter.log("Delete Team Member Fail...." + response.prettyPrint(), false);
+		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), "OK", "Correct message returned");
 
 	}
 
 //Team Delete
 
-	@Test(priority = 4)
+	@Test(priority = 6)
 	public void TestTeamDelete() {
 
 		teampayload.setTeamId(teamId);
@@ -102,10 +153,12 @@ public class TeamTest {
 
 		// validations
 		if (response.getStatusCode() == 200 && response.jsonPath().getString("message").equals("OK")) {
-			Reporter.log("Team Deleted...." + response.getStatusCode(),true);
+			Reporter.log("Team Deleted...." + response.getStatusCode(), true);
 		} else {
-			Reporter.log("Team Deleted Fail...." + response.prettyPrint(),false);
+			Reporter.log("Team Deleted Fail...." + response.prettyPrint(), false);
 		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), "OK", "Correct message returned");
 
 	}
 

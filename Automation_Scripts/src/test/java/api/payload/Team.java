@@ -9,9 +9,16 @@ public class Team {
     int pageNo;
     int pageSize;
     int teamId;
+    int memberId;
 	
 	
-	     public int getTeamId() {
+	     public int getMemberId() {
+		return memberId;
+	}
+	public void setMemberId(int memberId) {
+		this.memberId = memberId;
+	}
+		public int getTeamId() {
 		return teamId;
 	}
 	public void setTeamId(int teamIDS) {

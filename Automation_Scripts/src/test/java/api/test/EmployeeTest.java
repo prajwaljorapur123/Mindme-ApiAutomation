@@ -2,6 +2,7 @@ package api.test;
 
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
+import org.testng.Assert;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
@@ -67,6 +68,9 @@ public class EmployeeTest {
 		} else {
 			Reporter.log("Added Employee Fail...." + response.prettyPrint(),false);
 		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), "OK", "Correct message returned");
+
 
 	}
 
@@ -85,6 +89,9 @@ public class EmployeeTest {
 		} else {
 			Reporter.log("Employee Details Fail...." + response.prettyPrint(),false);
 		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), "OK", "Correct message returned");
+
 
 	}
 
@@ -106,6 +113,9 @@ public class EmployeeTest {
 		} else {
 			Reporter.log("Update Employee Fail...." + response.prettyPrint(),false);
 		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), "OK", "Correct message returned");
+
 
 	}
 
@@ -122,6 +132,9 @@ public class EmployeeTest {
 		} else {
 			Reporter.log("Delete Employee Fail...." + response.prettyPrint(), false);
 		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), "OK", "Correct message returned");
+
 	}
 
 	// Search Employee
@@ -139,6 +152,9 @@ public class EmployeeTest {
 		} else {
 			Reporter.log("Search Employee Fail...." + response.prettyPrint(),false);
 		}
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), "OK", "Correct message returned");
+
 		
 	}
 

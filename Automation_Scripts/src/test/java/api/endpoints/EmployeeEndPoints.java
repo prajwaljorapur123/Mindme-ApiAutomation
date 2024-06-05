@@ -6,6 +6,7 @@ import static org.hamcrest.Matchers.*;
 import org.testng.ITestContext;
 
 import api.payload.Employee;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
@@ -16,6 +17,7 @@ public class EmployeeEndPoints {
 	{
 		
 	Response response = given()
+		.filter(new AllureRestAssured())
 		.headers("Authorization","Bearer "+token)
 		.contentType(ContentType.JSON)
 		.accept(ContentType.JSON)
@@ -31,6 +33,7 @@ public class EmployeeEndPoints {
 	{
 		
 	Response response = given()
+			.filter(new AllureRestAssured())
 		.headers("Authorization","Bearer "+token)
 		.contentType(ContentType.JSON)
 		.accept(ContentType.JSON)
@@ -44,6 +47,7 @@ public class EmployeeEndPoints {
 	{
 	
 	Response response = given()
+			.filter(new AllureRestAssured())
 		.headers("Authorization","Bearer "+token)
 		.multiPart("data",payload , "application/json")
 		.contentType("multipart/json")
@@ -56,6 +60,7 @@ public class EmployeeEndPoints {
 	{
 		
 	Response response = given()
+			.filter(new AllureRestAssured())
 		.headers("Authorization","Bearer "+token)
 		.queryParam("id",eid )
 		.contentType(ContentType.JSON)
@@ -69,6 +74,7 @@ public class EmployeeEndPoints {
 	{
 	
 	Response response = given()
+			.filter(new AllureRestAssured())
 		.headers("Authorization","Bearer "+token)
 		.contentType(ContentType.JSON)
 		.body(payload)
