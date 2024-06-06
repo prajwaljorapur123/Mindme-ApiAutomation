@@ -38,7 +38,7 @@ public class DroneDpTest {
 		if (response.getStatusCode() == 200 && response.jsonPath().getString("message").equals("200 OK")) {
 			Reporter.log("View request...." + response.getStatusCode(), true);
 		} else {
-			Reporter.log("View request failed" + response.prettyPrint(), true);
+			Reporter.log("View request failed" + response.prettyPrint(), false);
 		}
 		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
 		Assert.assertEquals(response.jsonPath().getString("message"), "200 OK", "Correct message returned");
