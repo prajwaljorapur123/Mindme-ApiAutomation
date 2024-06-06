@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+	<test thread-count="5" name="Test">
+		<classes>
+
+			<class name="api.test.LoginTest" />
+			<class name="api.test.EmployeeTest" />
+			<class name="api.test.TeamTest" />
+			<class name="api.test.ProjectTest" />
+			<class name="api.test.UploadFileTest" />
+			<class name="api.test.PhraseTest" />
+			<class name="api.test.PdfTest" />
+			<class name="api.test.SearchTest" />
+			<class name="api.test.CommunityTest" />
+
+		</classes>
+	</test>
+
+
+	<test name="Adminportal">
+		<classes>
+
+			<class name="api.test.AdminTest" />
+			<class name="api.test.AdminCompanyTest" />
+			<class name="api.test.DroneDpTest" />
+
+		</classes>
+	</test>
+
+
+</suite> <!--
+Suite -->
