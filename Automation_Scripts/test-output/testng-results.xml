@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="23" passed="23" failed="0" skipped="0">
+  <reporter-output>
+    <line>
+      <![CDATA[Login successfull....200]]>
+    </line>
+    <line>
+      <![CDATA[company details....200]]>
+    </line>
+    <line>
+      <![CDATA[Added Employee....200]]>
+    </line>
+    <line>
+      <![CDATA[Added Employee....200]]>
+    </line>
+    <line>
+      <![CDATA[Employee Details....200]]>
+    </line>
+    <line>
+      <![CDATA[Update Employee....200]]>
+    </line>
+    <line>
+      <![CDATA[Delete Employee....200]]>
+    </line>
+    <line>
+      <![CDATA[Search Employee....200]]>
+    </line>
+    <line>
+      <![CDATA[Team Created....200]]>
+    </line>
+    <line>
+      <![CDATA[Team Created....200]]>
+    </line>
+    <line>
+      <![CDATA[Team Details....200]]>
+    </line>
+    <line>
+      <![CDATA[Team Update....200]]>
+    </line>
+    <line>
+      <![CDATA[Team Employees....200]]>
+    </line>
+    <line>
+      <![CDATA[Delete Team Member....200]]>
+    </line>
+    <line>
+      <![CDATA[Team Deleted....200]]>
+    </line>
+    <line>
+      <![CDATA[community Created....200]]>
+    </line>
+    <line>
+      <![CDATA[community Search....200]]>
+    </line>
+    <line>
+      <![CDATA[Create request....200]]>
+    </line>
+    <line>
+      <![CDATA[AdminLogin successfull....200]]>
+    </line>
+    <line>
+      <![CDATA[Admin Dashboard Count ....200]]>
+    </line>
+    <line>
+      <![CDATA[list of About to expire companies....200]]>
+    </line>
+    <line>
+      <![CDATA[list of expired companies....200]]>
+    </line>
+    <line>
+      <![CDATA[View request....200]]>
+    </line>
+  </reporter-output>
+  <suite started-at="2024-06-06T11:14:21 IST" name="Suite" finished-at="2024-06-06T11:14:43 IST" duration-ms="22341">
+    <groups>
+    </groups>
+    <test started-at="2024-06-06T11:14:21 IST" name="Test" finished-at="2024-06-06T11:14:38 IST" duration-ms="17347">
+      <class name="api.test.LoginTest">
+        <test-method is-config="true" signature="setupData()[pri:0, instance:api.test.LoginTest@6581dc0a]" started-at="2024-06-06T11:14:21 IST" name="setupData" finished-at="2024-06-06T11:14:21 IST" duration-ms="8" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupData -->
+        <test-method signature="testLogin()[pri:1, instance:api.test.LoginTest@6581dc0a]" started-at="2024-06-06T11:14:21 IST" name="testLogin" finished-at="2024-06-06T11:14:23 IST" duration-ms="2378" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Login successfull....200]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- testLogin -->
+        <test-method signature="companyDetails()[pri:2, instance:api.test.LoginTest@6581dc0a]" started-at="2024-06-06T11:14:23 IST" name="companyDetails" finished-at="2024-06-06T11:14:24 IST" duration-ms="816" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[company details....200]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- companyDetails -->
+      </class> <!-- api.test.LoginTest -->
+      <class name="api.test.CommunityTest">
+        <test-method is-config="true" signature="setupData()[pri:0, instance:api.test.CommunityTest@7ae42ce3]" started-at="2024-06-06T11:14:36 IST" name="setupData" finished-at="2024-06-06T11:14:36 IST" duration-ms="14" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupData -->
+        <test-method signature="TestCreateCommunity()[pri:1, instance:api.test.CommunityTest@7ae42ce3]" started-at="2024-06-06T11:14:36 IST" name="TestCreateCommunity" finished-at="2024-06-06T11:14:37 IST" duration-ms="1054" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[community Created....200]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TestCreateCommunity -->
+        <test-method signature="TestSearchCommunity()[pri:2, instance:api.test.CommunityTest@7ae42ce3]" started-at="2024-06-06T11:14:37 IST" name="TestSearchCommunity" finished-at="2024-06-06T11:14:37 IST" duration-ms="595" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[community Search....200]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TestSearchCommunity -->
+        <test-method signature="TestCreateRequest()[pri:3, instance:api.test.CommunityTest@7ae42ce3]" started-at="2024-06-06T11:14:37 IST" name="TestCreateRequest" finished-at="2024-06-06T11:14:38 IST" duration-ms="779" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Create request....200]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TestCreateRequest -->
+      </class> <!-- api.test.CommunityTest -->
+      <class name="api.test.TeamTest">
+        <test-method is-config="true" signature="setupData()[pri:0, instance:api.test.TeamTest@5a755cc1]" started-at="2024-06-06T11:14:30 IST" name="setupData" finished-at="2024-06-06T11:14:30 IST" duration-ms="14" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupData -->
+        <test-method signature="TestCreateTeam()[pri:1, instance:api.test.TeamTest@5a755cc1]" started-at="2024-06-06T11:14:30 IST" name="TestCreateTeam" finished-at="2024-06-06T11:14:31 IST" duration-ms="808" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Team Created....200]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TestCreateTeam -->
+        <test-method signature="TestCreateTeam()[pri:1, instance:api.test.TeamTest@5a755cc1]" started-at="2024-06-06T11:14:31 IST" name="TestCreateTeam" finished-at="2024-06-06T11:14:32 IST" duration-ms="647" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Team Created....200]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TestCreateTeam -->
+        <test-method signature="TestTeamDetails()[pri:2, instance:api.test.TeamTest@5a755cc1]" started-at="2024-06-06T11:14:32 IST" name="TestTeamDetails" finished-at="2024-06-06T11:14:32 IST" duration-ms="670" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Team Details....200]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TestTeamDetails -->
+        <test-method signature="TestTeamUpdate()[pri:3, instance:api.test.TeamTest@5a755cc1]" started-at="2024-06-06T11:14:32 IST" name="TestTeamUpdate" finished-at="2024-06-06T11:14:33 IST" duration-ms="596" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Team Update....200]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TestTeamUpdate -->
+        <test-method signature="TestTeamEmployees()[pri:4, instance:api.test.TeamTest@5a755cc1]" started-at="2024-06-06T11:14:33 IST" name="TestTeamEmployees" finished-at="2024-06-06T11:14:34 IST" duration-ms="746" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Team Employees....200]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TestTeamEmployees -->
+        <test-method signature="TestDeleteTeamMember()[pri:5, instance:api.test.TeamTest@5a755cc1]" started-at="2024-06-06T11:14:34 IST" name="TestDeleteTeamMember" finished-at="2024-06-06T11:14:35 IST" duration-ms="758" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Delete Team Member....200]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TestDeleteTeamMember -->
+        <test-method signature="TestTeamDelete()[pri:6, instance:api.test.TeamTest@5a755cc1]" started-at="2024-06-06T11:14:35 IST" name="TestTeamDelete" finished-at="2024-06-06T11:14:36 IST" duration-ms="940" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Team Deleted....200]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TestTeamDelete -->
+      </class> <!-- api.test.TeamTest -->
+      <class name="api.test.EmployeeTest">
+        <test-method is-config="true" signature="setupData()[pri:0, instance:api.test.EmployeeTest@764faa6]" started-at="2024-06-06T11:14:24 IST" name="setupData" finished-at="2024-06-06T11:14:24 IST" duration-ms="102" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupData -->
+        <test-method signature="testAddEmployee()[pri:1, instance:api.test.EmployeeTest@764faa6]" started-at="2024-06-06T11:14:24 IST" name="testAddEmployee" finished-at="2024-06-06T11:14:26 IST" duration-ms="1713" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Added Employee....200]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- testAddEmployee -->
+        <test-method signature="testAddEmployee()[pri:1, instance:api.test.EmployeeTest@764faa6]" started-at="2024-06-06T11:14:26 IST" name="testAddEmployee" finished-at="2024-06-06T11:14:28 IST" duration-ms="1867" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Added Employee....200]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- testAddEmployee -->
+        <test-method signature="testEmployeeDetails()[pri:2, instance:api.test.EmployeeTest@764faa6]" started-at="2024-06-06T11:14:28 IST" name="testEmployeeDetails" finished-at="2024-06-06T11:14:28 IST" duration-ms="605" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Employee Details....200]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- testEmployeeDetails -->
+        <test-method signature="TestUpdateEmployee()[pri:3, instance:api.test.EmployeeTest@764faa6]" started-at="2024-06-06T11:14:28 IST" name="TestUpdateEmployee" finished-at="2024-06-06T11:14:29 IST" duration-ms="854" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Update Employee....200]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TestUpdateEmployee -->
+        <test-method signature="TestDeleteEmployee()[pri:4, instance:api.test.EmployeeTest@764faa6]" started-at="2024-06-06T11:14:29 IST" name="TestDeleteEmployee" finished-at="2024-06-06T11:14:30 IST" duration-ms="613" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Delete Employee....200]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TestDeleteEmployee -->
+        <test-method signature="TestSearchEmployee()[pri:5, instance:api.test.EmployeeTest@764faa6]" started-at="2024-06-06T11:14:30 IST" name="TestSearchEmployee" finished-at="2024-06-06T11:14:30 IST" duration-ms="637" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Search Employee....200]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TestSearchEmployee -->
+      </class> <!-- api.test.EmployeeTest -->
+    </test> <!-- Test -->
+    <test started-at="2024-06-06T11:14:38 IST" name="Adminportal" finished-at="2024-06-06T11:14:43 IST" duration-ms="4972">
+      <class name="api.test.AdminTest">
+        <test-method is-config="true" signature="setupData()[pri:0, instance:api.test.AdminTest@19e4fcac]" started-at="2024-06-06T11:14:38 IST" name="setupData" finished-at="2024-06-06T11:14:38 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupData -->
+        <test-method signature="TestAdminLogin()[pri:1, instance:api.test.AdminTest@19e4fcac]" started-at="2024-06-06T11:14:38 IST" name="TestAdminLogin" finished-at="2024-06-06T11:14:40 IST" duration-ms="1620" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[AdminLogin successfull....200]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TestAdminLogin -->
+        <test-method signature="TestAdminDashboard()[pri:2, instance:api.test.AdminTest@19e4fcac]" started-at="2024-06-06T11:14:40 IST" name="TestAdminDashboard" finished-at="2024-06-06T11:14:40 IST" duration-ms="601" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Admin Dashboard Count ....200]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TestAdminDashboard -->
+        <test-method signature="TestAboutToExpirecompanies()[pri:3, instance:api.test.AdminTest@19e4fcac]" started-at="2024-06-06T11:14:40 IST" name="TestAboutToExpirecompanies" finished-at="2024-06-06T11:14:42 IST" duration-ms="1560" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[list of About to expire companies....200]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TestAboutToExpirecompanies -->
+        <test-method signature="TestExpiredcompanies()[pri:4, instance:api.test.AdminTest@19e4fcac]" started-at="2024-06-06T11:14:42 IST" name="TestExpiredcompanies" finished-at="2024-06-06T11:14:42 IST" duration-ms="596" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[list of expired companies....200]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TestExpiredcompanies -->
+      </class> <!-- api.test.AdminTest -->
+      <class name="api.test.DroneDpTest">
+        <test-method is-config="true" signature="setupData()[pri:0, instance:api.test.DroneDpTest@52c3cb31]" started-at="2024-06-06T11:14:42 IST" name="setupData" finished-at="2024-06-06T11:14:42 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupData -->
+        <test-method signature="ViewRequest()[pri:1, instance:api.test.DroneDpTest@52c3cb31]" started-at="2024-06-06T11:14:42 IST" name="ViewRequest" finished-at="2024-06-06T11:14:43 IST" duration-ms="584" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[View request....200]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- ViewRequest -->
+      </class> <!-- api.test.DroneDpTest -->
+    </test> <!-- Adminportal -->
+  </suite> <!-- Suite -->
+</testng-results>
