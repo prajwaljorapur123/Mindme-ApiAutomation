@@ -103,6 +103,11 @@ public class Routes {
 	
 	public static String AdmindashboardCount =baseurl+"/v1/dashboard/getAllAdminCounts";
 	
+	//DroneDp
+	
+	public static String ViewRequest =baseurl+"/v1/request/viewRequests";
+	
+	
 	
 	
 	

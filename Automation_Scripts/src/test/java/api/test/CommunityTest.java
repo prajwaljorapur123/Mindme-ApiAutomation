@@ -29,12 +29,9 @@ public class CommunityTest {
 		communitypayload.setProjectName(faker.name().title());
 		communitypayload.setTeamId(TeamTest.teamsId);
 		communitypayload.setIsCommunity(true);
-		
-		 RequestPayload = new Community();
-		 RequestPayload.setProjectId(CommunityId);
-		 RequestPayload.setDescription(faker.name().nameWithMiddle());
-         RequestPayload.setFrequencyType("Weekly");
-         RequestPayload.setCustomDate("2024-12-31T00:00:00Z");
+
+		RequestPayload = new Community();
+
 	}
 
 	// Create Community.
@@ -44,7 +41,7 @@ public class CommunityTest {
 		communitypayload.setProjectName(faker.name().title());
 
 		Response response = CommunityEndpoints.CreateCommunity(LoginTest.LoginToken, communitypayload);
-	CommunityId =	response.jsonPath().getInt("data.projectDetails.id");
+		CommunityId = response.jsonPath().getInt("data.projectDetails.id");
 
 		// validations
 
@@ -82,28 +79,29 @@ public class CommunityTest {
 		Assert.assertEquals(response.jsonPath().getString("message"), "OK", "Correct message returned");
 
 	}
-	
-	
+
 	// Create request
-	
-		@Test(priority = 3)
-		public void TestCreateRequest() {
-			
 
-			Response response = CommunityEndpoints.Createrequest(LoginTest.LoginToken, RequestPayload);
-			
+	@Test(priority = 3)
+	public void TestCreateRequest() {
+		RequestPayload.setProjectId(CommunityId);
+		RequestPayload.setDescription(faker.name().nameWithMiddle());
+		RequestPayload.setFrequencyType("Weekly");
+		RequestPayload.setCustomDate("2024-12-31T00:00:00Z");
 
-			// validations
+		Response response = CommunityEndpoints.Createrequest(LoginTest.LoginToken, RequestPayload);
 
-			if (response.getStatusCode() == 200 && response.jsonPath().getString("message").equals("200 OK")) {
-				Reporter.log("Create request...." + response.getStatusCode(), true);
-			} else {
-				Reporter.log("Create Request Fail...." + response.prettyPrint(), false);
-			}
+		// validations
 
-			Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
-			Assert.assertEquals(response.jsonPath().getString("message"), "200 OK", "Correct message returned");
-
+		if (response.getStatusCode() == 200 && response.jsonPath().getString("message").equals("200 OK")) {
+			Reporter.log("Create request...." + response.getStatusCode(), true);
+		} else {
+			Reporter.log("Create Request Fail...." + response.prettyPrint(), false);
 		}
+
+		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+		Assert.assertEquals(response.jsonPath().getString("message"), "200 OK", "Correct message returned");
+
+	}
 
 }
