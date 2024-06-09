@@ -3,7 +3,7 @@ package api.endpoints;
 public class Routes {
 	
 	public static String baseurl="http://mindmedev-env.eba-p3axgdvz.us-east-2.elasticbeanstalk.com";
-	public static String ip = "3.143.252.82:8090";
+	public static String ip = "3.149.250.56:8090";
 	
 	//Login
 	public static String login_post_url = baseurl+"/v1/auth/login";
