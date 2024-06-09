@@ -1,4 +1,4 @@
-package api.payload.FileDetailsByid;
+		package api.payload.FileDetailsByid;
 
 import java.util.List;
 
@@ -15,7 +15,22 @@ public class FileDetails {
      String createdDate;
      String timeUpdated;
      int createdByID;
-     String error;
+     int requestRefID;
+     String fileSize;
+     
+     public int getRequestRefID() {
+		return requestRefID;
+	}
+	public void setRequestRefID(int requestRefID) {
+		this.requestRefID = requestRefID;
+	}
+	public String getFileSize() {
+		return fileSize;
+	}
+	public void setFileSize(String fileSize) {
+		this.fileSize = fileSize;
+	}
+	String error;
     boolean activeStatus;
     
      List<Sheet> sheets;

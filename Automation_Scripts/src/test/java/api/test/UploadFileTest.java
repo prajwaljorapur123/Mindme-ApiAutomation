@@ -161,14 +161,14 @@ public class UploadFileTest {
 	public void TestDownloadExcelfile() throws IOException {
 		Response response = UploadFileEndpoins.DownloadExcelFile(ErrorFileId);
 
-		if (response.getStatusCode() == 200) {
+		if (response.getStatusCode() == 200) {	
 
 			// Get input stream from response body
 			InputStream inputStream = response.getBody().asInputStream();
 
 			// Create output stream to write file
 			OutputStream outputStream = new FileOutputStream(
-					"C:\\Users\\Prajwal\\Documents\\mindme_java_test_automation\\Automation_Scripts\\Downloads\\sample_file.xlsx");
+					"C:\\Users\\Prajwal\\OneDrive\\Documents\\mindme_java_test_automation\\Automation_Scripts\\Downloads\\sample_file.xlsx");
 
 			// Write data from input stream to output stream
 			byte[] buffer = new byte[1024];
