@@ -27,7 +27,7 @@ public class TeamTest {
 	public void setupData() {
 		faker = new Faker();
 		teampayload = new Team();
-		teampayload.setTeamName(faker.name().bloodGroup());
+		teampayload.setTeamName(faker.name().nameWithMiddle());
 		teampayload.setEmpId(EmployeeTest.employeeId);
 		teampayload.setPageNo(0);
 		teampayload.setPageSize(8);
