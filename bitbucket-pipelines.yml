@@ -26,7 +26,7 @@ pipelines:
               JIRA_BASE_URL: $JIRA_BASE_URL
               JIRA_USER_EMAIL: $JIRA_USER_EMAIL
               JIRA_API_TOKEN: $JIRA_API_TOKEN
-              JIRA_PROJECT: "YOUR_PROJECT_KEY"
+              JIRA_PROJECT: $JIRA_PROJECT
               JIRA_ISSUE_TYPE: "Bug"
               JIRA_ISSUE_SUMMARY: "Build Failure: $(date +'%Y-%m-%d %H:%M:%S')"
               JIRA_ISSUE_DESCRIPTION: "The Bitbucket pipeline for the Maven project has failed. Please investigate the issue."
