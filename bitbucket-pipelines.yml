@@ -22,6 +22,7 @@ pipelines:
         artifacts:
           - Automation_Scripts/test-output
           - build_status.txt
+        allow_failure: true
 
     - step:
         name: Create Jira Issue if Build Fails
