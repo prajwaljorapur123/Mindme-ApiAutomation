@@ -45,6 +45,6 @@ pipelines:
           - build_status.txt
 
     - step:
-        name: Security Scan
+        name: Always Run Security Scan
         script:
           - pipe: atlassian/git-secrets-scan:0.5.1
