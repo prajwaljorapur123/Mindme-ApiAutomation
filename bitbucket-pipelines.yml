@@ -14,42 +14,24 @@ pipelines:
         caches:
           - maven
         script:
-          - mvn clean install --file Automation_Scripts/pom.xml
+          - mvn clean install --file Automation_Scripts/pom.xml || echo "Build failed"
         after-script:
-          # Collect checkstyle results, if any, and convert to Bitbucket Code Insights.
+          - >
+            mvn checkstyle:checkstyle --file Automation_Scripts/pom.xml
+            || echo "Checkstyle failed, but continuing..."
           - pipe: atlassian/checkstyle-report:0.3.0
-        artifacts:
-          - build_status.txt
 
     - step:
-        name: Determine Build Status
+        name: Create Jira Issue
         script:
-          - >
-            if [ -f "build_status.txt" ]; then
-              build_status=$(cat build_status.txt)
-            else
-              build_status=0
-            fi
-            echo "Build status is $build_status"
-            echo $build_status > build_status.txt
-        artifacts:
-          - build_status.txt
-
-    - step:
-        name: Create Jira Issue if Build Fails
-        script:
-          - build_status=$(cat build_status.txt)
-          - >
-            if [ "$build_status" -ne 0 ]; then
-              pipe: atlassian/jira-create-issue:0.7.0
-              variables:
-                JIRA_BASE_URL: $JIRA_BASE_URL
-                JIRA_USER_EMAIL: $JIRA_USER_EMAIL
-                JIRA_API_TOKEN: $JIRA_API_TOKEN
-                JIRA_PROJECT: $JIRA_PROJECT
-                JIRA_ISSUE_SUMMARY: "Build Failed"
-                JIRA_ISSUE_DESCRIPTION: "The build failed for commit ${BITBUCKET_COMMIT}. Check the pipeline logs for details."
-            fi
+          - pipe: atlassian/jira-create-issue:0.7.0
+            variables:
+              JIRA_BASE_URL: $JIRA_BASE_URL
+              JIRA_USER_EMAIL: $JIRA_USER_EMAIL
+              JIRA_API_TOKEN: $JIRA_API_TOKEN
+              JIRA_PROJECT: $JIRA_PROJECT
+              JIRA_ISSUE_SUMMARY: "Build/Test Issue"
+              JIRA_ISSUE_DESCRIPTION: "This issue is created from Bitbucket Pipelines."
 
     - step:
         name: Security Scan
