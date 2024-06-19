@@ -161,7 +161,7 @@ public class UploadFileTest {
 	public void TestDownloadExcelfile() throws IOException {
 		Response response = UploadFileEndpoins.DownloadExcelFile(ErrorFileId);
 
-		if (response.getStatusCode() == 300) {	
+		if (response.getStatusCode() == 200) {	
 
 			// Get input stream from response body
 			InputStream inputStream = response.getBody().asInputStream();

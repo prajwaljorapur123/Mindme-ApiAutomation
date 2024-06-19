@@ -33,12 +33,9 @@ pipelines:
                       JIRA_USER_EMAIL: $JIRA_USER_EMAIL
                       JIRA_API_TOKEN: $JIRA_API_TOKEN
                       JIRA_PROJECT: $JIRA_PROJECT
-                      JIRA_ISSUE_SUMMARY: "Build/Test Failure - ${BITBUCKET_COMMIT}"
-                      JIRA_ISSUE_DESCRIPTION: |
-                        The build or test failed for commit ${BITBUCKET_COMMIT}.
-                        Please check the build logs for details.
-                        Test results: $test_results
-                  fi
+                      JIRA_ISSUE_SUMMARY: "Build/Test Failure"
+                      JIRA_ISSUE_DESCRIPTION: "The build or test failed for commit ${BITBUCKET_COMMIT}."                 
+                 fi
                 fi
 
         - step:

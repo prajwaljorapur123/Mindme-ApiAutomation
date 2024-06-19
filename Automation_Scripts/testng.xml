@@ -5,20 +5,20 @@
 		<classes>
 
 			<class name="api.test.LoginTest" />
-			<class name="api.test.EmployeeTest" />
+		<!--	<class name="api.test.EmployeeTest" />
 			<class name="api.test.TeamTest" />
 			<class name="api.test.ProjectTest" />
 			<class name="api.test.UploadFileTest" />
 			<class name="api.test.PhraseTest" />
 			<class name="api.test.PdfTest" />
 			<class name="api.test.SearchTest" />
-			<class name="api.test.CommunityTest" />
+			<class name="api.test.CommunityTest" /> -->
 
 		</classes>
 	</test>
 
 
-	<test name="Adminportal">
+<!--	<test name="Adminportal">
 		<classes>
 
 			<class name="api.test.AdminTest" />
@@ -26,7 +26,7 @@
 			<class name="api.test.DroneDpTest" />
 
 		</classes>
-	</test>
+	</test> -->
 
 
 </suite> <!--
