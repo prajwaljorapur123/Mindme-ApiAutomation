@@ -7,7 +7,7 @@ pipelines:
         caches:
           - maven
         script:
-          - mvn clean install --file Automation_Scripts/pom.xml 
+          - mvn clean install --file Automation_Scripts/pom.xml || echo "Build failed" > build_status.txt
         after-script:
           - pipe: atlassian/checkstyle-report:0.3.0
     - step:
@@ -15,24 +15,21 @@ pipelines:
         script:
           - >
             if [ -f build_status.txt ]; then
-              JIRA_BASE_URL="${JIRA_BASE_URL}"
-              JIRA_USER_EMAIL="${JIRA_USER_EMAIL}"
-              JIRA_API_TOKEN="${JIRA_API_TOKEN}"
-              JIRA_PROJECT="YOUR_PROJECT_KEY"
-              JIRA_ISSUE_SUMMARY="Build Failure: $(date +'%Y-%m-%d %H:%M:%S')"
-              JIRA_ISSUE_DESCRIPTION="The Bitbucket pipeline for the Maven project has failed. Please investigate the issue."
-              pipe: atlassian/jira-create-issue:0.7.0
-              variables:
-                JIRA_BASE_URL: $JIRA_BASE_URL
-                JIRA_USER_EMAIL: $JIRA_USER_EMAIL
-                JIRA_API_TOKEN: $JIRA_API_TOKEN
-                JIRA_PROJECT: $JIRA_PROJECT
-                JIRA_ISSUE_TYPE: "Bug"
-                JIRA_ISSUE_SUMMARY: $JIRA_ISSUE_SUMMARY
-                JIRA_ISSUE_DESCRIPTION: $JIRA_ISSUE_DESCRIPTION
-            else
-              echo "Build succeeded, no Jira ticket created."
+              exit 1
             fi
+    - step:
+        name: Create Jira Ticket
+        trigger: manual
+        script:
+          - pipe: atlassian/jira-create-issue:0.7.0
+            variables:
+              JIRA_BASE_URL: $JIRA_BASE_URL
+              JIRA_USER_EMAIL: $JIRA_USER_EMAIL
+              JIRA_API_TOKEN: $JIRA_API_TOKEN
+              JIRA_PROJECT: "YOUR_PROJECT_KEY"
+              JIRA_ISSUE_TYPE: "Bug"
+              JIRA_ISSUE_SUMMARY: "Build Failure: $(date +'%Y-%m-%d %H:%M:%S')"
+              JIRA_ISSUE_DESCRIPTION: "The Bitbucket pipeline for the Maven project has failed. Please investigate the issue."
     - step:
         name: Security Scan
         script:
