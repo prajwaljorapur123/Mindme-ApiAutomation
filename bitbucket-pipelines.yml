@@ -14,17 +14,17 @@ pipelines:
         caches:
           - maven
         script:
-          - mvn clean install --file Automation_Scripts/pom.xml
+          - mvn clean install --file Automation_Scripts/pom.xml || echo "Build failed" && exit 1
         after-script:
           - >
             mvn checkstyle:checkstyle --file Automation_Scripts/pom.xml
             || echo "Checkstyle failed, but continuing..."
-
+    
     - step:
-        name: Check Build Status and Create Jira Issue
+        name: Create Jira Issue
         script:
           - >
-            if [ "$BITBUCKET_EXIT_CODE" -ne 0 ]; then
+            if [ "$(cat /opt/atlassian/pipelines/agent/build/.bitbucket/pipelines/build_status)" -ne 0 ]; then
               pipe: atlassian/jira-create-issue:0.7.0
               variables:
                 JIRA_BASE_URL: $JIRA_BASE_URL
@@ -34,7 +34,9 @@ pipelines:
                 JIRA_ISSUE_SUMMARY: "Build Failed"
                 JIRA_ISSUE_DESCRIPTION: "The build failed for commit ${BITBUCKET_COMMIT}. Check the pipeline logs for details."
             fi
-
+        artifacts:
+          - /opt/atlassian/pipelines/agent/build/.bitbucket/pipelines/build_status
+    
     - step:
         name: Security Scan
         script:
