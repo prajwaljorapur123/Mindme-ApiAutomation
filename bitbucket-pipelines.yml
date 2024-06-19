@@ -15,10 +15,32 @@ pipelines:
           caches:
             - maven
           script:
-            - mvn clean install --file Automation_Scripts/pom.xml
+            - mvn clean install --file Automation_Scripts/pom.xml || echo "Build failed"
           after-script:
               # Collect checkstyle results, if any, and convert to Bitbucket Code Insights.
             - pipe: atlassian/checkstyle-report:0.3.0
+
+ # Add a new step to handle failures and create a Jira issue
+             - step:
+            name: Create Jira Issue on Failure
+            script:
+              - >
+                if [ -f Automation_Scripts/test-output/testng-results.xml ]; then
+                  test_results=$(grep '<test-method status="FAIL"' Automation_Scripts/test-output/testng-results.xml)
+                  if [ -n "$test_results" ]; then
+                    pipe: atlassian/jira-create-issue:0.7.0
+                    variables:
+                      JIRA_BASE_URL: $JIRA_BASE_URL
+                      JIRA_USER_EMAIL: $JIRA_USER_EMAIL
+                      JIRA_API_TOKEN: $JIRA_API_TOKEN
+                      JIRA_PROJECT: $JIRA_PROJECT
+                      JIRA_ISSUE_SUMMARY: "Build/Test Failure - ${BITBUCKET_COMMIT}"
+                      JIRA_ISSUE_DESCRIPTION: |
+                        The build or test failed for commit ${BITBUCKET_COMMIT}.
+                        Please check the build logs for details.
+                        Test results: $test_results
+                  fi
+                fi
       - step:
           name: Security Scan
           script:

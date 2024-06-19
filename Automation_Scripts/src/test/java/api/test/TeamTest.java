@@ -39,7 +39,7 @@ public class TeamTest {
 
 	@Test(priority = 1, invocationCount = 2)
 	public void TestCreateTeam() {
-		teampayload.setTeamName(faker.name().bloodGroup());
+		teampayload.setTeamName(faker.name().nameWithMiddle());
 		Response response = TeamEndPoints.CreateTeam(LoginTest.LoginToken, teampayload);
 
 		teamId = response.jsonPath().getInt("data.teams.id");
