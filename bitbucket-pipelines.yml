@@ -1,27 +1,36 @@
-#  Template maven-build
-
-#  This template allows you to test and build your Java project with Maven.
-#  The workflow allows running tests, code checkstyle and security scans on the default branch.
-
-# Prerequisites: pom.xml and appropriate project structure should exist in the repository.
-
 image: maven:3.9.2
 
 pipelines:
   default:
-    - parallel:
-      - step:
-          name: Build and Test
-          caches:
-            - maven
-          script:
-            - mvn clean install --file Automation_Scripts/pom.xml
-          after-script:
-              # Collect checkstyle results, if any, and convert to Bitbucket Code Insights.
-            - pipe: atlassian/checkstyle-report:0.3.0
-      - step:
-          name: Security Scan
-          script:
-            # Run a security scan for sensitive data.
-            # See more security tools at https://bitbucket.org/product/features/pipelines/integrations?&category=security
-            - pipe: atlassian/git-secrets-scan:0.5.1
+    - step:
+        name: Build and Test
+        caches:
+          - maven
+        script:
+          - mvn clean install --file Automation_Scripts/pom.xml || echo "Build failed" > build_status.txt
+        after-script:
+          - pipe: atlassian/checkstyle-report:0.3.0
+          - >
+            if [ -f build_status.txt ]; then
+              JIRA_BASE_URL="${JIRA_BASE_URL}"
+              JIRA_USER_EMAIL="${JIRA_USER_EMAIL}"
+              JIRA_API_TOKEN="${JIRA_API_TOKEN}"
+              JIRA_PROJECT="YOUR_PROJECT_KEY"
+              JIRA_ISSUE_SUMMARY="Build Failure: $(date +'%Y-%m-%d %H:%M:%S')"
+              JIRA_ISSUE_DESCRIPTION="The Bitbucket pipeline for the Maven project has failed. Please investigate the issue."
+
+              pipe: atlassian/jira-create-issue:0.7.0
+              variables:
+                JIRA_BASE_URL: $JIRA_BASE_URL
+                JIRA_USER_EMAIL: $JIRA_USER_EMAIL
+                JIRA_API_TOKEN: $JIRA_API_TOKEN
+                JIRA_PROJECT: $JIRA_PROJECT
+                JIRA_ISSUE_TYPE: "Bug"
+                
+            else
+              echo "Build succeeded, no Jira ticket created."
+            fi
+    - step:
+        name: Security Scan
+        script:
+          - pipe: atlassian/git-secrets-scan:0.5.1
