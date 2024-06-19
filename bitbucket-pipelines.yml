@@ -22,21 +22,14 @@ pipelines:
 
         - step:
             name: Create Jira Issue on Failure
-            script:
-              - >
-                if [ -f Automation_Scripts/test-output/testng-results.xml ]; then
-                  test_results=$(grep '<test-method status="FAIL"' Automation_Scripts/test-output/testng-results.xml)
-                  if [ -n "$test_results" ]; then
-                    pipe: atlassian/jira-create-issue:0.7.0
-                    variables:
-                      JIRA_BASE_URL: $JIRA_BASE_URL
-                      JIRA_USER_EMAIL: $JIRA_USER_EMAIL
-                      JIRA_API_TOKEN: $JIRA_API_TOKEN
-                      JIRA_PROJECT: $JIRA_PROJECT
-                      JIRA_ISSUE_SUMMARY: "Build/Test Failure"
-                      JIRA_ISSUE_DESCRIPTION: "The build or test failed for commit ${BITBUCKET_COMMIT}."                 
-                 fi
-                fi
+             script:
+              - pipe: atlassian/jira-create-issue:0.7.0
+                  variables:
+                    JIRA_BASE_URL: $JIRA_BASE_URL
+                    JIRA_USER_EMAIL: $JIRA_USER_EMAIL
+    		    JIRA_API_TOKEN: $JIRA_API_TOKEN
+     		    JIRA_PROJECT: "PROJ"
+      		    JIRA_ISSUE_SUMMARY: "This is a sample issue summary"
 
         - step:
             name: Security Scan
