@@ -1,3 +1,10 @@
+# Template maven-build
+
+# This template allows you to test and build your Java project with Maven.
+# The workflow allows running tests, code checkstyle, and security scans on the default branch.
+
+# Prerequisites: pom.xml and appropriate project structure should exist in the repository.
+
 image: maven:3.9.2
 
 pipelines:
@@ -7,30 +14,26 @@ pipelines:
         caches:
           - maven
         script:
-          - mvn clean install --file Automation_Scripts/pom.xml || echo "Build failed" > build_status.txt
-          - |
-            if [ -f build_status.txt ]; then
-              JIRA_BASE_URL="${JIRA_BASE_URL}"
-              JIRA_USER_EMAIL="${JIRA_USER_EMAIL}"
-              JIRA_API_TOKEN="${JIRA_API_TOKEN}"
-              JIRA_PROJECT="${JIRA_PROJECT}"
-              JIRA_ISSUE_SUMMARY="Build Failure: $(date +'%Y-%m-%d %H:%M:%S')"
-              JIRA_ISSUE_DESCRIPTION="The Bitbucket pipeline for the Maven project has failed. Please investigate the issue."
-              echo "Creating Jira ticket for build failure..."
-              pipe: atlassian/jira-create-issue:0.7.0
-              variables:
-                JIRA_BASE_URL: $JIRA_BASE_URL
-                JIRA_USER_EMAIL: $JIRA_USER_EMAIL
-                JIRA_API_TOKEN: $JIRA_API_TOKEN
-                JIRA_PROJECT: $JIRA_PROJECT
-                JIRA_ISSUE_TYPE: "Bug"
-                JIRA_ISSUE_SUMMARY: "$JIRA_ISSUE_SUMMARY"
-                JIRA_ISSUE_DESCRIPTION: "$JIRA_ISSUE_DESCRIPTION"
-            else
-              echo "Build succeeded, no Jira ticket created."
-            fi
+          - mvn clean install --file Automation_Scripts/pom.xml || echo "Build failed"
         after-script:
+          - >
+            mvn checkstyle:checkstyle --file Automation_Scripts/pom.xml
+            || echo "Checkstyle failed, but continuing..."
           - pipe: atlassian/checkstyle-report:0.3.0
+
+    - step:
+        name: Create Jira Issue
+        script:
+          - pipe: atlassian/jira-create-issue:0.7.0
+            variables:
+              JIRA_BASE_URL: $JIRA_BASE_URL
+              JIRA_USER_EMAIL: $JIRA_USER_EMAIL
+              JIRA_API_TOKEN: $JIRA_API_TOKEN
+	      JIRA_PROJECT: $JIRA_PROJECT
+              JIRA_ISSUE_TYPE: "Bug"
+              JIRA_ISSUE_SUMMARY: "Build Failure: $(date +'%Y-%m-%d %H:%M:%S')""
+              JIRA_ISSUE_DESCRIPTION: "This issue is created from Bitbucket Pipelines."
+
     - step:
         name: Security Scan
         script:
