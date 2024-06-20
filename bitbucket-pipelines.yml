@@ -1,40 +1,47 @@
 image: maven:3.9.2
 
 pipelines:
-  default:
-    - step:
-        name: Build and Test
-        caches:
-          - maven
-        script:
-          - mvn clean test --file Automation_Scripts/pom.xml
-        after-script:
-          - >
-            mvn checkstyle:checkstyle --file Automation_Scripts/pom.xml
-            || echo "Checkstyle failed, but continuing..."
-          - pipe: atlassian/checkstyle-report:0.3.0
-        artifacts:
-          - target/surefire-reports
-
-    - step:
-        name: Create Jira Issue on Build Failure
-        condition:
+  branches:
+    # Define the pipeline for the default branch
+    default:
+      - step:
+          name: Build and Test
+          caches:
+            - maven
           script:
-            - mvn clean test --file Automation_Scripts/pom.xml || { echo "Build and test failed"; exit 1; }
-        script:
-          - pipe: atlassian/jira-create-issue:0.7.0
-            variables:
-              JIRA_BASE_URL: $JIRA_BASE_URL
-              JIRA_USER_EMAIL: $JIRA_USER_EMAIL
-              JIRA_API_TOKEN: $JIRA_API_TOKEN
-              JIRA_PROJECT: $JIRA_PROJECT
-              JIRA_ISSUE_TYPE: "Bug"
-              JIRA_ISSUE_SUMMARY: "Build Failure Detected: $(date +'%Y-%m-%d %H:%M:%S')"
-              JIRA_ISSUE_DESCRIPTION: "A build failure occurred in Bitbucket Pipelines."
-        artifacts:
-          - target/surefire-reports
+            - mvn clean test --file Automation_Scripts/pom.xml
+          after-script:
+            - >
+              mvn checkstyle:checkstyle --file Automation_Scripts/pom.xml
+              || echo "Checkstyle failed, but continuing..."
+            - pipe: atlassian/checkstyle-report:0.3.0
+          artifacts:
+            - target/surefire-reports
 
-    - step:
-        name: Security Scan
-        script:
-          - pipe: atlassian/git-secrets-scan:0.5.1
+      - step:
+          name: Create Jira Issue on Build Failure
+          script:
+            - >
+              mvn clean test --file Automation_Scripts/pom.xml
+              || {
+                   echo "Build and test failed";
+                   pipe: atlassian/jira-create-issue:0.7.0
+                   variables:
+                     JIRA_BASE_URL: $JIRA_BASE_URL
+                     JIRA_USER_EMAIL: $JIRA_USER_EMAIL
+                     JIRA_API_TOKEN: $JIRA_API_TOKEN
+                     JIRA_PROJECT: $JIRA_PROJECT
+                     JIRA_ISSUE_TYPE: "Bug"
+                     JIRA_ISSUE_SUMMARY: "Build Failure Detected: $(date +'%Y-%m-%d %H:%M:%S')"
+                     JIRA_ISSUE_DESCRIPTION: "A build failure occurred in Bitbucket Pipelines."
+                   exit 1;
+                 }
+          artifacts:
+            - target/surefire-reports
+
+      - step:
+          name: Security Scan
+          script:
+            - pipe: atlassian/git-secrets-scan:0.5.1
+
+  
