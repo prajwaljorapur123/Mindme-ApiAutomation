@@ -1,53 +1,51 @@
-name: Maven Build and Test
+image: mcr.microsoft.com/windows/servercore:ltsc2019
 
-on: [push, pull_request]
+pipelines:
+  default:
+    - step: &build-and-test
+        name: Build and Test
+        caches:
+          - maven
+        script:
+          - mvn clean install --file Automation_Scripts/pom.xml || { echo "Build failed"; exit 1; }
 
-jobs:
-  build:
-    runs-on: windows-latest
+    - step: &checkstyle
+        name: Run Checkstyle
+        script:
+          - mvn checkstyle:checkstyle --file Automation_Scripts/pom.xml || echo "Checkstyle failed, but continuing..."
+          - pipe: atlassian/checkstyle-report:0.3.0
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - step: &create-jira-issue
+        name: Create Jira Issue
+        script:
+          - pipe: atlassian/jira-create-issue:0.7.0
+            variables:
+              JIRA_BASE_URL: $JIRA_BASE_URL
+              JIRA_USER_EMAIL: $JIRA_USER_EMAIL
+              JIRA_API_TOKEN: $JIRA_API_TOKEN
+              JIRA_PROJECT: $JIRA_PROJECT
+              JIRA_ISSUE_TYPE: "Bug"
+              JIRA_ISSUE_SUMMARY: "Build Failure: $(date +'%Y-%m-%d %H:%M:%S')"
+              JIRA_ISSUE_DESCRIPTION: "This issue is created from Bitbucket Pipelines."
 
-      - name: Set up Java
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin'
-          java-version: '11'
+    - step: &security-scan
+        name: Security Scan
+        script:
+          - pipe: atlassian/git-secrets-scan:0.5.1
 
-      - name: Build and Test
-        id: build
-        run: |
-          mvn clean install --file Automation_Scripts/pom.xml
-        continue-on-error: true
+    - step:
+        name: Build and Test
+        <<: *build-and-test
 
-      - name: Check Build Result
-        id: build_result
-        run: |
-          if ($?) { echo "Build succeeded" } else { echo "Build failed"; exit 1 }
+    - step:
+        name: Check Build Result
+        script:
+          - if (Test-Path "target\surefire-reports\*-failure.txt") { Write-Host "Build failed"; exit 1 } else { Write-Host "Build succeeded"; exit 0 }
 
-      - name: Run Checkstyle
-        if: steps.build.outcome == 'success'
-        run: |
-          mvn checkstyle:checkstyle --file Automation_Scripts/pom.xml || echo "Checkstyle failed, but continuing..."
-
-      - name: Checkstyle Report
-        if: steps.build.outcome == 'success'
-        uses: atlassian/checkstyle-report@v0.3.0
-
-      - name: Create Jira Issue
-        if: steps.build.outcome == 'failure'
-        uses: atlassian/jira-create-issue@v0.7.0
-        with:
-          JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
-          JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
-          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
-          JIRA_PROJECT: ${{ secrets.JIRA_PROJECT }}
-          JIRA_ISSUE_TYPE: "Bug"
-          JIRA_ISSUE_SUMMARY: "Build Failure: ${{ github.event.head_commit.timestamp }}"
-          JIRA_ISSUE_DESCRIPTION: "This issue is created from GitHub Actions."
-
-      - name: Security Scan
-        if: steps.build.outcome == 'success'
-        uses: atlassian/git-secrets-scan@v0.5.1
+    - step:
+        name: Run Checkstyle
+        <<: *checkstyle
+        condition:
+          changesets:
+            includePaths:
+              - target/s
