@@ -1,40 +1,53 @@
-# Template maven-build
+name: Maven Build and Test
 
-# This template allows you to test and build your Java project with Maven.
-# The workflow allows running tests, code checkstyle, and security scans on the default branch.
+on: [push, pull_request]
 
-# Prerequisites: pom.xml and appropriate project structure should exist in the repository.
+jobs:
+  build:
+    runs-on: windows-latest
 
-image: maven:3.9.2
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-pipelines:
-  default:
-    - step:
-        name: Build and Test
-        caches:
-          - maven
-        script:
-          - mvn clean install --file Automation_Scripts/pom.xml & echo "Build failed"
-        after-script:
-          - >
-            mvn checkstyle:checkstyle --file Automation_Scripts/pom.xml
-            || echo "Checkstyle failed, but continuing..."
-          - pipe: atlassian/checkstyle-report:0.3.0
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '11'
 
-    - step:
-        name: Create Jira Issue
-        script:
-          - pipe: atlassian/jira-create-issue:0.7.0
-            variables:
-              JIRA_BASE_URL: $JIRA_BASE_URL
-              JIRA_USER_EMAIL: $JIRA_USER_EMAIL
-              JIRA_API_TOKEN: $JIRA_API_TOKEN
-              JIRA_PROJECT: $JIRA_PROJECT
-              JIRA_ISSUE_TYPE: "Bug"
-              JIRA_ISSUE_SUMMARY: "Build Failure: $(date +'%Y-%m-%d %H:%M:%S')"
-              JIRA_ISSUE_DESCRIPTION: "This issue is created from Bitbucket Pipelines."
+      - name: Build and Test
+        id: build
+        run: |
+          mvn clean install --file Automation_Scripts/pom.xml
+        continue-on-error: true
 
-    - step:
-        name: Security Scan
-        script:
-          - pipe: atlassian/git-secrets-scan:0.5.1
+      - name: Check Build Result
+        id: build_result
+        run: |
+          if ($?) { echo "Build succeeded" } else { echo "Build failed"; exit 1 }
+
+      - name: Run Checkstyle
+        if: steps.build.outcome == 'success'
+        run: |
+          mvn checkstyle:checkstyle --file Automation_Scripts/pom.xml || echo "Checkstyle failed, but continuing..."
+
+      - name: Checkstyle Report
+        if: steps.build.outcome == 'success'
+        uses: atlassian/checkstyle-report@v0.3.0
+
+      - name: Create Jira Issue
+        if: steps.build.outcome == 'failure'
+        uses: atlassian/jira-create-issue@v0.7.0
+        with:
+          JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+          JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+          JIRA_PROJECT: ${{ secrets.JIRA_PROJECT }}
+          JIRA_ISSUE_TYPE: "Bug"
+          JIRA_ISSUE_SUMMARY: "Build Failure: ${{ github.event.head_commit.timestamp }}"
+          JIRA_ISSUE_DESCRIPTION: "This issue is created from GitHub Actions."
+
+      - name: Security Scan
+        if: steps.build.outcome == 'success'
+        uses: atlassian/git-secrets-scan@v0.5.1
