@@ -14,7 +14,7 @@ pipelines:
             || echo "Checkstyle failed, but continuing..."
           - pipe: atlassian/checkstyle-report:0.3.0
         artifacts:
-          - Automation_Scripts\test-output\testng-results.xml
+          - target/surefire-reports
 
     - step:
         name: Create Jira Issue on Build Failure
@@ -32,7 +32,7 @@ pipelines:
               JIRA_ISSUE_SUMMARY: "Build Failure Detected: $(date +'%Y-%m-%d %H:%M:%S')"
               JIRA_ISSUE_DESCRIPTION: "A build failure occurred in Bitbucket Pipelines."
         artifacts:
-          - Automation_Scripts\test-output\testng-results.xml
+          - target/surefire-reports
 
     - step:
         name: Security Scan
