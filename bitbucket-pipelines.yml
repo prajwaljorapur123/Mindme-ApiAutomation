@@ -7,20 +7,8 @@ pipelines:
         caches:
           - maven
         script:
-          - mvn clean test --file Automation_Scripts/pom.xml
-          - >
-            if [[ $? -ne 0 ]]; then
-              echo "Step failed";
-              pipe: atlassian/jira-create-issue:0.7.0
-              variables:
-                JIRA_BASE_URL: $JIRA_BASE_URL
-                JIRA_USER_EMAIL: $JIRA_USER_EMAIL
-                JIRA_API_TOKEN: $JIRA_API_TOKEN
-                JIRA_PROJECT: $JIRA_PROJECT
-                JIRA_ISSUE_TYPE: "Bug"
-                JIRA_ISSUE_SUMMARY: "Build Failure: $(date +'%Y-%m-%d %H:%M:%S')"
-                JIRA_ISSUE_DESCRIPTION: "This issue is created from Bitbucket Pipelines.";
-            fi
+          - chmod +x build_and_create_jira_issue.sh
+          - ./build_and_create_jira_issue.sh
 
     - step:
         name: Security Scan
