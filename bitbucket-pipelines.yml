@@ -10,7 +10,7 @@ pipelines:
           - |
             apt-get update && apt-get install -y maven openjdk-11-jdk
             mvn clean install --file Automation_Scripts/pom.xml
-	    echo "script sucessfull"
+            echo script sucessfull
             TEST_RESULT=$?
             echo $TEST_RESULT > test_result.txt
 
