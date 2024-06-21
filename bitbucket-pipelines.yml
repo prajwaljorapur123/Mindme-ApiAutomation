@@ -14,7 +14,7 @@ pipelines:
             || echo "Checkstyle failed, but continuing..."
           - pipe: atlassian/checkstyle-report:0.3.0
         artifacts:
-          - target/surefire-reports
+          - Automation_Scripts/test-output/testng-results.xml
 
     # This step tries to create a Jira issue only if the build fails
     - step:
@@ -36,7 +36,7 @@ pipelines:
                  exit 1;
                }
         artifacts:
-          - target/surefire-reports
+          - Automation_Scripts/test-output/testng-results.xml
 
     - step:
         name: Security Scan
