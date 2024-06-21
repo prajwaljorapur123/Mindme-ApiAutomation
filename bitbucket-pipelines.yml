@@ -16,8 +16,8 @@ pipelines:
         script:
           - mvn clean install --file Automation_Scripts/pom.xml 
         after-script:
-          - >
-            if [[ $BITBUCKET_EXIT_CODE -ne 0 ]]; then
+          - if [[ $BITBUCKET_EXIT_CODE -ne 0 ]]; then
+              echo "Build failed"
               pipe: atlassian/jira-create-issue:0.7.0
               variables:
                 JIRA_BASE_URL: $JIRA_BASE_URL
