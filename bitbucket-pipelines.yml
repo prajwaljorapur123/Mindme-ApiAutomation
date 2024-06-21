@@ -1,10 +1,3 @@
-# Template maven-build
-
-# This template allows you to test and build your Java project with Maven.
-# The workflow allows running tests, code checkstyle, and security scans on the default branch.
-
-# Prerequisites: pom.xml and appropriate project structure should exist in the repository.
-
 image: maven:3.9.2
 
 pipelines:
@@ -14,11 +7,10 @@ pipelines:
         caches:
           - maven
         script:
-          - mvn clean install --file Automation_Scripts/pom.xml
+          - mvn clean test --file Automation_Scripts/pom.xml
         after-script:
-          - |
-            if [[ $BITBUCKET_EXIT_CODE -ne 0 ]]; then
-              echo "Build failed"
+          - if [[ $BITBUCKET_EXIT_CODE -ne 0 ]]; then
+              echo "Step failed";
               pipe: atlassian/jira-create-issue:0.7.0
               variables:
                 JIRA_BASE_URL: $JIRA_BASE_URL
@@ -27,6 +19,10 @@ pipelines:
                 JIRA_PROJECT: $JIRA_PROJECT
                 JIRA_ISSUE_TYPE: "Bug"
                 JIRA_ISSUE_SUMMARY: "Build Failure: $(date +'%Y-%m-%d %H:%M:%S')"
-                JIRA_ISSUE_DESCRIPTION: "This issue is created from Bitbucket Pipelines."
-            else
-              echo "Build succeeded"
+                JIRA_ISSUE_DESCRIPTION: "This issue is created from Bitbucket Pipelines.";
+            fi
+
+    - step:
+        name: Security Scan
+        script:
+          - pipe: atlassian/git-secrets-scan:0.5.1
