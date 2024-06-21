@@ -15,13 +15,16 @@ pipelines:
           - maven
         script:
           - mvn clean install --file Automation_Scripts/pom.xml
-          - BUILD_EXIT_CODE=$?
         
-    - step:
-        name: Create Jira Issue
-        script:
+        # After the script runs, check the exit code and conditionally create a Jira issue
+        after-script:
           - |
-            if [ $BUILD_EXIT_CODE -ne 0 ]; then
+            BUILD_EXIT_CODE=$?
+
+            if [ "$BUILD_EXIT_CODE" -ne 0 ]; then
+              echo "Build failed, creating Jira issue..."
+
+              # Pipe to create Jira issue
               pipe: atlassian/jira-create-issue:0.7.0
               variables:
                 JIRA_BASE_URL: $JIRA_BASE_URL
