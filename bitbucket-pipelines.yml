@@ -2,7 +2,7 @@ image: maven:3.9.2
 
 pipelines:
   default:
-    - step:
+    - step: &build-test-step
         name: Build and Test
         caches:
           - maven
@@ -11,10 +11,41 @@ pipelines:
         after-script:
           - mvn checkstyle:checkstyle --file Automation_Scripts/pom.xml || echo "Checkstyle failed, but continuing..."
           - pipe: atlassian/checkstyle-report:0.3.0
-          - >
-            if [[ $BITBUCKET_EXIT_CODE -ne 0 ]]; then
-              echo "Build failed"
-              pipe: atlassian/jira-create-issue:0.7.0
+
+    - step:
+        name: Check Build Status
+        script:
+          - if [[ $BITBUCKET_EXIT_CODE -eq 0 ]]; then exit 0; else exit 1; fi
+
+    - step:
+        name: Create Jira Issue
+        trigger: manual
+        script:
+          - pipe: atlassian/jira-create-issue:0.7.0
+            variables:
+              JIRA_BASE_URL: $JIRA_BASE_URL
+              JIRA_USER_EMAIL: $JIRA_USER_EMAIL
+              JIRA_API_TOKEN: $JIRA_API_TOKEN
+              JIRA_PROJECT: $JIRA_PROJECT
+              JIRA_ISSUE_TYPE: "Bug"
+              JIRA_ISSUE_SUMMARY: "Build Failure: $(date +'%Y-%m-%d %H:%M:%S')"
+              JIRA_ISSUE_DESCRIPTION: "This issue is created from Bitbucket Pipelines."
+
+    - step:
+        name: Security Scan
+        script:
+          - pipe: atlassian/git-secrets-scan:0.5.1
+
+pipelines:
+  branches:
+    '**':
+      - step: *build-test-step
+      - step:
+          name: Conditional Execution
+          condition:
+            status: [FAILED]
+          script:
+            - pipe: atlassian/jira-create-issue:0.7.0
               variables:
                 JIRA_BASE_URL: $JIRA_BASE_URL
                 JIRA_USER_EMAIL: $JIRA_USER_EMAIL
@@ -23,9 +54,3 @@ pipelines:
                 JIRA_ISSUE_TYPE: "Bug"
                 JIRA_ISSUE_SUMMARY: "Build Failure: $(date +'%Y-%m-%d %H:%M:%S')"
                 JIRA_ISSUE_DESCRIPTION: "This issue is created from Bitbucket Pipelines."
-            fi
-
-    - step:
-        name: Security Scan
-        script:
-          - pipe: atlassian/git-secrets-scan:0.5.1
