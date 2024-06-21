@@ -7,36 +7,30 @@ pipelines:
         caches:
           - maven
         script:
-          - mvn clean test --file Automation_Scripts/pom.xml
-        after-script:
-          - >
-            mvn checkstyle:checkstyle --file Automation_Scripts/pom.xml
-            || echo "Checkstyle failed, but continuing..."
-          - pipe: atlassian/checkstyle-report:0.3.0
-        artifacts:
-          - Automation_Scripts/test-output/testng-results.xml
-
-    # This step tries to create a Jira issue only if the build fails
-    - step:
-        name: Create Jira Issue on Build Failure
-        script:
-          - >
+          - |
+            # Run the build and tests
             mvn clean test --file Automation_Scripts/pom.xml
-            || {
-                 echo "Build and test failed";
-                 pipe: atlassian/jira-create-issue:0.7.0
-                 variables:
-                   JIRA_BASE_URL: $JIRA_BASE_URL
-                   JIRA_USER_EMAIL: $JIRA_USER_EMAIL
-                   JIRA_API_TOKEN: $JIRA_API_TOKEN
-                   JIRA_PROJECT: $JIRA_PROJECT
-                   JIRA_ISSUE_TYPE: "Bug"
-                   JIRA_ISSUE_SUMMARY: "Build Failure Detected: $(date +'%Y-%m-%d %H:%M:%S')"
-                   JIRA_ISSUE_DESCRIPTION: "A build failure occurred in Bitbucket Pipelines."
-                 exit 1;
-               }
-        artifacts:
-          - Automation_Scripts/test-output/testng-results.xml
+            BUILD_STATUS=$?
+
+            # Run checkstyle regardless of build status
+            mvn checkstyle:checkstyle --file Automation_Scripts/pom.xml || echo "Build Failed"
+            pipe: atlassian/checkstyle-report:0.3.0
+
+            # If build fails, create a Jira issue
+            if [ $BUILD_STATUS -ne 0 ]; then
+              pipe: atlassian/jira-create-issue:0.7.0
+              variables:
+                JIRA_BASE_URL: $JIRA_BASE_URL
+                JIRA_USER_EMAIL: $JIRA_USER_EMAIL
+                JIRA_API_TOKEN: $JIRA_API_TOKEN
+                JIRA_PROJECT: $JIRA_PROJECT
+                JIRA_ISSUE_TYPE: "Bug"
+                JIRA_ISSUE_SUMMARY: "Build Failure Detected: $(date +'%Y-%m-%d %H:%M:%S')"
+                JIRA_ISSUE_DESCRIPTION: "A build failure occurred in Bitbucket Pipelines."
+            fi
+
+            # Exit with the original build status
+            exit $BUILD_STATUS
 
     - step:
         name: Security Scan
