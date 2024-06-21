@@ -9,14 +9,25 @@ pipelines:
         script:
           - |
             # Run the build and tests
-            mvn clean test --file Automation_Scripts/pom.xml || echo "Build Failed"
-            BUILD_STATUS=$?
+            mvn clean test --file Automation_Scripts/pom.xml
+            BITBUCKET_EXIT_CODE=$?
 
             # Run checkstyle regardless of build status
+            mvn checkstyle:checkstyle --file Automation_Scripts/pom.xml || echo "Checkstyle failed, but continuing..."
             pipe: atlassian/checkstyle-report:0.3.0
 
-            # If build fails, create a Jira issue
-            if [ $BUILD_STATUS -ne 0 ]; then
+            # Exit with the original build status
+            exit $BITBUCKET_EXIT_CODE
+
+    - step:
+        name: Create Jira Issue on Build Failure
+        script:
+          - |
+            if [[ $BITBUCKET_EXIT_CODE -eq 0 ]]; then
+              echo "Build succeeded, skipping Jira issue creation."
+              exit 0
+            else
+              echo "Build failed, creating Jira issue."
               pipe: atlassian/jira-create-issue:0.7.0
               variables:
                 JIRA_BASE_URL: $JIRA_BASE_URL
@@ -27,9 +38,8 @@ pipelines:
                 JIRA_ISSUE_SUMMARY: "Build Failure Detected: $(date +'%Y-%m-%d %H:%M:%S')"
                 JIRA_ISSUE_DESCRIPTION: "A build failure occurred in Bitbucket Pipelines."
             fi
-
-            # Exit with the original build status
-            exit $BUILD_STATUS
+        services:
+          - docker
 
     - step:
         name: Security Scan
