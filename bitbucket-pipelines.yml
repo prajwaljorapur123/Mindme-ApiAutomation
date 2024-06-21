@@ -1,4 +1,4 @@
-image: maven:3.9.2
+image: ubuntu:latest
 
 pipelines:
   default:
@@ -6,33 +6,31 @@ pipelines:
         name: Build and Test
         caches:
           - maven
-        script:
-          - mvn clean install --file Automation_Scripts/pom.xml
-        after-script:
-          # Capture the exit code of the previous command
-          - TEST_RESULT=$?
-          - echo $TEST_RESULT > test_result.txt
+        script: |
+          apt-get update && apt-get install -y maven openjdk-11-jdk
+          mvn clean install --file Automation_Scripts/pom.xml
+          TEST_RESULT=$?
+          echo $TEST_RESULT > test_result.txt
 
     - step:
         name: Create Jira Issue if Tests Fail
-        script:
-          - TEST_RESULT=$(cat test_result.txt)
-          - if [ "$TEST_RESULT" -ne 0 ]; then
-              echo "Tests failed, creating Jira issue."
-              pipe: atlassian/jira-create-issue:0.7.0
-              variables:
-                JIRA_BASE_URL: $JIRA_BASE_URL
-                JIRA_USER_EMAIL: $JIRA_USER_EMAIL
-                JIRA_API_TOKEN: $JIRA_API_TOKEN
-                JIRA_PROJECT: $JIRA_PROJECT
-                JIRA_ISSUE_TYPE: "Bug"
-                JIRA_ISSUE_SUMMARY: "Build Failure: $(date +'%Y-%m-%d %H:%M:%S')"
-                JIRA_ISSUE_DESCRIPTION: "This issue is created from Bitbucket Pipelines."
-            else
-              echo "Tests passed, no Jira issue created."
-            fi
+        script: |
+          TEST_RESULT=$(cat test_result.txt)
+          if [ "$TEST_RESULT" -ne 0 ]; then
+            pipe: atlassian/jira-create-issue:0.7.0
+            variables:
+              JIRA_BASE_URL: $JIRA_BASE_URL
+              JIRA_USER_EMAIL: $JIRA_USER_EMAIL
+              JIRA_API_TOKEN: $JIRA_API_TOKEN
+              JIRA_PROJECT: $JIRA_PROJECT
+              JIRA_ISSUE_TYPE: "Bug"
+              JIRA_ISSUE_SUMMARY: "Build Failure: $(date +'%Y-%m-%d %H:%M:%S')"
+              JIRA_ISSUE_DESCRIPTION: "This issue is created from Bitbucket Pipelines."
+          else
+            echo "Tests passed, no Jira issue created."
 
     - step:
         name: Security Scan
-        script:
-          - pipe: atlassian/git-secrets-scan:0.5.1
+        script: |
+          apt-get update && apt-get install -y git
+          pipe: atlassian/git-secrets-scan:0.5.1
