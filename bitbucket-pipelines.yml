@@ -19,46 +19,15 @@ pipelines:
           - |
             if [[ $BITBUCKET_EXIT_CODE -ne 0 ]]; then
               echo "Build failed"
-              echo "Creating Jira issue..."
-              export JIRA_ISSUE_SUMMARY="Build Failure: $(date +'%Y-%m-%d %H:%M:%S')"
-              export JIRA_ISSUE_DESCRIPTION="This issue is created from Bitbucket Pipelines. Build failed."
-
-              # Format JSON payload for Jira API
-              JSON_DATA=$(cat <<EOF
-{
-  "fields": {
-    "project": {
-      "key": "$JIRA_PROJECT"
-    },
-    "summary": "$JIRA_ISSUE_SUMMARY",
-    "description": {
-      "type": "doc",
-      "version": 1,
-      "content": [
-        {
-          "type": "paragraph",
-          "content": [
-            {
-              "type": "text",
-              "text": "$JIRA_ISSUE_DESCRIPTION"
-            }
-          ]
-        }
-      ]
-    },
-    "issuetype": {
-      "name": "Bug"
-    }
-  }
-}
-EOF
-)
-
-              # Make API call to create Jira issue
-              curl -s -u "$JIRA_USER_EMAIL:$JIRA_API_TOKEN" -X POST \
-                   -H "Content-Type: application/json" \
-                   --data "$JSON_DATA" \
-                   "$JIRA_BASE_URL/rest/api/3/issue/"
+              pipe: atlassian/jira-create-issue:0.7.0
+              variables:
+                JIRA_BASE_URL: $JIRA_BASE_URL
+                JIRA_USER_EMAIL: $JIRA_USER_EMAIL
+                JIRA_API_TOKEN: $JIRA_API_TOKEN
+                JIRA_PROJECT: $JIRA_PROJECT
+                JIRA_ISSUE_TYPE: "Bug"
+                JIRA_ISSUE_SUMMARY: "Build Failure: $(date +'%Y-%m-%d %H:%M:%S')"
+                JIRA_ISSUE_DESCRIPTION: "This issue is created from Bitbucket Pipelines."
             fi
 
     - step:
