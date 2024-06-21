@@ -1,4 +1,11 @@
-image: ubuntu:latest
+# Template maven-build
+
+# This template allows you to test and build your Java project with Maven.
+# The workflow allows running tests, code checkstyle, and security scans on the default branch.
+
+# Prerequisites: pom.xml and appropriate project structure should exist in the repository.
+
+image: maven:3.9.2
 
 pipelines:
   default:
@@ -7,42 +14,22 @@ pipelines:
         caches:
           - maven
         script:
-          - |
-            apt-get update && apt-get install -y maven openjdk-11-jdk
-            mvn clean install --file Automation_Scripts/pom.xml
-            echo script sucessfull
-            TEST_RESULT=$?
-            echo $TEST_RESULT > test_result.txt
+          - mvn clean install --file Automation_Scripts/pom.xml || echo "Build failed"
 
     - step:
-        name: Create Jira Issue if Tests Fail
+        name: Create Jira Issue
         script:
-          - |
-            TEST_RESULT=$(cat test_result.txt)
-            if [ "$TEST_RESULT" -ne 0 ]; then
-              echo "Tests failed, creating Jira issue."
-              cat <<EOF > issue_payload.json
-              {
-                "fields": {
-                  "project": {
-                    "key": "$JIRA_PROJECT"
-                  },
-                  "summary": "Build Failure: $(date +'%Y-%m-%d %H:%M:%S')",
-                  "description": "This issue is created from Bitbucket Pipelines. Please check the build logs for details.",
-                  "issuetype": {
-                    "name": "Bug"
-                  }
-                }
-              }
-              EOF
-              curl -D- -u $JIRA_USER_EMAIL:$JIRA_API_TOKEN -X POST --data @issue_payload.json -H "Content-Type: application/json" $JIRA_BASE_URL/rest/api/2/issue/
-            else
-              echo "Tests passed, no Jira issue created."
-            fi
+          - pipe: atlassian/jira-create-issue:0.7.0
+            variables:
+              JIRA_BASE_URL: $JIRA_BASE_URL
+              JIRA_USER_EMAIL: $JIRA_USER_EMAIL
+              JIRA_API_TOKEN: $JIRA_API_TOKEN
+              JIRA_PROJECT: $JIRA_PROJECT
+              JIRA_ISSUE_TYPE: "Bug"
+              JIRA_ISSUE_SUMMARY: "Build Failure: $(date +'%Y-%m-%d %H:%M:%S')"
+              JIRA_ISSUE_DESCRIPTION: "This issue is created from Bitbucket Pipelines."
 
     - step:
         name: Security Scan
         script:
-          - |
-            apt-get update && apt-get install -y git
-            pipe: atlassian/git-secrets-scan:0.5.1
+          - pipe: atlassian/git-secrets-scan:0.5.1
