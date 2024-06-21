@@ -12,9 +12,7 @@ pipelines:
           - mvn checkstyle:checkstyle --file Automation_Scripts/pom.xml || echo "Checkstyle failed, but continuing..."
           - pipe: atlassian/checkstyle-report:0.3.0
           - >
-            if [[ $BITBUCKET_EXIT_CODE -eq 0 ]]; then
-              exit 0
-            else
+            if [[ $BITBUCKET_EXIT_CODE -ne 0 ]]; then
               echo "Build failed"
               pipe: atlassian/jira-create-issue:0.7.0
               variables:
