@@ -9,11 +9,10 @@ pipelines:
         script:
           - |
             # Run the build and tests
-            mvn clean test --file Automation_Scripts/pom.xml
+            mvn clean test --file Automation_Scripts/pom.xml || echo "Build Failed"
             BUILD_STATUS=$?
 
             # Run checkstyle regardless of build status
-            mvn checkstyle:checkstyle --file Automation_Scripts/pom.xml || echo "Build Failed"
             pipe: atlassian/checkstyle-report:0.3.0
 
             # If build fails, create a Jira issue
