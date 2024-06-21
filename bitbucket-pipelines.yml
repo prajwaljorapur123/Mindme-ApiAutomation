@@ -1,4 +1,4 @@
-# Template maven-build .	
+# Template maven-build
 
 # This template allows you to test and build your Java project with Maven.
 # The workflow allows running tests, code checkstyle, and security scans on the default branch.
@@ -19,15 +19,23 @@ pipelines:
           - |
             if [[ $BITBUCKET_EXIT_CODE -ne 0 ]]; then
               echo "Build failed"
-              pipe: atlassian/jira-create-issue:0.7.0
-              variables:
-                JIRA_BASE_URL: $JIRA_BASE_URL
-                JIRA_USER_EMAIL: $JIRA_USER_EMAIL
-                JIRA_API_TOKEN: $JIRA_API_TOKEN
-                JIRA_PROJECT: $JIRA_PROJECT
-                JIRA_ISSUE_TYPE: "Bug"
-                JIRA_ISSUE_SUMMARY: "Build Failure: $(date +'%Y-%m-%d %H:%M:%S')"
-                JIRA_ISSUE_DESCRIPTION: "This issue is created from Bitbucket Pipelines."
+              echo "Creating Jira issue..."
+              export JIRA_ISSUE_SUMMARY="Build Failure: $(date +'%Y-%m-%d %H:%M:%S')"
+              export JIRA_ISSUE_DESCRIPTION="This issue is created from Bitbucket Pipelines."
+              curl -s -u $JIRA_USER_EMAIL:$JIRA_API_TOKEN -X POST -H "Content-Type: application/json" \
+                   $JIRA_BASE_URL/rest/api/3/issue/ \
+                   -d '{
+                         "fields": {
+                             "project": {
+                                 "key": "'"$JIRA_PROJECT"'"
+                             },
+                             "summary": "'"$JIRA_ISSUE_SUMMARY"'",
+                             "description": "'"$JIRA_ISSUE_DESCRIPTION"'",
+                             "issuetype": {
+                                 "name": "Bug"
+                             }
+                         }
+                     }'
             fi
 
     - step:
