@@ -1,3 +1,10 @@
+# Template maven-build
+
+# This template allows you to test and build your Java project with Maven.
+# The workflow allows running tests, code checkstyle, and security scans on the default branch.
+
+# Prerequisites: pom.xml and appropriate project structure should exist in the repository.
+
 image: maven:3.9.2
 
 pipelines:
@@ -7,34 +14,29 @@ pipelines:
         caches:
           - maven
         script:
-          - mvn clean test --file Automation_Scripts/pom.xml
+          - mvn clean install --file Automation_Scripts/pom.xml
         after-script:
-         
           - pipe: atlassian/checkstyle-report:0.3.0
-        
 
-    # This step tries to create a Jira issue only if the build fails
     - step:
-        name: Create Jira Issue on Build Failure
+        name: Create Jira Issue
+        condition:
+          script:
+            - '[ "$BITBUCKET_EXIT_CODE" -ne 0 ]'
         script:
-          - >
-            mvn clean test --file Automation_Scripts/pom.xml
-            || {
-                 echo "Build and test failed";
-                 pipe: atlassian/jira-create-issue:0.7.0
-                 variables:
-                   JIRA_BASE_URL: $JIRA_BASE_URL
-                   JIRA_USER_EMAIL: $JIRA_USER_EMAIL
-                   JIRA_API_TOKEN: $JIRA_API_TOKEN
-                   JIRA_PROJECT: $JIRA_PROJECT
-                   JIRA_ISSUE_TYPE: "Bug"
-                   JIRA_ISSUE_SUMMARY: "Build Failure Detected: $(date +'%Y-%m-%d %H:%M:%S')"
-                   JIRA_ISSUE_DESCRIPTION: "A build failure occurred in Bitbucket Pipelines."
-                 exit 1;
-               }
-       
+          - pipe: atlassian/jira-create-issue:0.7.0
+            variables:
+              JIRA_BASE_URL: $JIRA_BASE_URL
+              JIRA_USER_EMAIL: $JIRA_USER_EMAIL
+              JIRA_API_TOKEN: $JIRA_API_TOKEN
+              JIRA_PROJECT: $JIRA_PROJECT
+              JIRA_ISSUE_SUMMARY: "Build/Test Issue"
+              JIRA_ISSUE_DESCRIPTION: "This issue is created from Bitbucket Pipelines."
 
     - step:
         name: Security Scan
+        condition:
+          script:
+            - '[ "$BITBUCKET_EXIT_CODE" -ne 0 ]'
         script:
           - pipe: atlassian/git-secrets-scan:0.5.1
