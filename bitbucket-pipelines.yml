@@ -19,17 +19,25 @@ pipelines:
           - |
             TEST_RESULT=$(cat test_result.txt)
             if [ "$TEST_RESULT" -ne 0 ]; then
-              pipe: atlassian/jira-create-issue:0.7.0
-              variables:
-                JIRA_BASE_URL: $JIRA_BASE_URL
-                JIRA_USER_EMAIL: $JIRA_USER_EMAIL
-                JIRA_API_TOKEN: $JIRA_API_TOKEN
-                JIRA_PROJECT: $JIRA_PROJECT
-                JIRA_ISSUE_TYPE: "Bug"
-                JIRA_ISSUE_SUMMARY: "Build Failure: $(date +'%Y-%m-%d %H:%M:%S')"
-                JIRA_ISSUE_DESCRIPTION: "This issue is created from Bitbucket Pipelines."
+              echo "Tests failed, creating Jira issue."
+              cat <<EOF > issue_payload.json
+              {
+                "fields": {
+                  "project": {
+                    "key": "$JIRA_PROJECT"
+                  },
+                  "summary": "Build Failure: $(date +'%Y-%m-%d %H:%M:%S')",
+                  "description": "This issue is created from Bitbucket Pipelines. Please check the build logs for details.",
+                  "issuetype": {
+                    "name": "Bug"
+                  }
+                }
+              }
+              EOF
+              curl -D- -u $JIRA_USER_EMAIL:$JIRA_API_TOKEN -X POST --data @issue_payload.json -H "Content-Type: application/json" $JIRA_BASE_URL/rest/api/2/issue/
             else
               echo "Tests passed, no Jira issue created."
+            fi
 
     - step:
         name: Security Scan
