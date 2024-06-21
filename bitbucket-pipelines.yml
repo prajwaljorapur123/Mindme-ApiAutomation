@@ -21,7 +21,7 @@ pipelines:
           - |
             BUILD_EXIT_CODE=$?
 
-            if [ "$BUILD_EXIT_CODE" -ne 0 ]; then
+            if [ $BUILD_EXIT_CODE -ne 0 ]; then
               echo "Build failed, creating Jira issue..."
 
               # Pipe to create Jira issue
