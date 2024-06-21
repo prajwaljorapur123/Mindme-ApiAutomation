@@ -14,18 +14,8 @@ pipelines:
         caches:
           - maven
         script:
-          - mvn clean install --file Automation_Scripts/pom.xml || echo "Build failed"
+          - mvn clean install --file Automation_Scripts/pom.xml 
         after-script:
-          - mvn checkstyle:checkstyle --file Automation_Scripts/pom.xml || echo "Checkstyle failed, but continuing..."
-          - pipe: atlassian/checkstyle-report:0.3.0
-
-    - step:
-        name: Create Jira Issue
-        condition:
-          script:
-            - echo "Checking if build or checkstyle failed..."
-          failed():
-        script:
           - pipe: atlassian/jira-create-issue:0.7.0
             variables:
               JIRA_BASE_URL: $JIRA_BASE_URL
@@ -40,3 +30,4 @@ pipelines:
         name: Security Scan
         script:
           - pipe: atlassian/git-secrets-scan:0.5.1
+	
