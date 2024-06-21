@@ -22,7 +22,9 @@ pipelines:
     - step:
         name: Create Jira Issue
         condition:
-          - failed()
+          script:
+            - echo "Checking if build or checkstyle failed..."
+          failed():
         script:
           - pipe: atlassian/jira-create-issue:0.7.0
             variables:
