@@ -16,13 +16,20 @@ pipelines:
         script:
           - mvn clean install --file Automation_Scripts/pom.xml
         after-script:
-          - pipe: atlassian/checkstyle-report:0.3.0
+          - |
+            if [[ $BITBUCKET_EXIT_CODE -ne 0 ]]; then
+              echo "Build failed"
+              export BUILD_FAILED=true
+            else
+              echo "Build succeeded"
+              export BUILD_FAILED=false
+            fi
 
     - step:
         name: Create Jira Issue
         condition:
           script:
-            - '[ "$BITBUCKET_EXIT_CODE" -ne 0 ]'
+            - '[ "$BUILD_FAILED" == "true" ]'
         script:
           - pipe: atlassian/jira-create-issue:0.7.0
             variables:
@@ -37,6 +44,6 @@ pipelines:
         name: Security Scan
         condition:
           script:
-            - '[ "$BITBUCKET_EXIT_CODE" -ne 0 ]'
+            - '[ "$BUILD_FAILED" == "true" ]'
         script:
           - pipe: atlassian/git-secrets-scan:0.5.1
