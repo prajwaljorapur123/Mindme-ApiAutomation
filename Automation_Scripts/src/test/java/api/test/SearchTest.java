@@ -48,8 +48,9 @@ public class SearchTest {
 	@Test(priority = 1)
 	public void testSearchExcelData() {
 		Response response = SearchEndpoints.Searchexceldata(SearchPayload, LoginTest.LoginToken);
-
-		// validations
+           
+           
+           // validations
 		if (response.getStatusCode() == 200 && response.jsonPath().getString("message").equals("OK")) {
 			Reporter.log("Search excel data...." + response.getStatusCode(), true);
 		} else {

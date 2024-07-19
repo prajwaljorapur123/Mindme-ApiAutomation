@@ -3,7 +3,7 @@ package api.endpoints;
 public class Routes {
 	
 	public static String baseurl="http://mindmedev-env.eba-p3axgdvz.us-east-2.elasticbeanstalk.com";
-	public static String ip = "3.149.250.56:8090";
+	public static String ip = "13.59.66.41:8090";
 	
 	//Login
 	public static String login_post_url = baseurl+"/v1/auth/login";
@@ -80,7 +80,10 @@ public class Routes {
 	public static String PdfSearchHistory =baseurl+"/v1/search/getHistory?/";
 	
 	
-	//community
+	//Dvs
+	public static String DvsOverview =baseurl+"/v1/request/overview";
+	
+	public static String issueCounts = baseurl+"/v1/search/issuesCounts";
 	
 	public static String Createrequest =baseurl+"/v1/request/createRequest";
 	
@@ -106,6 +109,14 @@ public class Routes {
 	//DroneDp
 	
 	public static String ViewRequest =baseurl+"/v1/request/viewRequests";
+	
+	public static String RequestCount =baseurl+"/v1/request/getRequestsCount";
+	
+	public static String GetAllCompanies =baseurl+"/v1/request/getAllCompanies";
+	
+	//jira
+	
+	public static  String JIRA_URL = "https://admintrudosys.atlassian.net/rest/api/2/issue/";
 	
 	
 	

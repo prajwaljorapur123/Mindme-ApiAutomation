@@ -1,0 +1,1 @@
+{"uuid":"27ef6b1d-5311-4f4d-9047-73dc0e8a38b9","name":"api.test.DroneDpTest","children":["ad753f4c-fbf7-43aa-9783-8bbc67c6bf4a"],"befores":[{"name":"setupData","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1720584127142,"stop":1720584127152}],"afters":[],"start":1720584124600,"stop":1720584127775}

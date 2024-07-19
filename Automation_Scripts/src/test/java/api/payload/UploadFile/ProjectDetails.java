@@ -11,9 +11,16 @@ public class ProjectDetails {
 	     String error;
 	     String fileName;
 	     List<Sheet> sheets;
+	     int requestRefID;
 	     
 
-	 	public int getProjectId() {
+	 	public int getRequestRefID() {
+			return requestRefID;
+		}
+		public void setRequestRefID(int requestRefID) {
+			this.requestRefID = requestRefID;
+		}
+		public int getProjectId() {
 	 		return ProjectId;
 	 	}
 	 	public void setProjectId(int projectId) {

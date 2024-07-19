@@ -3,6 +3,8 @@ package api.payload;
 import java.util.List;
 
 public class Community {
+	int companyId;
+	
 	String projectName;
 	List<Integer> teamId;
 	Boolean isCommunity;
@@ -14,7 +16,28 @@ public class Community {
 	String description;
 	String frequencyType;
 	String customDate;
+	String communityName;
+	Integer communityId;
 	
+	public Integer getCommunityId() {
+		return communityId;
+	}
+	public void setCommunityId(Integer communityId) {
+		this.communityId = communityId;
+	}
+	public String getCommunityName() {
+		return communityName;
+	}
+	public void setCommunityName(String communityName) {
+		this.communityName = communityName;
+	}
+	
+	public int getCompanyId() {
+		return companyId;
+	}
+	public void setCompanyId(int companyId) {
+		this.companyId = companyId;
+	}
 	public int getProjectId() {
 		return projectId;
 	}

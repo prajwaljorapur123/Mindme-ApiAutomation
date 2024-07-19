@@ -1,0 +1,52 @@
+<div>POST to http://mindmedev-env.eba-p3axgdvz.us-east-2.elasticbeanstalk.com/v1/employee/search</div>
+
+    <h4>Body</h4>
+    <div>
+    <pre class="preformated-text">
+{
+    &quot;eid&quot;: 0,
+    &quot;firstName&quot;: &quot;Qiana&quot;,
+    &quot;lastName&quot;: &quot;Streich&quot;,
+    &quot;email&quot;: &quot;verlene.lebsack@yahoo.com&quot;,
+    &quot;countryCode&quot;: &quot;+91&quot;,
+    &quot;phone&quot;: &quot;2378237823&quot;,
+    &quot;permissionIds&quot;: [
+        1
+    ],
+    &quot;designation&quot;: &quot;Adell O&#39;Hara Thiel PhD&quot;,
+    &quot;imageId&quot;: &quot;0&quot;,
+    &quot;pageNo&quot;: 0,
+    &quot;pageSize&quot;: 8,
+    &quot;teamName&quot;: &quot;&quot;
+}    </pre>
+    </div>
+
+    <h4>Headers</h4>
+    <div>
+            <div>Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJwZXJtaXNzaW9uIjpbMl0sInN1YiI6ImJpZ2Jvc3NAeW9wbWFpbC5jb20iLCJpc3MiOiJNaW5kTWUiLCJpYXQiOjE3MjEzODA5ODUsImV4cCI6MTcyMTQ2NzM4NX0.YJKUENwYMS83tb6aPI4Mgurk-EMcJO3ISznUj_yzAoHq679LUyMy67CVEgvlwuDTNACThGCpi8xVkYPRENtEUA</div>
+            <div>Accept: */*</div>
+            <div>Content-Type: application/json</div>
+    </div>
+
+
+
+    <h4>Curl</h4>
+    <div>
+        curl -v -X POST &#39;http://mindmedev-env.eba-p3axgdvz.us-east-2.elasticbeanstalk.com/v1/employee/search&#39; -H &#39;Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJwZXJtaXNzaW9uIjpbMl0sInN1YiI6ImJpZ2Jvc3NAeW9wbWFpbC5jb20iLCJpc3MiOiJNaW5kTWUiLCJpYXQiOjE3MjEzODA5ODUsImV4cCI6MTcyMTQ2NzM4NX0.YJKUENwYMS83tb6aPI4Mgurk-EMcJO3ISznUj_yzAoHq679LUyMy67CVEgvlwuDTNACThGCpi8xVkYPRENtEUA&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: application/json&#39; -d &#39;{
+    &quot;eid&quot;: 0,
+    &quot;firstName&quot;: &quot;Qiana&quot;,
+    &quot;lastName&quot;: &quot;Streich&quot;,
+    &quot;email&quot;: &quot;verlene.lebsack@yahoo.com&quot;,
+    &quot;countryCode&quot;: &quot;+91&quot;,
+    &quot;phone&quot;: &quot;2378237823&quot;,
+    &quot;permissionIds&quot;: [
+        1
+    ],
+    &quot;designation&quot;: &quot;Adell O&#39;Hara Thiel PhD&quot;,
+    &quot;imageId&quot;: &quot;0&quot;,
+    &quot;pageNo&quot;: 0,
+    &quot;pageSize&quot;: 8,
+    &quot;teamName&quot;: &quot;&quot;
+}&#39;
+    </div>
+

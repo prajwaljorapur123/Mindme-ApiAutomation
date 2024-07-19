@@ -121,7 +121,7 @@ public class PdfTest {
 		}
 		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
 
-		throw new SkipException("Skip Pdf Download");
+	
 
 	}
 

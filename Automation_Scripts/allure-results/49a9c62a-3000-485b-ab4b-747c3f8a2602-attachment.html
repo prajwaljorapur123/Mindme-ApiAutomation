@@ -1,0 +1,40 @@
+<div>POST to http://mindmedev-env.eba-p3axgdvz.us-east-2.elasticbeanstalk.com/v1/search/data/pdf</div>
+
+    <h4>Body</h4>
+    <div>
+    <pre class="preformated-text">
+{
+    &quot;projectId&quot;: 5352,
+    &quot;fileId&quot;: 0,
+    &quot;isAbbreviation&quot;: &quot;&quot;,
+    &quot;searchText&quot;: &quot;park&quot;,
+    &quot;fileDetailsModel&quot;: null,
+    &quot;fileType&quot;: &quot;pdf&quot;,
+    &quot;pageNo&quot;: 0,
+    &quot;pageSize&quot;: 0
+}    </pre>
+    </div>
+
+    <h4>Headers</h4>
+    <div>
+            <div>Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJwZXJtaXNzaW9uIjpbMl0sInN1YiI6ImJpZ2Jvc3NAeW9wbWFpbC5jb20iLCJpc3MiOiJNaW5kTWUiLCJpYXQiOjE3MjEzODA5ODUsImV4cCI6MTcyMTQ2NzM4NX0.YJKUENwYMS83tb6aPI4Mgurk-EMcJO3ISznUj_yzAoHq679LUyMy67CVEgvlwuDTNACThGCpi8xVkYPRENtEUA</div>
+            <div>Accept: */*</div>
+            <div>Content-Type: application/json</div>
+    </div>
+
+
+
+    <h4>Curl</h4>
+    <div>
+        curl -v -X POST &#39;http://mindmedev-env.eba-p3axgdvz.us-east-2.elasticbeanstalk.com/v1/search/data/pdf&#39; -H &#39;Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJwZXJtaXNzaW9uIjpbMl0sInN1YiI6ImJpZ2Jvc3NAeW9wbWFpbC5jb20iLCJpc3MiOiJNaW5kTWUiLCJpYXQiOjE3MjEzODA5ODUsImV4cCI6MTcyMTQ2NzM4NX0.YJKUENwYMS83tb6aPI4Mgurk-EMcJO3ISznUj_yzAoHq679LUyMy67CVEgvlwuDTNACThGCpi8xVkYPRENtEUA&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: application/json&#39; -d &#39;{
+    &quot;projectId&quot;: 5352,
+    &quot;fileId&quot;: 0,
+    &quot;isAbbreviation&quot;: &quot;&quot;,
+    &quot;searchText&quot;: &quot;park&quot;,
+    &quot;fileDetailsModel&quot;: null,
+    &quot;fileType&quot;: &quot;pdf&quot;,
+    &quot;pageNo&quot;: 0,
+    &quot;pageSize&quot;: 0
+}&#39;
+    </div>
+

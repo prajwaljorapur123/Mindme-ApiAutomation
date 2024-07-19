@@ -1,0 +1,1 @@
+{"uuid":"3dd71dfe-16a0-49d1-9110-17160a7c13c3","name":"api.test.CommunityTest","children":["f877f98d-5c44-4553-aa30-5709cfe9d882"],"befores":[{"name":"setupData","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1720692857241,"stop":1720692857379}],"afters":[],"start":1720692853014,"stop":1720692859375}

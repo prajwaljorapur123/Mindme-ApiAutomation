@@ -9,12 +9,6 @@
           <include name="setupData"/>
         </methods>
       </class> <!-- api.test.UploadFileTest -->
-      <class name="api.test.PdfTest">
-        <methods>
-          <include name="setupData"/>
-          <include name="TestDownloadPdffile"/>
-        </methods>
-      </class> <!-- api.test.PdfTest -->
       <class name="api.test.SearchTest">
         <methods>
           <include name="setupData"/>

@@ -8,8 +8,15 @@ public class DroneDp {
 	String status;
 	int pageNo;
 	int pageSize;
+	String searchText;
 	
 	
+	public String getSearchText() {
+		return searchText;
+	}
+	public void setSearchText(String searchText) {
+		this.searchText = searchText;
+	}
 	public int getCompanyId() {
 		return companyId;
 	}

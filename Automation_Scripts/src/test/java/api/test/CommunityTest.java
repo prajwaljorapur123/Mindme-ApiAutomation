@@ -21,6 +21,8 @@ public class CommunityTest {
 	Community communitypayload;
 	Community RequestPayload;
 	public static int CommunityId;
+	public static int RequestId;
+	Community Overviewpayload;
 
 	@BeforeClass
 	public void setupData() {
@@ -31,6 +33,8 @@ public class CommunityTest {
 		communitypayload.setIsCommunity(true);
 
 		RequestPayload = new Community();
+		
+		Overviewpayload = new Community();
 
 	}
 
@@ -87,9 +91,10 @@ public class CommunityTest {
 		RequestPayload.setProjectId(CommunityId);
 		RequestPayload.setDescription(faker.name().nameWithMiddle());
 		RequestPayload.setFrequencyType("Weekly");
-		RequestPayload.setCustomDate("2024-12-31T00:00:00Z");
+		//RequestPayload.setCustomDate("2024-12-31T00:00:00Z");
 
 		Response response = CommunityEndpoints.Createrequest(LoginTest.LoginToken, RequestPayload);
+		RequestId = response.jsonPath().getInt("data.id");
 
 		// validations
 
@@ -103,5 +108,78 @@ public class CommunityTest {
 		Assert.assertEquals(response.jsonPath().getString("message"), "200 OK", "Correct message returned");
 
 	}
+	
+	// Dvs Overview
+
+		@Test(priority = 4)
+		public void TestDvsOverview() {
+			Overviewpayload.setCompanyId(LoginTest.CompanyId);
+			Overviewpayload.setCommunityName(null);
+			Overviewpayload.setPageNo(0);
+			Overviewpayload.setPageSize(8);
+
+			Response response = CommunityEndpoints.DvsOverview(LoginTest.LoginToken, Overviewpayload);
+            
+			// validations
+
+			if (response.getStatusCode() == 200 && response.jsonPath().getString("message").equals("200 OK")) {
+				Reporter.log("Dvs Overview...." + response.getStatusCode(), true);
+			} else {
+				Reporter.log("Dvs Overview Fail...." + response.prettyPrint(), false);
+			}
+
+			Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+			Assert.assertEquals(response.jsonPath().getString("message"), "200 OK", "Correct message returned");
+
+		}
+		
+		//Overview Issue Counts
+
+				@Test(priority = 5)
+				public void TestOverviewIssueCount() {
+					Overviewpayload.setCompanyId(LoginTest.CompanyId);
+					Overviewpayload.setCommunityId(null);
+					Overviewpayload.setPageNo(0);
+					Overviewpayload.setPageSize(8);
+					
+					Response response = CommunityEndpoints.OverviewIssueCount(LoginTest.LoginToken, Overviewpayload);
+				
+					// validations
+
+					if (response.getStatusCode() == 200 && response.jsonPath().getString("message").equals("OK")) {
+						Reporter.log("Overview Issue Counts...." + response.getStatusCode(), true);
+					} else {
+						Reporter.log("Overview Issue Counts...." + response.prettyPrint(), false);
+					}
+
+					Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+					Assert.assertEquals(response.jsonPath().getString("message"), "OK", "Correct message returned");
+
+				}
+				
+				//DataSearch Issue Counts
+
+			@Test(priority = 6)
+				public void TestdatasearchIssueCount() {
+					Overviewpayload.setCompanyId(LoginTest.CompanyId);
+					Overviewpayload.setCommunityId(CommunityTest.CommunityId);
+					Overviewpayload.setPageNo(0);
+					Overviewpayload.setPageSize(8);
+					
+					Response response = CommunityEndpoints.OverviewIssueCount(LoginTest.LoginToken, Overviewpayload);
+		            
+		            
+					// validations
+
+					if (response.getStatusCode() == 200 && response.jsonPath().getString("message").equals("OK")) {
+						Reporter.log("DataSearch Issue Counts...." + response.getStatusCode(), true);
+					} else {
+						Reporter.log("DataSearch Issue Counts...." + response.prettyPrint(), false);
+					}
+
+					Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
+					Assert.assertEquals(response.jsonPath().getString("message"), "OK", "Correct message returned");
+
+				}
 
 }
