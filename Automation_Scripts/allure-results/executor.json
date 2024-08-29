@@ -1,5 +1,9 @@
-{"Tester":"Prajwal Kumar", 
-"buildName":"Mind me",
-"type":"Api Automation" ,
-"buildurl":"http://mindmeweb.s3-website-us-west-1.amazonaws.com/"
+{
+  "reportName": "Api Automation",
+  "buildOrder": 1234,
+  "reportUrl": "",
+  "name": "Bitbucket",
+  "type": "Bitbucket",
+  "buildName": "allure-report_deploy",
+  "buildUrl": "http://mindmeweb.s3-website-us-west-1.amazonaws.com/"
 }

@@ -3,16 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="api.test.CommunityTest">
+      <class name="api.test.LoginTest">
         <methods>
-          <include name="TestCreateCommunity"/>
-          <include name="TestSearchCommunity"/>
+          <include name="LoginWithInvalidEmail"/>
           <include name="setupData"/>
-          <include name="TestCreateRequest"/>
-          <include name="TestDvsOverview"/>
-          <include name="TestOverviewIssueCount"/>
         </methods>
-      </class> <!-- api.test.CommunityTest -->
+      </class> <!-- api.test.LoginTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -1,0 +1,30 @@
+<div>POST to http://mindmedev-env.eba-p3axgdvz.us-east-2.elasticbeanstalk.com/v1/issue/createIssueType</div>
+
+    <h4>Body</h4>
+    <div>
+    <pre class="preformated-text">
+{
+    &quot;superIssueType&quot;: &quot;Exterior Maintenance Issues&quot;,
+    &quot;issueType&quot;: &quot;Jr. issues&quot;,
+    &quot;isActive&quot;: true
+}    </pre>
+    </div>
+
+    <h4>Headers</h4>
+    <div>
+            <div>Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJwZXJtaXNzaW9uIjpbM10sInN1YiI6Iml0YWNoaUB5b3BtYWlsLmNvbSIsImlzcyI6Ik1pbmRNZSIsImlhdCI6MTcyNDY2NTY2MCwiZXhwIjoxNzI0NzUyMDYwfQ.9tisyEfqkIqBQCR56pRjo9d0G62LmW7FM75QF0DpRKy88dJNb1mEmcwvLqTc9Fa9hIBqsHum35e6Ox5Md2crxw</div>
+            <div>Accept: */*</div>
+            <div>Content-Type: application/json</div>
+    </div>
+
+
+
+    <h4>Curl</h4>
+    <div>
+        curl -v -X POST &#39;http://mindmedev-env.eba-p3axgdvz.us-east-2.elasticbeanstalk.com/v1/issue/createIssueType&#39; -H &#39;Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJwZXJtaXNzaW9uIjpbM10sInN1YiI6Iml0YWNoaUB5b3BtYWlsLmNvbSIsImlzcyI6Ik1pbmRNZSIsImlhdCI6MTcyNDY2NTY2MCwiZXhwIjoxNzI0NzUyMDYwfQ.9tisyEfqkIqBQCR56pRjo9d0G62LmW7FM75QF0DpRKy88dJNb1mEmcwvLqTc9Fa9hIBqsHum35e6Ox5Md2crxw&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: application/json&#39; -d &#39;{
+    &quot;superIssueType&quot;: &quot;Exterior Maintenance Issues&quot;,
+    &quot;issueType&quot;: &quot;Jr. issues&quot;,
+    &quot;isActive&quot;: true
+}&#39;
+    </div>
+

@@ -8,7 +8,11 @@
 	<test  name="Test">
 		<classes>
 
-			<class name="api.test.LoginTest" />
+	    	<class name="api.test.LoginTest" />
+	    	<class name="api.test.VendorTest" />
+	    	
+			<class name="api.test.SendLetterTest" />
+			
 		    <class name="api.test.EmployeeTest" />
 			<class name="api.test.TeamTest" /> 
 			<class name="api.test.ProjectTest" />
@@ -18,8 +22,12 @@
 			<class name="api.test.PhraseTest" />	
 		    <class name="api.test.CommunityTest" /> 
 			<class name="api.test.AdminTest" />
-	<!--	<class name="api.test.AdminCompanyTest" /> -->
+			 <class name="api.test.IssueTypeTest" />  
+			 
+	 <!--	       <class name="api.test.AdminCompanyTest" />   -->
+		  
 			<class name="api.test.DroneDpTest" /> 
+			<class name="api.test.DvsDataSearchTest" />  
 
 		</classes>
 	</test>  

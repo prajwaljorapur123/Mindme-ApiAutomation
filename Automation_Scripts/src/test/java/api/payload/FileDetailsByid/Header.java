@@ -3,9 +3,10 @@ package api.payload.FileDetailsByid;
 public class Header {
 	
 	 int headerId;
-  String position;
+     String position;
      String dataType;
      String headerName;
+     String madeUpName;
      
      public int getHeaderId() {
 		return headerId;
@@ -37,6 +38,6 @@ public class Header {
 	public void setMadeUpName(String madeUpName) {
 		this.madeUpName = madeUpName;
 	}
-	String madeUpName;
+	
 
 }

@@ -160,6 +160,8 @@ public class UploadFileTest {
 	@Test(priority = 5)
 	public void TestDownloadExcelfile() throws IOException {
 		Response response = UploadFileEndpoins.DownloadExcelFile(ErrorFileId);
+		
+		
 
 		if (response.getStatusCode() == 200) {	
 
@@ -187,7 +189,7 @@ public class UploadFileTest {
 		Assert.assertEquals(response.getStatusCode(), 200, "Correct status code returned");
 		
 		
-		throw new SkipException("Skip excel Download");
+		
 
 	}
 

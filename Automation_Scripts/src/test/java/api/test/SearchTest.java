@@ -1,6 +1,7 @@
 package api.test;
 
 import org.testng.Assert;
+
 import org.testng.AssertJUnit;
 import org.testng.Reporter;
 import org.testng.SkipException;
@@ -120,6 +121,7 @@ public class SearchTest {
 
 	@Test(priority = 5)
 	public void testpdfHistory() {
+		
 		SearchHistoryPayload.setFileType("pdf");
 
 		Response response = SearchEndpoints.ExcelSearchHistory(LoginTest.LoginToken,

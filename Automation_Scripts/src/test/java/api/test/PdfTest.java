@@ -95,6 +95,7 @@ public class PdfTest {
 	@Test(priority = 4)
 	public void TestDownloadPdffile() throws IOException {
 		Response response = UploadFileEndpoins.DownloadExcelFile(PdfId);
+		
 
 		if (response.getStatusCode() == 200) {
 

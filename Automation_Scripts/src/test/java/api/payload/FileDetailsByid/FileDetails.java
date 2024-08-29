@@ -5,7 +5,7 @@ import java.util.List;
 import api.payload.FileDetailsByid.Sheet;;
 
 public class FileDetails {
-	int fileId;
+	 int fileId;
      String companyId;
      String projectId;
      String fileName;
@@ -17,6 +17,9 @@ public class FileDetails {
      int createdByID;
      int requestRefID;
      String fileSize;
+     String error;
+     boolean activeStatus;
+     List<Sheet> sheets;
      
      public int getRequestRefID() {
 		return requestRefID;
@@ -30,10 +33,10 @@ public class FileDetails {
 	public void setFileSize(String fileSize) {
 		this.fileSize = fileSize;
 	}
-	String error;
-    boolean activeStatus;
+	
     
-     List<Sheet> sheets;
+    
+     
 	public int getFileId() {
 		return fileId;
 	}

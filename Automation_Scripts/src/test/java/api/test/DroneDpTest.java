@@ -9,10 +9,12 @@ import org.testng.annotations.Test;
 
 import api.endpoints.DroneDpEndpoints;
 import api.endpoints.LoginEndPoints;
+import api.endpoints.PdfEndpoints;
 import api.endpoints.UploadFileEndpoins;
 import api.payload.DroneDp;
 import api.payload.Files;
 import api.payload.Login;
+import api.payload.Pdf;
 import api.payload.UploadFile.Header;
 import api.payload.UploadFile.ProjectDetails;
 import api.payload.UploadFile.Sheet;
@@ -35,6 +37,8 @@ public class DroneDpTest {
 	Header header11;
 	Sheet sheet1;
 	ProjectDetails projectDetails;
+	
+	Pdf PdfPayload;
 	
 
 	@BeforeClass
@@ -116,8 +120,19 @@ public class DroneDpTest {
 		projectDetails.setRequestRefID(CommunityTest.RequestId);
 		projectDetails.setFileUniqueName(null);
 		projectDetails.setError(null);
-		projectDetails.setFileName("Request File.xlsx");
+		projectDetails.setFileName("DvsDemo.xlsx");
 		projectDetails.setSheets(Arrays.asList(sheet1));
+		
+		
+		PdfPayload = new Pdf();
+		PdfPayload.setProjectId(CommunityTest.CommunityId);
+		PdfPayload.setCompanyId(LoginTest.CompanyId);
+		PdfPayload.setCreatedByID(EmployeeTest.CreatedBy);
+		PdfPayload.setRequestRefID(CommunityTest.RequestId);
+		PdfPayload.setFileUniqueName("");
+		PdfPayload.setError("");
+		PdfPayload.setFileName("Dvs pdf.pdf");
+		
 
 		
 		
@@ -186,7 +201,7 @@ public class DroneDpTest {
 	
 	@Test(priority = 4)
 	public void testUploadExcelFileForRequest() {
-		Response response = DroneDpEndpoints.UploadFileForRequest(AdminTest.AdminLoginToken, projectDetails);
+		Response response = DroneDpEndpoints.UploadFileForRequest( projectDetails);
 		
 
 		// validations
@@ -202,4 +217,25 @@ public class DroneDpTest {
 
 
 	}
+	
+	// upload pdf file for request
+
+		@Test(priority = 5)
+		public void TestUploadPdfForRequest() {
+			Response response = DroneDpEndpoints.UploadPdfForRequest( PdfPayload);
+            
+			// validations
+			if (response.getStatusCode() == 201
+					&& response.jsonPath().getString("message").equals("File Uploaded successfully.")) {
+				Reporter.log("Upload pdf for request...." + response.getStatusCode(), true);
+			} else {
+				Reporter.log("Upload pdf for request Fail...." + response.prettyPrint(), false);
+			}
+			Assert.assertEquals(response.getStatusCode(), 201, "Correct status code returned");
+			Assert.assertEquals(response.jsonPath().getString("message"), "File Uploaded successfully.",
+					"Correct message returned");
+
+		}
+		
+		
 }

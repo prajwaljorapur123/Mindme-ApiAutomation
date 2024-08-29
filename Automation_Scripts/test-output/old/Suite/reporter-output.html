@@ -1,5 +1,30 @@
-<h2>Reporter output</h2><table><tr><td>Login successfull....200</td></tr>
+<h2>Reporter output</h2><table><tr><td>Login with valid credentials....200</td></tr>
+<tr><td>Login with bad credentials....400</td></tr>
+<tr><td>Login with Invalid email....400</td></tr>
+<tr><td>Login with Empty Values....400</td></tr>
+<tr><td>Login with null Values....400</td></tr>
 <tr><td>company details....200</td></tr>
+<tr><td>Upload Vendor details....200</td></tr>
+<tr><td>Upload Vendor with invalid Headers....400</td></tr>
+<tr><td>Upload Vendor with invalid file....400</td></tr>
+<tr><td>Get Vendors....200</td></tr>
+<tr><td>Send Letter With Attachement....200</td></tr>
+<tr><td>Send Letter Without Attachement....200</td></tr>
+<tr><td>Send Letter With Invalid Attachement....400</td></tr>
+<tr><td>Send Letter With Multiple Attachement....200</td></tr>
+<tr><td>Send Letter With Invalid Recipient Email....400</td></tr>
+<tr><td>Send Letter With Large Attachement failed<html>
+  <head>
+    <title>413 Request Entity Too Large</title>
+  </head>
+  <body>
+    <center>
+      <h1>413 Request Entity Too Large</h1>
+    </center>
+    <hr/>
+    <center>nginx</center>
+  </body>
+</html></td></tr>
 <tr><td>Added Employee....200</td></tr>
 <tr><td>Added Employee....200</td></tr>
 <tr><td>Employee Details....200</td></tr>
@@ -40,17 +65,31 @@
 <tr><td>Delete Phrase....200</td></tr>
 <tr><td>Get Phrase....200</td></tr>
 <tr><td>community Created....200</td></tr>
+<tr><td>Create Community with Existing Name....400</td></tr>
+<tr><td>Create Community with Null Fields....400</td></tr>
 <tr><td>community Search....200</td></tr>
 <tr><td>Create request....200</td></tr>
+<tr><td>Create request with same frequency....400</td></tr>
 <tr><td>Dvs Overview....200</td></tr>
 <tr><td>Overview Issue Counts....200</td></tr>
+<tr><td>Overview Issue Counts with invalid payload....400</td></tr>
 <tr><td>DataSearch Issue Counts....200</td></tr>
 <tr><td>AdminLogin successfull....200</td></tr>
 <tr><td>Admin Dashboard Count ....200</td></tr>
 <tr><td>list of About to expire companies....200</td></tr>
 <tr><td>list of expired companies....200</td></tr>
+<tr><td>upload IssueType....200</td></tr>
+<tr><td>upload IssueType with Invalid File....400</td></tr>
+<tr><td>upload IssueType with Invalid Headers....400</td></tr>
+<tr><td>upload IssueType with user account....400</td></tr>
+<tr><td>Create IssueType....200</td></tr>
+<tr><td>Get IssueType....200</td></tr>
+<tr><td>Create IssueType With Same Name....400</td></tr>
 <tr><td>GetAllCompanies....200</td></tr>
 <tr><td>RequestCount....200</td></tr>
 <tr><td>View request....200</td></tr>
 <tr><td>upload file for request....201</td></tr>
+<tr><td>Upload pdf for request....201</td></tr>
+<tr><td>Dvs Search data....200</td></tr>
+<tr><td>Dvs Filters....200</td></tr>
 </table>

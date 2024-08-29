@@ -1,0 +1,132 @@
+<div>POST to http://mindmedev-env.eba-p3axgdvz.us-east-2.elasticbeanstalk.com/v1/search/data</div>
+
+    <h4>Body</h4>
+    <div>
+    <pre class="preformated-text">
+{
+    &quot;projectId&quot;: 5761,
+    &quot;fileId&quot;: 4544,
+    &quot;isAbbreviation&quot;: &quot;&quot;,
+    &quot;searchText&quot;: &quot;prajwal&quot;,
+    &quot;fileDetailsModel&quot;: {
+        &quot;fileId&quot;: 4544,
+        &quot;companyId&quot;: &quot;2255&quot;,
+        &quot;projectId&quot;: &quot;5761&quot;,
+        &quot;fileName&quot;: &quot;sample.xlsx&quot;,
+        &quot;fileType&quot;: &quot;excel&quot;,
+        &quot;fileUniqueName&quot;: &quot;sample_884ef2dd-1f47-4ecc-b405-1b4ab68e369b&quot;,
+        &quot;fileProcessingStatus&quot;: &quot;COMPLETED&quot;,
+        &quot;createdDate&quot;: &quot;2024-08-09T16:31:42.736+00:00&quot;,
+        &quot;timeUpdated&quot;: &quot;2024-08-09T16:31:45.088+00:00&quot;,
+        &quot;createdByID&quot;: 5239,
+        &quot;requestRefID&quot;: 0,
+        &quot;fileSize&quot;: null,
+        &quot;error&quot;: null,
+        &quot;activeStatus&quot;: true,
+        &quot;sheets&quot;: [
+            {
+                &quot;sheetId&quot;: 3413,
+                &quot;sheetName&quot;: &quot;Sheet1&quot;,
+                &quot;approach&quot;: &quot;TopToBottom&quot;,
+                &quot;valuePosition&quot;: &quot;A3&quot;,
+                &quot;headers&quot;: [
+                    {
+                        &quot;headerId&quot;: 12781,
+                        &quot;position&quot;: &quot;A1&quot;,
+                        &quot;dataType&quot;: &quot;Text&quot;,
+                        &quot;headerName&quot;: &quot;sno&quot;,
+                        &quot;madeUpName&quot;: &quot;sno&quot;
+                    },
+                    {
+                        &quot;headerId&quot;: 12782,
+                        &quot;position&quot;: &quot;B1&quot;,
+                        &quot;dataType&quot;: &quot;Text&quot;,
+                        &quot;headerName&quot;: &quot;name&quot;,
+                        &quot;madeUpName&quot;: &quot;name&quot;
+                    },
+                    {
+                        &quot;headerId&quot;: 12783,
+                        &quot;position&quot;: &quot;C1&quot;,
+                        &quot;dataType&quot;: &quot;Text&quot;,
+                        &quot;headerName&quot;: &quot;place&quot;,
+                        &quot;madeUpName&quot;: &quot;place&quot;
+                    }
+                ]
+            }
+        ]
+    },
+    &quot;fileType&quot;: null,
+    &quot;pageNo&quot;: 0,
+    &quot;pageSize&quot;: 0
+}    </pre>
+    </div>
+
+    <h4>Headers</h4>
+    <div>
+            <div>Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJwZXJtaXNzaW9uIjpbMl0sInN1YiI6IkF1dG9tYXRpb25AeW9wbWFpbC5jb20iLCJpc3MiOiJNaW5kTWUiLCJpYXQiOjE3MjMyMjEwNzcsImV4cCI6MTcyMzMwNzQ3N30.5u_KSEOBWuGkUa6RImS0Y22fFkvpt2Kkvst4zVDf9mNcpGf4P_83oN_CspbEmK_KCQLnHGWfqpp_u04MAXQVzw</div>
+            <div>Accept: */*</div>
+            <div>Content-Type: application/json</div>
+    </div>
+
+
+
+    <h4>Curl</h4>
+    <div>
+        curl -v -X POST &#39;http://mindmedev-env.eba-p3axgdvz.us-east-2.elasticbeanstalk.com/v1/search/data&#39; -H &#39;Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJwZXJtaXNzaW9uIjpbMl0sInN1YiI6IkF1dG9tYXRpb25AeW9wbWFpbC5jb20iLCJpc3MiOiJNaW5kTWUiLCJpYXQiOjE3MjMyMjEwNzcsImV4cCI6MTcyMzMwNzQ3N30.5u_KSEOBWuGkUa6RImS0Y22fFkvpt2Kkvst4zVDf9mNcpGf4P_83oN_CspbEmK_KCQLnHGWfqpp_u04MAXQVzw&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: application/json&#39; -d &#39;{
+    &quot;projectId&quot;: 5761,
+    &quot;fileId&quot;: 4544,
+    &quot;isAbbreviation&quot;: &quot;&quot;,
+    &quot;searchText&quot;: &quot;prajwal&quot;,
+    &quot;fileDetailsModel&quot;: {
+        &quot;fileId&quot;: 4544,
+        &quot;companyId&quot;: &quot;2255&quot;,
+        &quot;projectId&quot;: &quot;5761&quot;,
+        &quot;fileName&quot;: &quot;sample.xlsx&quot;,
+        &quot;fileType&quot;: &quot;excel&quot;,
+        &quot;fileUniqueName&quot;: &quot;sample_884ef2dd-1f47-4ecc-b405-1b4ab68e369b&quot;,
+        &quot;fileProcessingStatus&quot;: &quot;COMPLETED&quot;,
+        &quot;createdDate&quot;: &quot;2024-08-09T16:31:42.736+00:00&quot;,
+        &quot;timeUpdated&quot;: &quot;2024-08-09T16:31:45.088+00:00&quot;,
+        &quot;createdByID&quot;: 5239,
+        &quot;requestRefID&quot;: 0,
+        &quot;fileSize&quot;: null,
+        &quot;error&quot;: null,
+        &quot;activeStatus&quot;: true,
+        &quot;sheets&quot;: [
+            {
+                &quot;sheetId&quot;: 3413,
+                &quot;sheetName&quot;: &quot;Sheet1&quot;,
+                &quot;approach&quot;: &quot;TopToBottom&quot;,
+                &quot;valuePosition&quot;: &quot;A3&quot;,
+                &quot;headers&quot;: [
+                    {
+                        &quot;headerId&quot;: 12781,
+                        &quot;position&quot;: &quot;A1&quot;,
+                        &quot;dataType&quot;: &quot;Text&quot;,
+                        &quot;headerName&quot;: &quot;sno&quot;,
+                        &quot;madeUpName&quot;: &quot;sno&quot;
+                    },
+                    {
+                        &quot;headerId&quot;: 12782,
+                        &quot;position&quot;: &quot;B1&quot;,
+                        &quot;dataType&quot;: &quot;Text&quot;,
+                        &quot;headerName&quot;: &quot;name&quot;,
+                        &quot;madeUpName&quot;: &quot;name&quot;
+                    },
+                    {
+                        &quot;headerId&quot;: 12783,
+                        &quot;position&quot;: &quot;C1&quot;,
+                        &quot;dataType&quot;: &quot;Text&quot;,
+                        &quot;headerName&quot;: &quot;place&quot;,
+                        &quot;madeUpName&quot;: &quot;place&quot;
+                    }
+                ]
+            }
+        ]
+    },
+    &quot;fileType&quot;: null,
+    &quot;pageNo&quot;: 0,
+    &quot;pageSize&quot;: 0
+}&#39;
+    </div>
+

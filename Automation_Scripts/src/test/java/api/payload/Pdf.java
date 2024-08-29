@@ -5,11 +5,19 @@ public class Pdf {
 	int projectId;
     int companyId;
     int createdByID;
-    String fileUniqueName;
+    int requestRefID;
+	String fileUniqueName;
     String error;
     String fileName;
     int pageNo;
     int pageSize;
+    
+    public int getRequestRefID() {
+		return requestRefID;
+	}
+	public void setRequestRefID(int requestRefID) {
+		this.requestRefID = requestRefID;
+	}
     
     
     public int getPageNo() {

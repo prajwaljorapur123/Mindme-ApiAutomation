@@ -1,0 +1,42 @@
+<div>POST to http://mindmedev-env.eba-p3axgdvz.us-east-2.elasticbeanstalk.com/v1/search/dataDvs</div>
+
+    <h4>Body</h4>
+    <div>
+    <pre class="preformated-text">
+{
+    &quot;projectId&quot;: &quot;5498&quot;,
+    &quot;isCommunity&quot;: &quot;true&quot;,
+    &quot;isAbbreviation&quot;: &quot;&quot;,
+    &quot;searchText&quot;: &quot;chicago&quot;,
+    &quot;filtersDataReq&quot;: null,
+    &quot;pageNo&quot;: &quot;0&quot;,
+    &quot;pageSize&quot;: &quot;8&quot;,
+    &quot;fileType&quot;: &quot;excel&quot;,
+    &quot;fileDetailsModel&quot;: null
+}    </pre>
+    </div>
+
+    <h4>Headers</h4>
+    <div>
+            <div>Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJwZXJtaXNzaW9uIjpbMl0sInN1YiI6ImJpZ2Jvc3NAeW9wbWFpbC5jb20iLCJpc3MiOiJNaW5kTWUiLCJpYXQiOjE3MjI0MTc0MTcsImV4cCI6MTcyMjUwMzgxN30.1twox91bh4sQTOVU_RoUwpgB3gIBbrhccE2RJwu8v43PaFRi9uz4JgiShhrvxncrh1x-INlRzvYo8GEXSXYLlQ</div>
+            <div>Accept: */*</div>
+            <div>Content-Type: application/json</div>
+    </div>
+
+
+
+    <h4>Curl</h4>
+    <div>
+        curl -v -X POST &#39;http://mindmedev-env.eba-p3axgdvz.us-east-2.elasticbeanstalk.com/v1/search/dataDvs&#39; -H &#39;Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJwZXJtaXNzaW9uIjpbMl0sInN1YiI6ImJpZ2Jvc3NAeW9wbWFpbC5jb20iLCJpc3MiOiJNaW5kTWUiLCJpYXQiOjE3MjI0MTc0MTcsImV4cCI6MTcyMjUwMzgxN30.1twox91bh4sQTOVU_RoUwpgB3gIBbrhccE2RJwu8v43PaFRi9uz4JgiShhrvxncrh1x-INlRzvYo8GEXSXYLlQ&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: application/json&#39; -d &#39;{
+    &quot;projectId&quot;: &quot;5498&quot;,
+    &quot;isCommunity&quot;: &quot;true&quot;,
+    &quot;isAbbreviation&quot;: &quot;&quot;,
+    &quot;searchText&quot;: &quot;chicago&quot;,
+    &quot;filtersDataReq&quot;: null,
+    &quot;pageNo&quot;: &quot;0&quot;,
+    &quot;pageSize&quot;: &quot;8&quot;,
+    &quot;fileType&quot;: &quot;excel&quot;,
+    &quot;fileDetailsModel&quot;: null
+}&#39;
+    </div>
+

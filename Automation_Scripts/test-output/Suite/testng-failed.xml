@@ -3,12 +3,12 @@
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="api.test.UploadFileTest">
+      <class name="api.test.SendLetterTest">
         <methods>
-          <include name="TestDownloadExcelfile"/>
+          <include name="TestSendLetterWithLargeAttachement"/>
           <include name="setupData"/>
         </methods>
-      </class> <!-- api.test.UploadFileTest -->
+      </class> <!-- api.test.SendLetterTest -->
       <class name="api.test.SearchTest">
         <methods>
           <include name="setupData"/>
